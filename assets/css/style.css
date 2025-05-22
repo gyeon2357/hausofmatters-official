@@ -1037,12 +1037,12 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .thumb-container .thumb:focus {
-  box-shadow: 0 0 0 1px yellow;
+  box-shadow: 0 0 0 1px orangered;
 }
 
-.thumb-container .thumb:hover > p {
-  box-shadow: none;
-}
+/* .thumb-container .thumb:hover > p {
+
+} */
 
 .thumb-container .thumb > img {
   -webkit-transition: opacity 0.25s ease-in-out;
@@ -1224,7 +1224,7 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .members-wrapper p {
-  /* width: 24ch; */
+  width: 24ch;
 
   word-break: keep-all;
   line-height: 1.4;
