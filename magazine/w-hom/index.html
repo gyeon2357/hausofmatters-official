@@ -175,7 +175,7 @@
                 $element.addClass("flipbook-loaded");
                 window.currentFlipbookInstance = $element.flipBook({
                   ...commonOptions,
-                  pdfUrl: `https://gg-yn.com/practice/basic/khl-flip/pdf.php?file=${item.pdf}`,
+                  pdfUrl: `https://gg-yn.com/practice/basic/khl-flip/assets/pdf.php?file=${item.pdf}`,
                 });
               } else {
                 // Dynamically create on click for others
@@ -199,7 +199,7 @@
                     // Save new instance
                     window.currentFlipbookInstance = $element.flipBook({
                       ...commonOptions,
-                      pdfUrl: `https://gg-yn.com/practice/basic/khl-flip/pdf.php?file=${item.pdf}`,
+                      pdfUrl: `https://gg-yn.com/practice/basic/khl-flip/assets/pdf.php?file=${item.pdf}`,
                     });
 
                     // Trigger click again after a short delay (to initialize)
