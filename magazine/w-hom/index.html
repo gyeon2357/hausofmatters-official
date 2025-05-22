@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <title>w/HOM | Hausofmatters</title>
+    <meta name="description" content="KHL | Hausofmatters" />
+    <meta
+      name="keywords"
+      content="KHL, HAUS OF MATTERS, korean hiphop, korean hiphop magazine"
+    />
+    <meta itemprop="name" content="Hausofmatters" />
+    <meta itemprop="description" content="KHL | Hausofmatters" />
+    <meta
+      itemprop="image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+    <meta property="og:url" content="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="Hausofmatters" />
+    <meta property="og:title" content="Hausofmatters" />
+    <meta property="og:description" content="KHL | Hausofmatters" />
+    <meta
+      property="og:image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hausofmatters" />
+    <meta name="twitter:description" content="KHL | Hausofmatters" />
+    <meta
+      name="twitter:image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../assets/images/seo/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../../assets/images/seo/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/seo/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/images/seo/favicon/apple-touch-icon.png"
+    />
+
+    <link
+      rel="manifest"
+      href="../../assets/images/seo/favicon/site.webmanifest"
+    />
+
+    <!-- Style -->
+    <link
+      rel="stylesheet"
+      href="../../assets/css/normalize.css"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/css/flipbook.style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/css/font-awesome.css"
+    />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/lnu1fpi.css" />
+
+    <!-- Icon -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/flipbook.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Setup common options for all flipBooks
+        const commonOptions = {
+          btnColor: "#000",
+          sideBtnBackground: "transparent",
+          sideBtnColor: "#fff",
+          lightBox: true,
+          viewMode: "3d",
+          layout: 3,
+          currentPage: {vAlign: "bottom", hAlign: "left"},
+        };
+
+        // Skeleton
+        const $wrapper = $(".thumb-wrapper");
+        const SKELETON_COUNT = 12;
+        for (let i = 0; i < SKELETON_COUNT; i++) {
+          $wrapper.append('<div class="skeleton-thumb"></div>');
+        }
+
+        // Store the current flipBook instance
+        window.currentFlipbookInstance = null;
+
+        // Load JSON file
+        $.getJSON("../../assets/json/w-hom.json", function (imageList) {
+          const totalCount = imageList.length;
+
+          $wrapper.empty();
+
+          // Create thumbnail tags
+          imageList.forEach((item, index) => {
+            const i = totalCount - index;
+            const selector = `.w-hom-${i}`;
+            const imgPath = `../../assets/images/thumb/${item.thumbnail}`;
+
+            const $thumb = $(`
+      <div class="thumb w-hom-${i}" tabindex="0">
+        <img src="${imgPath}" alt="${item.thumbnail}" />
+      </div>
+    `);
+            $wrapper.append($thumb);
+          });
+
+          // Create thumbnail descriptions
+          imageList.forEach((item, index) => {
+            const i = totalCount - index;
+            const selector = `.w-hom-${i}`;
+            const $element = $(selector);
+
+            if ($element.length) {
+              const dateText = item.date;
+
+              if (i === totalCount) {
+                $element.attr("id", "lastet");
+                $element.prepend(
+                  `<p><span>New Released&nbsp;&nbsp;&nbsp;&nbsp;ISSUE #${i}</span> <span>${dateText}</span></p>`
+                );
+              } else {
+                $element.prepend(
+                  `<p><span>ISSUE #${i}</span> <span>${dateText}</span></p>`
+                );
+              }
+
+              // Immediately create the latest 2 PDF files
+              if (i >= totalCount - 1) {
+                $element.addClass("flipbook-loaded");
+                window.currentFlipbookInstance = $element.flipBook({
+                  ...commonOptions,
+                  pdfUrl: `../../assets/pdf/${item.pdf}?t=${Date.now()}`,
+                });
+              } else {
+                // Dynamically create on click for others
+                $element.on("click", function (e) {
+                  // Dispose previous instance
+                  if (
+                    window.currentFlipbookInstance &&
+                    typeof window.currentFlipbookInstance.dispose === "function"
+                  ) {
+                    window.currentFlipbookInstance.dispose();
+                  }
+
+                  window.currentFlipbookInstance = null;
+
+                  e.preventDefault();
+                  e.stopPropagation();
+
+                  if (!$element.hasClass("flipbook-loaded")) {
+                    $element.addClass("flipbook-loaded");
+
+                    // Save new instance
+                    window.currentFlipbookInstance = $element.flipBook({
+                      ...commonOptions,
+                      pdfUrl: `../../assets/pdf/${item.pdf}?t=${Date.now()}`,
+                    });
+
+                    // Trigger click again after a short delay (to initialize)
+                    setTimeout(() => $element.trigger("click"), 300);
+                    return;
+                  }
+                });
+              }
+            }
+          });
+
+          // Set latest issue URL
+          if (window.location.hash === "#lastet") {
+            setTimeout(() => $("#lastet").trigger("click"), 750);
+          }
+
+          // Error message on failure
+        }).fail(function () {
+          $(".thumb-wrapper").append("<p>Failed to load w-HOM data.</p>");
+        });
+
+        // $("[data-name='btnClose']").on("click", function () {
+        //   if (
+        //     currentFlipbookInstance &&
+        //     typeof currentFlipbookInstance.dispose === "function"
+        //   ) {
+        //     currentFlipbookInstance.dispose();
+        //     currentFlipbookInstance = null;
+        //   }
+        // });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Splash -->
+    <section class="loading">
+      <a class="logo" href=""></a>
+      <p class="loading-text">world/<br />HAUS OF MATTERS</p>
+    </section>
+
+    <!-- Menu -->
+    <header>
+      <a class="logo" href="../../"></a>
+
+      <nav class="menu__btn">
+        <div class="menu__btn__wrap">
+          <span class="menu__btn__line"></span>
+          <span class="menu__btn__line"></span>
+        </div>
+      </nav>
+
+      <div class="header__bg"></div>
+    </header>
+
+    <section class="menu__contents">
+      <li><a href="../../">HOME</a></li>
+      <li>
+        <a href="../hom/"><span>한국힙합 매거진</span>hom<sup>New</sup></a>
+      </li>
+      <li>
+        <a href="../w-hom/" class="disabled"
+          ><span>해외힙합 매거진</span>w/hom<sup>New</sup></a
+        >
+      </li>
+      <li><a href="../../members/">KHL Members</a></li>
+      <hr />
+      <li>
+        <a
+          href="https://open.spotify.com/playlist/2wJa1MqIgEB06aoXqjzJh2?si=AJGkUVdBRieWNuWTVwCu4g&pi=-cH5TBFfQUeVf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(spotify)</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://music.youtube.com/playlist?list=PLgEEnxUe0JC1ZqbsHrthUfFQR2Zt27Scp&si=s_XAx9NPlHX6uw57"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(youtube music)</a
+        >
+      </li>
+      <hr />
+      <li>
+        <a
+          href="https://www.instagram.com/hausofmatters/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >instagram</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="http://linktr.ee/khlofficial"
+          target="_blank"
+          rel="noopener noreferrer"
+          >More Link</a
+        >
+      </li>
+
+      <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
+    </section>
+
+    <main>
+      <!-- Contents -->
+      <section class="page-title">
+        <img src="../../assets/images/w_hom.png" />
+      </section>
+
+      <section class="thumb-container">
+        <div class="thumb-wrapper"></div>
+      </section>
+
+      <section class="content">
+        <h2 class="content__title type-small">Other contents</h2>
+        <div class="card-wrap first">
+          <div class="card">
+            <a
+              href="../hom/"
+              class="card__image"
+              style="background-image: url(../../assets/images/HOM.png)"
+            ></a>
+            <h3 class="card__title type-small">
+              <span>한국힙합 매거진</span>
+              <a href="../hom/">HAUS OF MATTERS</a>
+            </h3>
+          </div>
+        </div>
+
+        <h2 class="content__title type-small">Info</h2>
+        <div class="card-wrap">
+          <div class="card">
+            <a
+              href="../../members/"
+              class="card__image"
+              style="background-image: url(../../assets/images/editor.jpg)"
+            ></a>
+
+            <h3 class="card__title type-small">
+              <a href="../../members/">KHL Members</a>
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="frame frame--footer type-small">
+        <div>
+          <p>
+            <a
+              href="https://www.instagram.com/hausofmatters/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Hausofmatters</a
+            >
+
+            <br />
+            ALL IMAGE RIGHTS BELONG TO THEIR RESPECTIVE OWNERS.
+          </p>
+        </div>
+
+        <div class="link">
+          <a
+            href="https://www.instagram.com/hausofmatters/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span>→</span>Instagram</a
+          >
+          <a
+            href="http://linktr.ee/khlofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span>→</span>More Link</a
+          >
+        </div>
+
+        <div>
+          <p>Created by <a href="https://gg-yn.com">jamso</a> 2025</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JavaScript dependencies -->
+    <script src="../../assets/js/current-device-browser.min.js"></script>
+    <!-- GSAP library -->
+    <script src="../../assets/js/gsap.min.js"></script>
+    <!-- Loading, Sub scripts -->
+    <script src="../../assets/js/load-sub.js"></script>
+    <script src="../../assets/js/script.js"></script>
+  </body>
+</html>

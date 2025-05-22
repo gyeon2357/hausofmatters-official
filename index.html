@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hausofmatters</title>
+
+    <meta name="description" content="KHL | Hausofmatters" />
+    <meta
+      name="keywords"
+      content="KHL, HAUS OF MATTERS, korean hiphop, korean hiphop magazine"
+    />
+    <meta itemprop="name" content="Hausofmatters" />
+    <meta itemprop="description" content="KHL | Hausofmatters" />
+    <meta
+      itemprop="image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+    <meta property="og:url" content="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="Hausofmatters" />
+    <meta property="og:title" content="Hausofmatters" />
+    <meta property="og:description" content="KHL | Hausofmatters" />
+    <meta
+      property="og:image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hausofmatters" />
+    <meta name="twitter:description" content="KHL | Hausofmatters" />
+    <meta
+      name="twitter:image"
+      content="https://gg-yn.com/practice/basic/khl-flip/assets/images/seo/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/images/seo/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./assets/images/seo/favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="./assets/images/seo/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/images/seo/favicon/apple-touch-icon.png"
+    />
+
+    <link rel="manifest" href="./assets/images/seo/favicon/site.webmanifest" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./assets/css/normalize.css" type="text/css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./assets/css/font-awesome.css"
+    />
+
+    <!-- Font CSS -->
+    <link rel="stylesheet" href="./assets/css/font.css" />
+
+    <link rel="stylesheet" href="https://use.typekit.net/lnu1fpi.css" />
+
+    <!-- Icon CSS -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // 가장 숫자가 큰 이미지 추출 후 .intro__hom에 삽입 및 숫자 삽입
+        $.getJSON("./assets/json/hom.json", function (wHomList) {
+          const maxWHom = wHomList
+            .map(item => {
+              // 확장자가 .jpg 또는 .gif 인지 매칭
+              const match = item.thumbnail.match(/hom-(\d+)\.(jpg|gif)$/i);
+              return match
+                ? {thumbnail: item.thumbnail, number: parseInt(match[1], 10)}
+                : null;
+            })
+            .filter(Boolean) // 매칭 실패 항목 제거
+            .sort((a, b) => b.number - a.number)[0]; // 가장 큰 번호 추출
+
+          if (maxWHom) {
+            const imgTag = `<img src="./assets/images/thumb/${maxWHom.thumbnail}" alt="${maxWHom.thumbnail}">`;
+            $(".intro__hom").prepend(imgTag);
+            $(".intro__hom p").append(`<span>#${maxWHom.number}</span>`);
+          }
+        });
+
+        // 가장 숫자가 큰 이미지 추출 후 .intro__w-hom에 삽입 및 숫자 삽입
+        $.getJSON("./assets/json/w-hom.json", function (wHomList) {
+          const maxWHom = wHomList
+            .map(item => {
+              // 확장자가 .jpg 또는 .gif 인지 매칭
+              const match = item.thumbnail.match(/w-hom-(\d+)\.(jpg|gif)$/i);
+              return match
+                ? {thumbnail: item.thumbnail, number: parseInt(match[1], 10)}
+                : null;
+            })
+            .filter(Boolean) // 매칭 실패 항목 제거
+            .sort((a, b) => b.number - a.number)[0]; // 가장 큰 번호 추출
+
+          if (maxWHom) {
+            const imgTag = `<img src="./assets/images/thumb/${maxWHom.thumbnail}" alt="${maxWHom.thumbnail}">`;
+            $(".intro__w-hom").prepend(imgTag);
+            $(".intro__w-hom p").append(`<span>#${maxWHom.number}</span>`);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Splash -->
+    <section class="loading">
+      <a class="logo" href="#"></a>
+
+      <p class="loading-text">KHL,&thinsp; Hausofmatters</p>
+    </section>
+
+    <!-- Menu -->
+    <header>
+      <a class="logo" href="./"></a>
+
+      <nav class="menu__btn">
+        <div class="menu__btn__wrap">
+          <span class="menu__btn__line"></span>
+          <span class="menu__btn__line"></span>
+        </div>
+      </nav>
+
+      <div class="header__bg"></div>
+    </header>
+
+    <section class="menu__contents">
+      <li><a href="" class="disabled">HOME</a></li>
+      <li>
+        <a href="./magazine/hom/"
+          ><span>한국힙합 매거진</span>hom<sup>New</sup></a
+        >
+      </li>
+      <li>
+        <a href="./magazine/w-hom/"><span>해외힙합 매거진</span>w/hom<sup>New</sup></a>
+      </li>
+      <li><a href="./members/">KHL Members</a></li>
+      <hr />
+
+      <li>
+        <a
+          href="https://open.spotify.com/playlist/2wJa1MqIgEB06aoXqjzJh2?si=AJGkUVdBRieWNuWTVwCu4g&pi=-cH5TBFfQUeVf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(spotify)</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://music.youtube.com/playlist?list=PLgEEnxUe0JC1ZqbsHrthUfFQR2Zt27Scp&si=s_XAx9NPlHX6uw57"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(youtube music)</a
+        >
+      </li>
+      <hr />
+      <li>
+        <a
+          href="https://www.instagram.com/hausofmatters/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >instagram</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="http://linktr.ee/khlofficial"
+          target="_blank"
+          rel="noopener noreferrer"
+          >More Link</a
+        >
+      </li>
+
+      <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
+    </section>
+
+    <!-- Popup -->
+    <aside class="intro__popup">
+      <p>New Released</p>
+      <div class="intro__link">
+        <a class="intro__hom" href="./magazine/hom/#lastet"><p>HOM</p></a
+        ><a class="intro__w-hom" href="./magazine/w-hom/#lastet"><p>w/HOM</p></a>
+      </div>
+    </aside>
+
+    <main>
+      <!-- Contents -->
+      <section class="intro no-select">
+        <div class="intro__heading">
+          <h2>KHL,<br />Hausofmatters</h2>
+          <nav class="tags type-small">
+            <a
+              href="https://www.instagram.com/hausofmatters/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >instagram</a
+            >
+            <a
+              href="http://linktr.ee/khlofficial"
+              target="_blank"
+              rel="noopener noreferrer"
+              >MORE LINK</a
+            >
+          </nav>
+
+          <!-- <p class="type-small">HAUS OF MATTERS <br />KHL KILL THEM ALL</p> -->
+        </div>
+      </section>
+
+      <section class="thumbnail_transition">
+        <h1>
+          HAUS OF MATTERS<br />
+          KHL KILL THEM ALL
+        </h1>
+        <div class="column">
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-1.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-2.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-3.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-4.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-5.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-6.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-7.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-8.jpg)"
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-9.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-10.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-11.jpg)"
+              ></div>
+            </div>
+          </figure>
+        </div>
+
+        <div class="column">
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-12.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-13.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-14.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-15.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-16.jpg)"
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-17.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-18.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-19.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-20.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-21.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-22.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-23.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <!-- <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/hom-24.jpg)"
+              ></div>
+            </div>
+          </figure> -->
+        </div>
+
+        <div class="column">
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-1.jpg)"
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-2.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-3.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-4.jpg)"
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-5.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-6.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-7.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-8.jpg)"
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="background-image: url(./assets/images/thumb/w-hom-9.jpg)"
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-10.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-11.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+        </div>
+
+        <div class="column">
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-12.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-13.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-14.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-15.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-16.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-17.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-18.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-19.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-20.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-21.jpg);
+                "
+              ></div>
+            </div>
+          </figure>
+          <!-- <figure class="column__item">
+            <div class="column__item-imgwrap">
+              <div
+                class="column__item-img"
+                style="
+                  background-image: url(./assets/images/thumb/w-hom-22.jpg);
+                "
+              ></div>
+            </div>
+          </figure> -->
+        </div>
+      </section>
+
+      <section class="content about">
+        <h2 class="content__title type-small">About KHL</h2>
+        <div class="blur-text blur-text" data-effect>
+          팀 KHL은 블랙뮤직을 사랑하는 다양한 분야에서 활동 중인 장르팬들이 모여
+          만들어진 팀입니다. 매달 둘째 주 월요일에 PDF 형식으로 한국힙합 매거진
+          〈HAUS OF MATTERS〉 와 해외힙합 매거진 〈w/HAUS OF MATTERS〉 를 발간
+          중에 있으며, SNS를 통해 다양한 콘텐츠를 제작 및 업로드하고 있습니다.
+          <br /><br />
+          <br />
+          2023년 5월 첫 팀 결성 이래, 많은 블랙뮤직 팬들과 뮤지션 분들의 관심을
+          받으며 열띤 활동 중에 있습니다. 앞으로도 저희의 움직임에 관심을 갖고
+          지켜봐 주시면 감사드리겠습니다.
+        </div>
+      </section>
+
+      <section class="content">
+        <h2 class="content__title type-small">Magazine</h2>
+        <div class="card-wrap">
+          <div class="card">
+            <a
+              href="./magazine/hom/"
+              class="card__image"
+              style="background-image: url(./assets/images/HOM.png)"
+            ></a>
+            <h3 class="card__title type-small">
+              <span>한국힙합 매거진</span>
+              <a href="./magazine/hom/">HAUS OF MATTERS</a>
+            </h3>
+          </div>
+          <div class="card">
+            <a
+              href="./magazine/w-hom/"
+              class="card__image"
+              style="background-image: url(./assets/images/w_hom.png)"
+            ></a>
+            <h3 class="card__title type-small">
+              <span>해외힙합 매거진</span>
+              <a href="./magazine/w-hom/">w/HAUS OF MATTERS</a>
+            </h3>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <h2 class="content__title type-small">Info</h2>
+        <div class="card-wrap">
+          <div class="card">
+            <a
+              href="./members/"
+              class="card__image"
+              style="background-image: url(./assets/images/editor.jpg)"
+            ></a>
+            <h3 class="card__title type-small">
+              <a href="./members/">KHL Members</a>
+            </h3>
+          </div>
+        </div>
+      </section>
+      <footer class="frame frame--footer type-small">
+        <div>
+          <p>
+            (C) 2025
+            <a
+              href="https://www.instagram.com/hausofmatters/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Hausofmatters</a
+            >
+            All Rights Reserved.
+          </p>
+        </div>
+
+        <div class="link">
+          <a
+            href="https://www.instagram.com/hausofmatters/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span>→</span>Instagram</a
+          >
+          <a
+            href="http://linktr.ee/khlofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span>→</span>More Link</a
+          >
+        </div>
+
+        <div>
+          <p>Created by <a href="https://gg-yn.com">jamso</a> 2025</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JavaScript dependencies -->
+    <script src="./assets/js/current-device-browser.min.js"></script>
+    <!-- GSAP library -->
+    <script src="./assets/js/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger plugin -->
+    <script src="./assets/js/ScrollTrigger.min.js"></script>
+    <!-- SplitType for text manipulation: https://github.com/lukePeavey/SplitType -->
+    <script src="./assets/js/split-type.min.js"></script>
+    <!-- Add (Lenis) smooth scroll -->
+    <script src="./assets/js/lenis.min-image.js"></script>
+    <script src="./assets/js/lenis.min-text.js"></script>
+    <script src="./assets/js/smoothscroll.js"></script>
+    <script src="./assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Scripts for the effect -->
+    <script type="module" src="./assets/js/text.js"></script>
+    <script type="module" src="./assets/js/image.js"></script>
+    <!-- Loading, Sub scripts -->
+    <script src="./assets/js/load.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
