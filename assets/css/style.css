@@ -1227,7 +1227,7 @@ main.open .thumb-container .thumb-wrapper {
   width: 24ch;
 
   word-break: keep-all;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .members-wrapper p > a {
@@ -1561,7 +1561,7 @@ main.open .thumb-container .thumb-wrapper {
 
   .members-wrapper h2 {
     font-size: 1.125rem;
-    padding-bottom: 0.375rem;
+    padding-bottom: 0.5rem;
   }
 
   .members-wrapper li {
