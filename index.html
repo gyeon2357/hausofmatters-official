@@ -7,15 +7,19 @@
 
     <title>Hausofmatters</title>
 
-    
-
-    <meta name="description" content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다." />
+    <meta
+      name="description"
+      content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다."
+    />
     <meta
       name="keywords"
       content="KHL, HAUS OF MATTERS, korean hiphop, korean hiphop magazine"
     />
     <meta itemprop="name" content="Hausofmatters" />
-    <meta itemprop="description" content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다." />
+    <meta
+      itemprop="description"
+      content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다."
+    />
     <meta
       itemprop="image"
       content="https://hausofmatters.com/assets/images/seo/og-image.jpg"
@@ -25,7 +29,10 @@
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="Hausofmatters" />
     <meta property="og:title" content="Hausofmatters" />
-    <meta property="og:description" content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다." />
+    <meta
+      property="og:description"
+      content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다."
+    />
     <meta
       property="og:image"
       content="https://hausofmatters.com/assets/images/seo/og-image.jpg"
@@ -35,7 +42,10 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hausofmatters" />
-    <meta name="twitter:description" content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다." />
+    <meta
+      name="twitter:description"
+      content="팀 KHL은 블랙뮤직을 사랑하는 장르팬들이 모여 결성한 매거진 팀입니다. 음악에 대한 애정을 바탕으로 앨범 소개, 리뷰, 인터뷰, 칼럼 등 다양한 형식의 글을 통해 아티스트와 앨범, 그리고 그 음악이 담고 있는 의미를 기록해나가고 있습니다."
+    />
     <meta
       name="twitter:image"
       content="https://hausofmatters.com/assets/images/seo/og-image.jpg"
@@ -93,11 +103,11 @@
         // 가장 숫자가 큰 이미지 추출 후 .intro__hom에 삽입 및 숫자 삽입
         $.getJSON("./assets/json/hom.json", function (wHomList) {
           const maxWHom = wHomList
-            .map(item => {
+            .map((item) => {
               // 확장자가 .jpg 또는 .gif 인지 매칭
               const match = item.thumbnail.match(/hom-(\d+)\.(jpg|gif)$/i);
               return match
-                ? {thumbnail: item.thumbnail, number: parseInt(match[1], 10)}
+                ? { thumbnail: item.thumbnail, number: parseInt(match[1], 10) }
                 : null;
             })
             .filter(Boolean) // 매칭 실패 항목 제거
@@ -113,11 +123,11 @@
         // 가장 숫자가 큰 이미지 추출 후 .intro__w-hom에 삽입 및 숫자 삽입
         $.getJSON("./assets/json/w-hom.json", function (wHomList) {
           const maxWHom = wHomList
-            .map(item => {
+            .map((item) => {
               // 확장자가 .jpg 또는 .gif 인지 매칭
               const match = item.thumbnail.match(/w-hom-(\d+)\.(jpg|gif)$/i);
               return match
-                ? {thumbnail: item.thumbnail, number: parseInt(match[1], 10)}
+                ? { thumbnail: item.thumbnail, number: parseInt(match[1], 10) }
                 : null;
             })
             .filter(Boolean) // 매칭 실패 항목 제거
@@ -131,6 +141,21 @@
         });
       });
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NWX4VBNW");
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
     <!-- Splash -->
@@ -794,5 +819,16 @@
     <!-- Loading, Sub scripts -->
     <script src="./assets/js/load.js"></script>
     <script src="./assets/js/script.js"></script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NWX4VBNW"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
