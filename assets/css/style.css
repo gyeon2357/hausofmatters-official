@@ -1210,10 +1210,10 @@ main.open .thumb-container .thumb-wrapper {
 
 .members-wrapper h2 {
   font-family: var(--info-font);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
 
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
 }
 
 .members-wrapper p,
@@ -1560,7 +1560,7 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .members-wrapper h2 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     padding-bottom: 0.5rem;
   }
 
