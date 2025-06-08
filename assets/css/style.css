@@ -240,6 +240,7 @@ section.loading .loading-text {
 
   border-radius: 2px;
   background: #ffffff25;
+  background: color(display-p3 1 0.2 0.5 / 0.8);
 }
 
 .card__title.type-small {
@@ -975,7 +976,7 @@ main.open .thumb-container .thumb-wrapper {
 
   width: 1.5rem;
   height: 100%;
-  background: #ffffff14;
+  background: #ffffff26;
   border-right: 1px solid gray;
   /* border-radius: 1.5px 1.5px 0 0; */
   color: silver;
@@ -1079,13 +1080,15 @@ main.open .thumb-container .thumb-wrapper {
   left: 50%;
 
   font-size: 2rem;
-  font-variation-settings: "wdth" 125, "wght" 400;
+  font-variation-settings: "wdth" 125, "wght" 620;
   letter-spacing: 2px;
 
   text-align: center;
   text-wrap: nowrap;
   line-height: 1.2;
   color: #fff;
+
+  border-bottom: 3px solid #fff;
 
   z-index: 1;
 }
