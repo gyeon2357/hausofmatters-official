@@ -804,7 +804,7 @@ main.open {
   font-size: 1.25rem;
   font-variation-settings: "wdth" 105, "wght" 360;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.5;
   letter-spacing: 0.1px;
   text-transform: uppercase;
 
@@ -1304,7 +1304,7 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .menu__contents > li > a {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   .menu__contents > li > a > sup {
