@@ -7,7 +7,7 @@
 
   /* backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px); */
-  background: #000000;
+  background: #000000e8;
   /* background: url('../images/overlay_lightbox.png') repeat; */
   z-index: 100001 !important;
 }
