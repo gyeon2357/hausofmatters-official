@@ -908,7 +908,7 @@ section.page-title.link {
 .thumb-container .thumb-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 1.5rem;
 
   max-width: 1200px;
   margin: 0 auto;
@@ -1521,12 +1521,12 @@ main.open .thumb-container .thumb-wrapper {
 
   .thumb-container .thumb-wrapper {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.5rem;
+    grid-gap: 1rem;
   }
 
-  .thumb-container .thumb#lastet {
+  /* .thumb-container .thumb#lastet {
     grid-column: span 2;
-  }
+  } */
 
   .thumb-container .thumb {
     margin-bottom: 0;
