@@ -499,9 +499,7 @@ section.loading .loading-text {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: color(display-p3 1 0 0 / 1);
-
-  background: color(display-p3 1 0 0 / 1);
+  background: color(display-p3 1 0.2 0.5 / 1);
 }
 
 .intro__popup a {
@@ -804,7 +802,7 @@ main.open {
   width: 100%;
 
   font-size: 1.25rem;
-  font-variation-settings: "wdth" 105, "wght" 320;
+  font-variation-settings: "wdth" 105, "wght" 360;
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.1px;
@@ -829,14 +827,15 @@ main.open {
 
 .menu__contents > li > a > sup {
   font-family: var(--info-font);
-  font-size: 0.55rem;
+  font-size: 0.425rem;
+  letter-spacing: 0.125px;
   font-weight: 400;
 
   top: -0.5rem;
-  margin-left: 0.375rem;
+  margin-left: 0.425rem;
   padding: 0.2rem 0.25rem;
 
-  background: color(display-p3 1 0.1 0 / 1);
+  background: color(display-p3 1 0.1 0.3 / 1);
   color: #fff;
   border-radius: 1px;
 }
@@ -959,8 +958,6 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .thumb-container .thumb#lastet {
-  grid-column: span 2;
-
   border: 0.5px solid color(display-p3 1 1 1 / 1);
   border-radius: 1.5px 1.5px 0 0;
 }
@@ -979,7 +976,7 @@ main.open .thumb-container .thumb-wrapper {
   width: 1.5rem;
   height: 100%;
   background: #ffffff14;
-  box-shadow: 1px 0 0 0 gray;
+  border-right: 1px solid gray;
   /* border-radius: 1.5px 1.5px 0 0; */
   color: silver;
   padding: 0.375rem 0.375rem;
@@ -1307,12 +1304,12 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .menu__contents > li > a {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .menu__contents > li > a > sup {
     top: -0.375rem;
-    margin-left: 0.25rem;
+    margin-left: 0.375rem;
     font-size: 0.425rem;
 
     padding: 0.15rem 0.2rem;
@@ -1522,6 +1519,10 @@ main.open .thumb-container .thumb-wrapper {
   .thumb-container .thumb-wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.5rem;
+  }
+
+  .thumb-container .thumb#lastet {
+    grid-column: span 2;
   }
 
   .thumb-container .thumb {
