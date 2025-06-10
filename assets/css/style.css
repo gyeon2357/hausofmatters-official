@@ -1257,8 +1257,6 @@ main.open .thumb-container .thumb-wrapper {
   width: 7rem;
 
   object-fit: cover;
-
-  border-radius: 1px;
 }
 
 @media screen and (max-width: 1280px) {
