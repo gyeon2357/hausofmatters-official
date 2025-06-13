@@ -114,9 +114,9 @@ $(document).ready(function () {
 
 var homSwiper = new Swiper(".hom-swiper", {
   loop: true,
-  speed: 1500,
+  speed: 2000,
   autoplay: {
-    delay: 0,
+    delay: 100,
     disableOnInteraction: true,
   },
   slidesPerView: 6,
@@ -134,9 +134,9 @@ var homSwiper = new Swiper(".hom-swiper", {
 var whomSwiper = new Swiper(".w-hom-swiper", {
   loop: true,
 
-  speed: 1500,
+  speed: 2000,
   autoplay: {
-    delay: 0,
+    delay: 100,
     disableOnInteraction: true,
     reverseDirection: true,
   },

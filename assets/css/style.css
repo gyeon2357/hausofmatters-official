@@ -862,6 +862,8 @@ main.open {
   width: 20vw;
   height: auto;
   margin: 0;
+
+  cursor: pointer;
 }
 
 .swiper-slide {
