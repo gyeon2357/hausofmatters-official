@@ -739,13 +739,13 @@ body.flipbook-overflow-hidden .logo {
   background: color(display-p3 1 1 1 / 1);
   color: #000;
   width: 100%;
-  height: 50vh;
+  height: 80vh;
   top: 0;
   left: 0;
   padding: 10vh 1.25rem;
 
   text-align: center;
-  transform: translateY(-50vh);
+  transform: translateY(-80vh);
   transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
   transition-delay: 0.125s;
 }
@@ -789,6 +789,10 @@ main.open {
 
   transition: all 0.25s ease;
   transition-delay: 0.35s;
+}
+
+.menu__contents > li:last-of-type {
+  margin-bottom: 1rem;
 }
 
 .menu__contents.is_active > h1,
@@ -851,6 +855,32 @@ main.open {
 
   margin: 0.5rem 0;
   width: 100%;
+}
+
+/* menu swiper */
+.swiper {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+height: auto;
+  aspect-ratio: 1 / 1.4142;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.menu_slide {
 }
 
 /* section.menu {
@@ -1292,11 +1322,11 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .menu__contents {
-    padding: 12vh 1.25rem;
+    padding: 10vh 1.25rem 8vh;
     gap: 0.25rem;
 
-    height: 65vh;
-    transform: translateY(-65vh);
+    height: 75vh;
+    transform: translateY(-75vh);
   }
 
   .menu__contents > h1 {
@@ -1305,7 +1335,8 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .menu__contents > li > a {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .menu__contents > li > a > sup {
