@@ -859,7 +859,7 @@ main.open {
 
 /* menu swiper */
 .swiper {
-  width: 33.33%;
+  width: 20vw;
   height: auto;
   margin: 0;
 }

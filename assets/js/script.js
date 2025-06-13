@@ -114,19 +114,19 @@ $(document).ready(function () {
 
 var homSwiper = new Swiper(".hom-swiper", {
   loop: true,
-  speed: 400,
+  speed: 1500,
   autoplay: {
-    delay: 1000,
+    delay: 0,
     disableOnInteraction: true,
   },
   slidesPerView: 6,
   spaceBetween: 10,
   breakpoints: {
-    900: {
-      slidesPerView: 6,
+   768: {
+      slidesPerView: 4,
     },
     1200: {
-      slidesPerView: 1,
+      slidesPerView: 5,
     },
   },
 });
@@ -134,20 +134,20 @@ var homSwiper = new Swiper(".hom-swiper", {
 var whomSwiper = new Swiper(".w-hom-swiper", {
   loop: true,
 
-  speed: 400,
+  speed: 1500,
   autoplay: {
-    delay: 1000,
+    delay: 0,
     disableOnInteraction: true,
     reverseDirection: true,
   },
   slidesPerView: 6,
   spaceBetween: 10,
   breakpoints: {
-    900: {
-      slidesPerView: 6,
+    768: {
+      slidesPerView: 4,
     },
     1200: {
-      slidesPerView: 1,
+      slidesPerView: 5,
     },
   },
 });
