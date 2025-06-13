@@ -859,8 +859,9 @@ main.open {
 
 /* menu swiper */
 .swiper {
-  width: 100%;
+  width: 33.33%;
   height: auto;
+  margin: 0;
 }
 
 .swiper-slide {
@@ -873,7 +874,7 @@ main.open {
 .swiper-slide img {
   display: block;
   width: 100%;
-height: auto;
+  height: 100%;
   aspect-ratio: 1 / 1.4142;
 
   object-fit: contain;
@@ -1345,6 +1346,10 @@ main.open .thumb-container .thumb-wrapper {
     font-size: 0.425rem;
 
     padding: 0.15rem 0.2rem;
+  }
+
+  .swiper {
+    width: 100%;
   }
 
   section.page-title {

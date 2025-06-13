@@ -123,10 +123,10 @@ var homSwiper = new Swiper(".hom-swiper", {
   spaceBetween: 10,
   breakpoints: {
     900: {
-      slidesPerView: 4,
+      slidesPerView: 6,
     },
     1200: {
-      slidesPerView: 6,
+      slidesPerView: 1,
     },
   },
 });
@@ -144,10 +144,10 @@ var whomSwiper = new Swiper(".w-hom-swiper", {
   spaceBetween: 10,
   breakpoints: {
     900: {
-      slidesPerView: 4,
+      slidesPerView: 6,
     },
     1200: {
-      slidesPerView: 6,
+      slidesPerView: 1,
     },
   },
 });
