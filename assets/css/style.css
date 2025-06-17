@@ -739,13 +739,13 @@ body.flipbook-overflow-hidden .logo {
   background: color(display-p3 1 1 1 / 1);
   color: #000;
   width: 100%;
-  height: 80vh;
+  height: 56.25vh;
   top: 0;
   left: 0;
   padding: 10vh 1.25rem;
 
   text-align: center;
-  transform: translateY(-80vh);
+  transform: translateY(-56.25vh);
   transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
   transition-delay: 0.125s;
 }
@@ -1328,8 +1328,8 @@ main.open .thumb-container .thumb-wrapper {
     padding: 10vh 1.25rem 8vh;
     gap: 0.25rem;
 
-    height: 75vh;
-    transform: translateY(-75vh);
+    height: 60vh;
+    transform: translateY(-60vh);
   }
 
   .menu__contents > h1 {
