@@ -852,10 +852,6 @@ main.open {
   border-radius: 1px;
 }
 
-.menu__contents > li > a.disabled > sup {
-  opacity: 0.4;
-}
-
 .menu__contents hr {
   border: 0;
   border-top: 0.5px solid lightgray;
