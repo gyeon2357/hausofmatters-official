@@ -110,6 +110,13 @@ $(document).ready(function () {
       lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     }
   });
+
+  $(".row-switch figure").on("click", function () {
+    $(this).toggle();
+    $(this).siblings("figure").toggle();
+
+    $(".thumb-container .thumb-wrapper").toggleClass("expand");
+  });
 });
 
 // var homSwiper = new Swiper(".hom-swiper", {

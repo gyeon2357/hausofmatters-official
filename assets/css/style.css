@@ -806,7 +806,8 @@ main.open {
 }
 
 .menu__contents > li > a {
-  display: block;
+  display: inline-flex;
+  align-items: center;
   width: 100%;
 
   font-family: var(--info-font);
@@ -833,17 +834,42 @@ main.open {
   pointer-events: none;
 }
 
+.menu__contents > li > a mark {
+  display: inline-block;
+  position: relative;
+
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+
+  margin: -0.1rem 0.75rem 0 0;
+
+  background: #fff;
+  border: 1px solid black;
+}
+
+.menu__contents > li > a.disabled mark {
+  background: #000;
+}
+
 .menu__contents > li > a > span {
+  display: inline-flex;
+  align-items: center;
   padding-right: 0.5rem;
 }
 
 .menu__contents > li > a > sup {
+  display: flex;
+  align-items: center;
+
   font-family: var(--info-font);
   font-size: 0.425rem;
   letter-spacing: 0.125px;
   font-weight: 400;
 
-  top: -0.5rem;
+  height: 1rem;
+  padding: 0.25rem;
+  top: 0;
   margin-left: 0.425rem;
   padding: 0.2rem 0.25rem;
 
@@ -956,6 +982,11 @@ section.page-title.link {
   text-align: center;
 }
 
+.thumb-container .thumb-wrapper.expand {
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 0.75rem;
+}
+
 main.open .thumb-container .thumb-wrapper {
   pointer-events: none;
 }
@@ -972,6 +1003,33 @@ main.open .thumb-container .thumb-wrapper {
   transform-origin: center;
 
   margin-bottom: 2rem;
+}
+
+.thumb-container .thumb-wrapper.expand .thumb {
+  margin-bottom: 1rem;
+}
+
+.thumb-container .row-switch {
+  position: fixed;
+  right: 0;
+  bottom: 2rem;
+  padding: 1rem 2rem;
+
+  cursor: pointer;
+  z-index: 10001;
+  transition: filter 0.125s ease-out;
+}
+
+.thumb-container .row-switch:hover {
+  filter: invert(1);
+}
+
+.thumb-container .row-switch figure > img {
+  width: 2.5rem;
+}
+
+.thumb-container .row-switch .single {
+  display: none;
 }
 
 .skeleton-thumb {
@@ -1319,12 +1377,22 @@ main.open .thumb-container .thumb-wrapper {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.5rem;
   }
+
+  .thumb-container .thumb-wrapper.expand {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1.25rem;
+  }
 }
 
 @media screen and (max-width: 960px) {
   .thumb-container .thumb-wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.25rem;
+  }
+
+  .thumb-container .thumb-wrapper.expand {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
   }
 
   .thumb-container .thumb {
@@ -1364,8 +1432,11 @@ main.open .thumb-container .thumb-wrapper {
     line-height: 1.6;
   }
 
+  .menu__contents > li > a mark {
+    margin: -0.1rem 0.75rem 0 0;
+  }
+
   .menu__contents > li > a > sup {
-    top: -0.375rem;
     margin-left: 0.375rem;
     font-size: 0.425rem;
 
@@ -1586,12 +1657,30 @@ main.open .thumb-container .thumb-wrapper {
     grid-gap: 0.5rem;
   }
 
+  .thumb-container .thumb-wrapper.expand {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+  }
+
+  .thumb-container .row-switch {
+    bottom: 0;
+    padding: 1rem;
+  }
+
+  .thumb-container .row-switch figure > img {
+    width: 2rem;
+  }
+
   /* .thumb-container .thumb#lastet {
     grid-column: span 2;
   } */
 
   .thumb-container .thumb {
     margin-bottom: 1rem;
+  }
+
+  .thumb-container .thumb-wrapper.expand .thumb {
+    margin-bottom: 0.75rem;
   }
 
   .thumb-container .thumb > p {
@@ -1667,5 +1756,10 @@ main.open .thumb-container .thumb-wrapper {
   .thumb-container .thumb-wrapper {
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 2.75rem;
+  }
+
+  .thumb-container .thumb-wrapper.expand {
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 2.25rem;
   }
 }
