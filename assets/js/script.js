@@ -112,42 +112,42 @@ $(document).ready(function () {
   });
 });
 
-var homSwiper = new Swiper(".hom-swiper", {
-  loop: true,
-  speed: 2000,
-  autoplay: {
-    delay: 100,
-    disableOnInteraction: true,
-  },
-  slidesPerView: 6,
-  spaceBetween: 10,
-  breakpoints: {
-   768: {
-      slidesPerView: 4,
-    },
-    1200: {
-      slidesPerView: 5,
-    },
-  },
-});
+// var homSwiper = new Swiper(".hom-swiper", {
+//   loop: true,
+//   speed: 2000,
+//   autoplay: {
+//     delay: 100,
+//     disableOnInteraction: true,
+//   },
+//   slidesPerView: 6,
+//   spaceBetween: 10,
+//   breakpoints: {
+//    768: {
+//       slidesPerView: 4,
+//     },
+//     1200: {
+//       slidesPerView: 5,
+//     },
+//   },
+// });
 
-var whomSwiper = new Swiper(".w-hom-swiper", {
-  loop: true,
+// var whomSwiper = new Swiper(".w-hom-swiper", {
+//   loop: true,
 
-  speed: 2000,
-  autoplay: {
-    delay: 100,
-    disableOnInteraction: true,
-    reverseDirection: true,
-  },
-  slidesPerView: 6,
-  spaceBetween: 10,
-  breakpoints: {
-    768: {
-      slidesPerView: 4,
-    },
-    1200: {
-      slidesPerView: 5,
-    },
-  },
-});
+//   speed: 2000,
+//   autoplay: {
+//     delay: 100,
+//     disableOnInteraction: true,
+//     reverseDirection: true,
+//   },
+//   slidesPerView: 6,
+//   spaceBetween: 10,
+//   breakpoints: {
+//     768: {
+//       slidesPerView: 4,
+//     },
+//     1200: {
+//       slidesPerView: 5,
+//     },
+//   },
+// });
