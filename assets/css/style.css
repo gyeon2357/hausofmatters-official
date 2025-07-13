@@ -1663,7 +1663,7 @@ main.open .thumb-container .thumb-wrapper {
   }
 
   .thumb-container .row-switch {
-    bottom: 0;
+    bottom: 1rem;
     padding: 1rem;
   }
 
@@ -1753,13 +1753,52 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 @media only screen and (min-width: 1820px) {
+  .logo {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .menu__btn__wrap {
+    width: 4rem;
+  }
+
+  .menu__contents > li > a {
+    font-size: 2.25rem;
+  }
+
+  .menu__contents > li > a > sup {
+    font-size: 0.875rem;
+    height: 1.5rem;
+
+    top: -0.75rem;
+  }
+
+  .intro__popup img {
+    max-width: 10rem;
+  }
+
+  .intro__popup > p {
+    font-size: 1.25rem;
+  }
+
+  .intro__popup > p::before {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .intro__popup a {
+    font-size: 1rem;
+  }
+
   .thumb-container .thumb-wrapper {
-    grid-template-columns: repeat(6, 1fr);
+    max-width: 80%;
+
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 2.75rem;
   }
 
   .thumb-container .thumb-wrapper.expand {
     grid-template-columns: repeat(8, 1fr);
-    grid-gap: 2.25rem;
+    grid-gap: 2rem;
   }
 }

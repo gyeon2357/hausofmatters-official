@@ -116,6 +116,14 @@ $(document).ready(function () {
     $(this).siblings("figure").toggle();
 
     $(".thumb-container .thumb-wrapper").toggleClass("expand");
+
+    const theOffset = $(".thumb-container .thumb-wrapper").offset();
+    $("html, body").animate(
+      {
+        scrollTop: theOffset.top - 100,
+      },
+      0
+    );
   });
 });
 
