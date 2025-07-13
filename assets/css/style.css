@@ -1045,9 +1045,11 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container .thumb#lastet > p::before {
   content: "";
   position: absolute;
-  top: 0.325rem;
+
   transform: translateX(-50%);
-  left: 0.975rem;
+  top: 0.325rem;
+  left: calc(50%);
+
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
@@ -1610,11 +1612,9 @@ main.open .thumb-container .thumb-wrapper {
 
   .thumb-container .thumb#lastet > p::before {
     top: 0.325rem;
-    left: calc(50% + 0.15rem);
 
     width: 0.375rem;
     height: 0.375rem;
-
   }
 
   .thumb-container .thumb > img {
