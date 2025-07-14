@@ -1013,8 +1013,8 @@ main.open .thumb-container .thumb-wrapper {
   line-height: 1.375;
   text-align: left;
 
+  height: fit-content;
   color: gray;
-
   padding: 0.25rem;
 
   overflow: hidden;
@@ -1041,6 +1041,8 @@ main.open .thumb-container .thumb-wrapper {
   -webkit-mask-image: initial;
   mask-image: initial;
   background: transparent;
+
+  transition: height 0.125s ease-out;
 }
 
 /* .thumb-container .thumb-wrapper.expand figcaption {
