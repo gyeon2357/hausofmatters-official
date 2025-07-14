@@ -130,116 +130,92 @@
           currentPage: { vAlign: "bottom", hAlign: "left" },
         };
 
-        // Skeleton
-        const $wrapper = $(".thumb-wrapper");
-        const SKELETON_COUNT = 12;
-        for (let i = 0; i < SKELETON_COUNT; i++) {
-          $wrapper.append('<div class="skeleton-thumb"></div>');
-        }
-
-        // Store the current flipBook instance
+        // Store current flipBook instance
         window.currentFlipbookInstance = null;
 
         // Load JSON file
         $.getJSON("../../assets/json/w-hom.json", function (imageList) {
+          const $wrapper = $(".thumb-wrapper");
           const totalCount = imageList.length;
+  
 
-          $wrapper.empty();
-
-          // Create thumbnail tags
           imageList.forEach((item, index) => {
             const i = totalCount - index;
-            const selector = `.w-hom-${i}`;
             const imgPath = `../../assets/images/thumb/${item.thumbnail}`;
+            // const captionText = item.caption || "";
+            const dateText = item.date || "";
 
+            // Build thumb
             const $thumb = $(`
-      <div class="thumb w-hom-${i}" tabindex="0">
-        <img src="${imgPath}" alt="${item.thumbnail}" />
-      </div>
-    `);
+        <div class="thumb w-hom-${i}" tabindex="0">
+          <div class="thumb-meta">
+            <p><span>ISSUE #${i}</span> <span>${dateText}</span></p>
+            <img src="${imgPath}" alt="${item.thumbnail}" />
+          </div>
+        </div>
+      `);
+
+            // Append to wrapper
             $wrapper.append($thumb);
-          });
 
-          // Create thumbnail descriptions
-          imageList.forEach((item, index) => {
-            const i = totalCount - index;
-            const selector = `.w-hom-${i}`;
-            const $element = $(selector);
+            // Append caption AFTER the thumb
+            // if (captionText) {
+            //   const $caption = $(
+            //     `<figcaption class="caption">${captionText}</figcaption>`
+            //   );
+            //   $thumb.append($caption);
+            // }
 
-            if ($element.length) {
-              const dateText = item.date;
+            // Flipbook logic
+            if (i >= totalCount - 1) {
+              $thumb.addClass("flipbook-loaded");
+              window.currentFlipbookInstance = $thumb.flipBook({
+                ...commonOptions,
+                pdfUrl: `../../assets/pdf/${item.pdf}`,
+              });
+            } else {
+              $thumb.on("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-              if (i === totalCount) {
-                $element.attr("id", "lastet");
-                $element.prepend(
-                  `<p><span>ISSUE #${i}</span> <span>${dateText}</span></p>`
-                );
-              } else {
-                $element.prepend(
-                  `<p><span>ISSUE #${i}</span> <span>${dateText}</span></p>`
-                );
-              }
+                // Dispose previous instance
+                if (
+                  window.currentFlipbookInstance &&
+                  typeof window.currentFlipbookInstance.dispose === "function"
+                ) {
+                  window.currentFlipbookInstance.dispose();
+                }
 
-              // Immediately create the latest 2 PDF files
-              if (i >= totalCount - 1) {
-                $element.addClass("flipbook-loaded");
-                window.currentFlipbookInstance = $element.flipBook({
-                  ...commonOptions,
-                  pdfUrl: `../../assets/pdf/${item.pdf}`,
-                });
-              } else {
-                // Dynamically create on click for others
-                $element.on("click", function (e) {
-                  // Dispose previous instance
-                  if (
-                    window.currentFlipbookInstance &&
-                    typeof window.currentFlipbookInstance.dispose === "function"
-                  ) {
-                    window.currentFlipbookInstance.dispose();
-                  }
+                window.currentFlipbookInstance = null;
 
-                  window.currentFlipbookInstance = null;
+                if (!$thumb.hasClass("flipbook-loaded")) {
+                  $thumb.addClass("flipbook-loaded");
 
-                  e.preventDefault();
-                  e.stopPropagation();
+                  window.currentFlipbookInstance = $thumb.flipBook({
+                    ...commonOptions,
+                    pdfUrl: `../../assets/pdf/${item.pdf}`,
+                  });
 
-                  if (!$element.hasClass("flipbook-loaded")) {
-                    $element.addClass("flipbook-loaded");
+                  // Retry click
+                  setTimeout(() => $thumb.trigger("click"), 300);
+                  return;
+                }
+              });
+            }
 
-                    // Save new instance
-                    window.currentFlipbookInstance = $element.flipBook({
-                      ...commonOptions,
-                      pdfUrl: `../../assets/pdf/${item.pdf}`,
-                    });
-
-                    // Trigger click again after a short delay (to initialize)
-                    setTimeout(() => $element.trigger("click"), 300);
-                    return;
-                  }
-                });
-              }
+            // Set ID for latest issue
+            if (i === totalCount) {
+              $thumb.attr("id", "lastet");
             }
           });
 
-          // Set latest issue URL
-          if (window.location.hash === "#lastet") {
+          // Auto open latest issue if hash present
+          if (window.location.hash && window.location.hash.includes("lastet")) {
             setTimeout(() => $("#lastet").trigger("click"), 750);
           }
-
-          // Error message on failure
         }).fail(function () {
           $(".thumb-wrapper").append("<p>Failed to load w-HOM data.</p>");
         });
-
-        // $("[data-name='btnClose']").on("click", function () {
-        //   if (
-        //     currentFlipbookInstance &&
-        //     typeof currentFlipbookInstance.dispose === "function"
-        //   ) {
-        //     currentFlipbookInstance.dispose();
-        //     currentFlipbookInstance = null;
-        //   }
-        // });
       });
     </script>
   </head>
@@ -266,16 +242,19 @@
     </header>
 
     <section class="menu__contents">
-      <li><a href="../../"><mark></mark>HOME</a></li>
       <li>
-        <a href="../hom/"><span><mark></mark>한국힙합 매거진</span>hom<sup>New</sup></a>
+        <a href="../hom/"
+          ><span><mark></mark>한국힙합 매거진</span>hom<sup>New</sup></a
+        >
       </li>
       <li>
         <a href="../w-hom/" class="disabled"
           ><span><mark></mark>해외힙합 매거진</span>w/hom<sup>New</sup></a
         >
       </li>
-      <li><a href="../../members/"><mark></mark>KHL Members</a></li>
+      <li>
+        <a href="../../members/"><mark></mark>KHL Members</a>
+      </li>
       <hr />
       <!-- <li>
         <a
@@ -313,14 +292,26 @@
       </section>
 
       <section class="thumb-container">
-      <div class="row-switch">
-          <figure class="expand">
-            <img src="../../assets/images/row-btn-expand.svg" />
-          </figure>
-          <figure class="single">
-            <img src="../../assets/images/row-btn-single.svg" />
-          </figure>
-        </div>
+        <aside>
+          <div class="row-switch">
+            <figure class="expand">
+              <img src="../../assets/images/row-btn-expand.svg" />
+            </figure>
+            <figure class="single">
+              <img src="../../assets/images/row-btn-single.svg" />
+            </figure>
+          </div>
+
+          <div class="mag__popup">
+            <div class="mag__popup_content">
+              <a href="../hom/">한국힙합매거진 HOM 최신호를 만나보세요.</a>
+            </div>
+
+            <div class="popup__close">
+              <button>닫기</button>
+            </div>
+          </div>
+        </aside>
         <div class="thumb-wrapper"></div>
       </section>
 

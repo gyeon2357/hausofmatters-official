@@ -1,5 +1,10 @@
 [
-  { "thumbnail": "hom-26.jpg", "pdf": "hom-26.pdf", "date": "25. 7" },
+  {
+    "thumbnail": "hom-26.jpg",
+    "pdf": "hom-26.pdf",
+    "caption": "사무라이 참프루 팝업 스토어&리셉션 파티&ensp;|&ensp;노이즈마스터민수 〈한국음악프로듀서협회〉 인터뷰&ensp;|&ensp;롤링홀 신인발굴프로젝트 〈CMYK〉 힙합 부문 본선 무대 진출자 인터뷰, ...",
+    "date": "25. 7"
+  },
   { "thumbnail": "hom-25.jpg", "pdf": "hom-25.pdf", "date": "25. 6" },
   { "thumbnail": "hom-24.jpg", "pdf": "hom-24.pdf", "date": "25. 5" },
   { "thumbnail": "hom-23.jpg", "pdf": "hom-23.pdf", "date": "25. 4" },
