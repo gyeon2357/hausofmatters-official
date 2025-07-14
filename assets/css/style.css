@@ -956,6 +956,17 @@ section.page-title {
   margin: 20vh auto 25vh;
 }
 
+.page-title p {
+  display: block;
+
+  font-family: var(--info-font);
+  font-size: 0.825rem;
+
+  color: silver;
+
+  padding-top: 1rem;
+}
+
 section.page-title img {
   max-height: 8rem;
 }
@@ -1013,9 +1024,22 @@ main.open .thumb-container .thumb-wrapper {
   line-height: 1.375;
   text-align: left;
 
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+
   height: fit-content;
   color: gray;
-  padding: 0.25rem;
+
+  padding: 0.5rem 0.25rem 0rem;
+  border-top: 0.5px solid dimgray;
+
+  margin-bottom: 1rem;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1045,14 +1069,23 @@ main.open .thumb-container .thumb-wrapper {
   transition: height 0.125s ease-out;
 }
 
+.thumb-container figcaption > p {
+  display: inline-block;
+
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 /* .thumb-container .thumb-wrapper.expand figcaption {
   margin-bottom: 1rem;
 } */
 
 .thumb-container .row-switch {
   position: fixed;
+
+  transform: translateY(-50%);
   right: 0;
-  bottom: 3rem;
+  bottom: 50%;
   padding: 1rem 2rem;
 
   cursor: pointer;
@@ -1548,6 +1581,12 @@ main.open .mag__popup {
     margin: 20vh auto 15vh;
   }
 
+  .page-title p {
+    font-size: 0.75rem;
+
+    padding-top: 0.75rem;
+  }
+
   .thumbnail_transition {
     padding: 5vh 0 10vh;
   }
@@ -1760,6 +1799,8 @@ main.open .mag__popup {
   }
 
   .thumb-container .row-switch {
+    transform: none;
+
     bottom: 3rem;
     padding: 1rem;
   }
@@ -1770,7 +1811,7 @@ main.open .mag__popup {
 
   .thumb-container .mag__popup {
     bottom: 0.5rem;
-    width: calc(100% - 1rem);
+    width: calc(100% - 2rem);
   }
 
   .thumb-container .mag__popup .mag__popup_content {
@@ -1790,12 +1831,18 @@ main.open .mag__popup {
     grid-column: span 2;
   } */
 
-  .thumb-container .thumb-wrapper figcaption {
-    margin-bottom: 1rem;
+  .thumb-container figcaption {
+    font-size: 0.7rem;
+    line-height: 1.425;
+
+    margin-bottom: 1.5rem;
+
+    padding: 0.5rem 0.2rem 0rem;
   }
-  .thumb-container .thumb-wrapper.expand figcaption {
-    margin-bottom: 0.5rem;
-    font-size: 0.625rem;
+
+  .thumb-container figcaption > p {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 
   .thumb-container .thumb > .thumb-meta > p {
@@ -1920,5 +1967,10 @@ main.open .mag__popup {
   .thumb-container figcaption {
     font-size: 1.125rem;
     padding: 0.5rem;
+  }
+
+  .thumb-container figcaption > p {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 }
