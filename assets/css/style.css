@@ -1007,17 +1007,40 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .thumb-container figcaption {
-  display: block;
-
   position: relative;
   font-family: var(--info-font);
   font-size: 0.675rem;
-  line-height: 1.425;
+  line-height: 1.375;
   text-align: left;
 
-  color: dimgray;
+  color: gray;
 
   padding: 0.25rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
+  mask-image: linear-gradient(to top, transparent, black 40px);
+  -webkit-mask-image: linear-gradient(to top, transparent, black 40px);
+
+  transition: height 0.125s ease-out;
+  cursor: pointer;
+
+  z-index: 10000;
+}
+
+.thumb-container figcaption.expand {
+  overflow: auto;
+  text-overflow: initial;
+  -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
+
+  -webkit-mask-image: initial;
+  mask-image: initial;
+  background: transparent;
 }
 
 /* .thumb-container .thumb-wrapper.expand figcaption {
@@ -1744,7 +1767,6 @@ main.open .mag__popup {
   }
 
   .thumb-container .mag__popup {
-
     bottom: 0.5rem;
     width: calc(100% - 1rem);
   }
