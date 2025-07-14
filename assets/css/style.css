@@ -1020,7 +1020,7 @@ main.open .thumb-container .thumb-wrapper {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 
   mask-image: linear-gradient(to top, transparent, black 40px);
