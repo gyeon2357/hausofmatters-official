@@ -1074,7 +1074,7 @@ main.open .thumb-container .thumb-wrapper {
 
   width: 100%;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.125px;
 
   color: #d0d0d0;
@@ -2015,7 +2015,7 @@ main.open .mag__popup {
   }
 
   .thumb-container figcaption > p {
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     margin-bottom: 1rem;
   }
 }
