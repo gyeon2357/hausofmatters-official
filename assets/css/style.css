@@ -1099,7 +1099,7 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .thumb-container figcaption > span::before {
-  content: "* ";
+  content: "‣ ";
 }
 
 .thumb-container figcaption > hr {
