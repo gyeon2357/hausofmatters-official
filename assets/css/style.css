@@ -1021,7 +1021,7 @@ main.open .thumb-container .thumb-wrapper {
   position: relative;
   font-family: var(--info-font);
   font-size: 0.725rem;
-  line-height: 1.375;
+  line-height: 1.4;
   text-align: left;
 
   word-break: break-word;
@@ -1034,7 +1034,7 @@ main.open .thumb-container .thumb-wrapper {
   hyphens: auto;
 
   height: fit-content;
-  color: gray;
+  color: #989898;
 
   padding: 0.5rem 0.25rem 0rem;
   border-top: 0.5px solid dimgray;
@@ -1044,7 +1044,7 @@ main.open .thumb-container .thumb-wrapper {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 
   mask-image: linear-gradient(to top, transparent, black 40px);
@@ -1072,8 +1072,24 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container figcaption > p {
   display: inline-block;
 
+  width: 100%;
+  text-align: center;
   font-size: 0.75rem;
+
+  color: #cecece;
   margin-bottom: 0.75rem;
+}
+
+.thumb-container figcaption > hr {
+  display: inline;
+  margin: 0 0.625em;
+  padding: 0;
+
+  width: 1px;
+  height: 100%;
+
+  border: 0;
+  border-left: 0.5px solid #474747;
 }
 
 /* .thumb-container .thumb-wrapper.expand figcaption {
@@ -1838,6 +1854,7 @@ main.open .mag__popup {
     margin-bottom: 1.5rem;
 
     padding: 0.5rem 0.2rem 0rem;
+    -webkit-line-clamp: 5;
   }
 
   .thumb-container figcaption > p {
