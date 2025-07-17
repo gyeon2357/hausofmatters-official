@@ -1074,6 +1074,7 @@ main.open .thumb-container .thumb-wrapper {
   width: 100%;
   text-align: center;
   font-size: 0.75rem;
+  letter-spacing: .125px;
 
   color: #cecece;
   padding: 0.125rem;
