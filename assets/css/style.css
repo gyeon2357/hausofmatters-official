@@ -1020,7 +1020,7 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container figcaption {
   position: relative;
   font-family: var(--info-font);
-  font-size: 0.675rem;
+  font-size: 0.725rem;
   line-height: 1.375;
   text-align: left;
 
