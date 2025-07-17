@@ -1022,6 +1022,7 @@ main.open .thumb-container .thumb-wrapper {
   font-family: var(--info-font);
   font-size: 0.725rem;
   line-height: 1.4;
+  letter-spacing: 0;
   text-align: left;
 
   word-break: break-word;
@@ -1034,7 +1035,7 @@ main.open .thumb-container .thumb-wrapper {
   hyphens: auto;
 
   height: fit-content;
-  color: #aaa;
+  color: #b0b0b0;
 
   padding: 0.5rem 0 0;
 
@@ -1073,10 +1074,10 @@ main.open .thumb-container .thumb-wrapper {
 
   width: 100%;
   text-align: center;
-  font-size: 0.75rem;
-  letter-spacing: .125px;
+  font-size: 0.7rem;
+  letter-spacing: 0.125px;
 
-  color: #cecece;
+  color: #d0d0d0;
   padding: 0.125rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 1px;
@@ -1093,7 +1094,7 @@ main.open .thumb-container .thumb-wrapper {
 
   font-size: 0.75rem;
 
-  color: #cecece;
+  color: #d0d0d0;
   margin-right: 1.125rem;
 }
 
@@ -1877,12 +1878,15 @@ main.open .mag__popup {
   }
 
   .thumb-container figcaption > p {
-    font-size: 0.75rem;
     margin-bottom: 0.5rem;
   }
 
   .thumb-container figcaption > span {
     margin-right: 1rem;
+  }
+
+  .thumb-container figcaption > hr {
+    margin: 0 0.75em;
   }
 
   .thumb-container .thumb > .thumb-meta > p {
