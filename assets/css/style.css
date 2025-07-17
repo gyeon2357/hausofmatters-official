@@ -1524,7 +1524,7 @@ main.open .mag__popup {
   text-transform: capitalize;
   line-height: 1.1;
 
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .members-wrapper a:hover {
@@ -1924,6 +1924,7 @@ main.open .mag__popup {
   }
 
   .members-wrapper h1 {
+    font-size: 1.5rem;
     text-align: center;
   }
 
