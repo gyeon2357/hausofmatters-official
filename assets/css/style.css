@@ -1213,7 +1213,7 @@ main.open .thumb-container .thumb-wrapper {
 
   position: relative;
 
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-align: center;
 
   margin: 0.5rem auto;
@@ -2033,7 +2033,8 @@ main.open .mag__popup {
   }
 
   .comment-content-wrap {
-    height: 33.33vh;
+    height: 40vh;
+    padding: 0 0 20vh;
 
     bottom: 0;
     right: 0.5rem;
