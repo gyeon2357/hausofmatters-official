@@ -1252,11 +1252,13 @@ main.open .thumb-container .thumb-wrapper {
 
 .comment-content-wrap .comment-box input {
   flex-basis: 33.333%;
-  border-bottom: 1px solid dimgray;
-  border-radius: 1px;
 
   font-size: 0.875rem;
   line-height: 1.6;
+  text-align: center;
+
+  border-bottom: 1px solid dimgray;
+  border-radius: 1px;
 
   padding-bottom: 0.125rem;
 }
