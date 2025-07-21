@@ -9,10 +9,10 @@ var inputComment = $("#comment");
 function isLoading(status) {
   if (status) {
     $("html, body").addClass("wait");
-    googleSubmitBtn.attr("disabled", true).html("입력중...");
+    googleSubmitBtn.attr("disabled", true).html("보내는중...");
   } else {
     $("html, body").removeClass("wait");
-    googleSubmitBtn.attr("disabled", false).html("입력");
+    googleSubmitBtn.attr("disabled", false).html("보내기");
   }
 }
 
@@ -48,7 +48,7 @@ $("#google-submit").click(function () {
     success: function (response) {
       isLoading(false);
 
-      input_modal.html("입력이 완료됐습니다.").addClass("show");
+      input_modal.html("저장되었습니다.").addClass("show");
       // location.reload();
       setTimeout(function () {
         input_modal.removeClass("show");
