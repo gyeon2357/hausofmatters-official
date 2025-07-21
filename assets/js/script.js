@@ -127,6 +127,13 @@ $(document).ready(function () {
     );
   });
 
+  $(".comment-switch figure").on("click", function () {
+    $(this).toggle();
+    $(this).siblings("figure").toggle();
+
+    $(this).siblings(".comment-content-wrap").toggle();
+  });
+
   // localstorage mag__popup
 
   var toggleMainPopup = function () {

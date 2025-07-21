@@ -169,6 +169,41 @@
         <img src="../assets/images/members.png" />
       </section>
 
+      <section>
+        <div class="comment-switch">
+          <figure class="comment-open">
+            <img src="../../assets/images/comment-open.svg" />
+          </figure>
+          <figure class="comment-close">
+            <img src="../../assets/images/comment-close.svg" />
+          </figure>
+
+          <div class="comment-content-wrap">
+            <div class="comment-box">
+              <h1>HOM 팀에게 메세지를 남겨주세요</h1>
+              <div>
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" />
+              </div>
+              <div>
+                <label for="comment">내용</label>
+                <input type="text" id="comment" name="comment" />
+              </div>
+              <div id="input_modal"></div>
+
+              <button id="google-submit">입력하기</button>
+
+              <div id="input">
+                <div class="comment">
+                  <table class="output2"></table>
+                  <span>새로운 댓글을 보시려면 새로고침 해주세요</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="members-container">
         <div class="members-wrapper directors">
           <h1>Directors</h1>
@@ -701,5 +736,8 @@
     <!-- Loading, Sub scripts -->
     <script src="../assets/js/load-sub.js"></script>
     <script src="../assets/js/script.js"></script>
+
+    <script src="../../assets/js/list.js"></script>
+    <script src="../../assets/js/comment.js"></script>
   </body>
 </html>
