@@ -1210,13 +1210,20 @@ main.open .thumb-container .thumb-wrapper {
 
 .comment-content-wrap #input_modal {
   display: none;
+
+  position: relative;
+
+  font-size: 0.875rem;
+  text-align: center;
+
+  margin: 0.5rem auto;
 }
 
 .comment-content-wrap #input_modal.show {
   display: block;
 }
 
-.comment-content-wrap .comment-box h1 {
+.comment-content-wrap .comment-box > h1 {
   font-size: 1.125rem;
   font-weight: 400;
   text-align: center;
@@ -1236,8 +1243,8 @@ main.open .thumb-container .thumb-wrapper {
 .comment-content-wrap .comment-box label {
   flex-basis: fit-content;
 
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.925rem;
+  line-height: 1.6;
   text-align: right;
 
   margin-right: 0.75rem;
@@ -1249,7 +1256,9 @@ main.open .thumb-container .thumb-wrapper {
   border-radius: 1px;
 
   font-size: 0.875rem;
-  line-height: 1;
+  line-height: 1.6;
+
+  padding-bottom: 0.125rem;
 }
 
 .comment-content-wrap .comment-box button {
@@ -1304,7 +1313,7 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap .comment-box .output2 tr {
-  border-bottom: 0.5px solid gray;
+  border-bottom: 1px solid #a4a4a4;
 }
 
 .comment-content-wrap .comment-box .output2 td {
@@ -2023,7 +2032,6 @@ main.open .mag__popup {
 
   .comment-content-wrap {
     height: 33.33vh;
-    padding-bottom: 33.33vh;
 
     bottom: 0;
     right: 0.5rem;
@@ -2033,12 +2041,13 @@ main.open .mag__popup {
     padding: 1rem 0.5rem;
   }
 
-  .comment-content-wrap .comment-box h1 {
-    margin-bottom: 0.75rem;
+  .comment-content-wrap .comment-box > h1 {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
   }
 
   .comment-content-wrap .comment-box label {
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     margin-right: 0.5rem;
   }
   .comment-content-wrap .comment-box input {
