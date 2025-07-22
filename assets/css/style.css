@@ -1175,6 +1175,7 @@ main.open .thumb-container .thumb-wrapper {
   min-height: 360px;
 
   padding: 1.5rem 1.5rem 15vh;
+  border-radius: 1px;
 
   bottom: 0rem;
   right: 0;
@@ -1208,26 +1209,22 @@ main.open .thumb-container .thumb-wrapper {
 } */
 
 .comment-content-wrap .comment-header {
-  background: #eaeaea;
-  border-radius: 2px;
-
-  padding: 1.25rem;
-
+  padding: 0;
   margin-bottom: 1.5rem;
 }
 
 .comment-content-wrap .comment-header > h1 {
   font-size: 1.125rem;
-  font-weight: 400;
-  text-align: center;
+  font-weight: 500;
+  text-align: left;
 
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .comment-content-wrap .comment-header > div {
   display: flex;
 
-  justify-content: center;
+  justify-content: start;
 
   margin-bottom: 0.75rem;
 }
@@ -1241,11 +1238,10 @@ main.open .thumb-container .thumb-wrapper {
 
 .comment-content-wrap #input_modal {
   display: none;
-
   position: relative;
 
   font-size: 0.75rem;
-  text-align: center;
+  text-align: left;
 
   margin: 0.5rem auto;
 }
@@ -1265,32 +1261,40 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap .comment-header input {
-  flex-basis: 33.333%;
+  flex-basis: 75%;
 
   font-size: 0.875rem;
   line-height: 1.6;
-  text-align: center;
+  text-align: left;
 
-  border-bottom: 1px solid dimgray;
+  border-bottom: 1px solid gray;
   border-radius: 1px;
 
   padding-bottom: 0.125rem;
 }
 
 .comment-content-wrap .comment-header button {
-  padding: 0.1rem 0.375rem;
+  display: flex;
+  justify-content: center;
+
+  background: #f8f8f8;
+  border: 1px solid #a6a6a6;
+  border-color: #ddd;
+  border-right-color: #333;
+  border-bottom-color: #333;
+
+  width: 25%;
+
+  margin: 0 0 0 1rem;
+  padding: 0.25rem 0.375rem;
 
   font-size: 0.875rem;
-  line-height: 1.9;
+  text-align: center;
+  line-height: 1.75;
+}
 
-  width: 33.33%;
-  margin: 1rem auto 0;
-
-  background: #f5f5f5;
-  border: 1.5px solid rgb(163, 154, 143);
-  border-color: #ddd;
-  border-right-color: #000;
-  border-bottom-color: #000;
+.comment-content-wrap .comment-header button > img {
+  height: 1rem;
 }
 
 .comment-content-wrap .comment-header button:active {
@@ -2102,8 +2106,8 @@ main.open .mag__popup {
   }
 
   .comment-content-wrap .comment-header > h1 {
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .comment-content-wrap .comment-header label {
@@ -2138,7 +2142,7 @@ main.open .mag__popup {
   }
 
   .comment-content-wrap .comment-box table .col .comment {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     margin-top: 0.375rem;
   }
 

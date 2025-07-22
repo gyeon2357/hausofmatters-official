@@ -31,13 +31,13 @@ fetch(url)
       const row = document.createElement("div");
       row.className = "row";
 
-      const h1 = document.createElement("h1");
-      h1.textContent = name;
+      // const h1 = document.createElement("h1");
+      // h1.textContent = name;
 
       const span = document.createElement("span");
       span.textContent = formattedDate;
 
-      row.appendChild(h1);
+      // row.appendChild(h1);
       row.appendChild(span);
 
       // <div class="comment"><p>내용</p></div>

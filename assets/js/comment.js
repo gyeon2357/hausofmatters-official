@@ -9,10 +9,12 @@ var inputComment = $("#comment");
 function isLoading(status) {
   if (status) {
     $("html, body").addClass("wait");
-    googleSubmitBtn.attr("disabled", true).html("보내는중...");
+    // googleSubmitBtn.attr("disabled", true).html("보내는중...");
+    googleSubmitBtn.attr("disabled", true).children("img").attr("src", "../../assets/images/wait.svg");
   } else {
     $("html, body").removeClass("wait");
-    googleSubmitBtn.attr("disabled", false).html("보내기");
+    // googleSubmitBtn.attr("disabled", false).html("보내기");
+    googleSubmitBtn.attr("disabled", false).children("img").attr("src", "../../assets/images/submit.svg");
   }
 }
 
@@ -20,7 +22,7 @@ function checkInput() {
   var isEmpty = false;
   $.each(inputs, function (index, element) {
     if (element.value === "") {
-      alert("이름과 내용을 모두 입력해주세요.");
+      alert("내용을 입력해주세요.");
       isEmpty = true;
       return false;
     }
