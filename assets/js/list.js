@@ -1,10 +1,10 @@
-const base2 =
+const base =
   "https://docs.google.com/spreadsheets/d/1Y_vs0s1qJJaBX6YVAhjakXFzoR3crkxK169WBJj1ev8/gviz/tq?";
-const output2 = document.querySelector(".output2");
-const query2 = encodeURIComponent("Select A,B,C ORDER BY C DESC OFFSET 1");
-const url2 = base2 + "&tq=" + query2;
+const output = document.querySelector(".output2");
+const query = encodeURIComponent("Select A,B,C ORDER BY C DESC OFFSET 1");
+const url = base + "&tq=" + query;
 
-fetch(url2)
+fetch(url)
   .then((res) => res.text())
   .then((rep) => {
     const data = JSON.parse(rep.substr(47).slice(0, -2));
@@ -52,6 +52,6 @@ fetch(url2)
       // 조합
       col.appendChild(row);
       col.appendChild(commentDiv);
-      output2.appendChild(col);
+      output.appendChild(col);
     });
   });

@@ -1364,6 +1364,8 @@ main.open .thumb-container .thumb-wrapper {
 
   font-size: 0.875rem;
   font-weight: normal;
+
+  display: none;
 }
 
 .comment-content-wrap .comment-box table .row span {
