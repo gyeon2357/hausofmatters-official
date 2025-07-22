@@ -660,7 +660,7 @@ body.flipbook-overflow-hidden .logo {
   top: 0;
   right: 0;
 
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   cursor: pointer;
 }
 
@@ -1119,16 +1119,17 @@ main.open .thumb-container .thumb-wrapper {
 } */
 
 .thumb-container .row-switch {
-  position: fixed;
+  display: flex;
+  justify-content: end;
 
-  transform: translateY(-50%);
-  right: 0;
-  bottom: 50%;
-  padding: 1rem 2rem;
+  max-width: 1200px;
+  padding: 1rem 0;
+  margin: 0 auto;
+
+  transition: filter opacity 0.125s ease-out;
 
   cursor: pointer;
   z-index: 10001;
-  transition: filter opacity 0.125s ease-out;
 }
 
 .thumb-container .row-switch .single {
@@ -1139,8 +1140,8 @@ main.open .thumb-container .thumb-wrapper {
   position: fixed;
 
   right: 0;
-  bottom: 6rem;
-  padding: 1rem 2rem;
+  bottom: 0;
+  padding: 1rem 1rem;
 
   cursor: pointer;
   z-index: 10001;
@@ -1175,8 +1176,8 @@ main.open .thumb-container .thumb-wrapper {
 
   padding: 1.5rem 1.5rem 15vh;
 
-  bottom: 0.75rem;
-  right: 0.75rem;
+  bottom: 0rem;
+  right: 0;
 
   font-family: var(--info-font);
   z-index: 1003;
@@ -2078,21 +2079,23 @@ main.open .mag__popup {
   }
 
   .thumb-container .row-switch {
-    padding: 1rem;
+    padding: 1rem 0;
   }
 
   .comment-switch > figure {
-    bottom: 2.5rem;
+    bottom: 2rem;
 
-    padding: 1rem;
+    padding: 1rem 0.75rem;
   }
 
   .comment-content-wrap {
+    width: 100%;
+
     height: 40vh;
     padding: 0.75rem 0.75rem 20vh;
 
     bottom: 0;
-    right: 0.5rem;
+    right: 0;
   }
 
   .comment-content-wrap .comment-header > h1 {
