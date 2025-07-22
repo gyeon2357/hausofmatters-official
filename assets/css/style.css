@@ -1161,10 +1161,10 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap {
-  display: none;
+  display: block;
 
   position: fixed;
-  overflow-y: scroll;
+  overflow: auto;
   background: white;
 
   color: black;
@@ -1173,17 +1173,25 @@ main.open .thumb-container .thumb-wrapper {
   max-width: 480px;
   min-height: 360px;
 
-  padding: 0 0 15vh;
+  padding: 1.5rem 1.5rem 15vh;
 
   bottom: 0.75rem;
   right: 0.75rem;
 
-  border-radius: 1.5px;
-
   font-family: var(--info-font);
-  z-index: 103;
+  z-index: 1003;
+
+  transform: translateY(56.25vh);
+  transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
+  transition-delay: 0.125s;
 }
 
+.comment-content-wrap.active {
+  transform: translateY(0) !important;
+  transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
+}
+
+/* 
 .comment-content-wrap::-webkit-scrollbar {
   width: 6px;
 }
@@ -1196,13 +1204,36 @@ main.open .thumb-container .thumb-wrapper {
 
 .comment-content-wrap::-webkit-scrollbar-track {
   background: rgba(163, 163, 163, 0.1);
+} */
+
+.comment-content-wrap .comment-header {
+  background: #eaeaea;
+  border-radius: 2px;
+
+  padding: 1.25rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.comment-content-wrap .comment-header > h1 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-align: center;
+
+  margin-bottom: 1.5rem;
+}
+
+.comment-content-wrap .comment-header > div {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 0.75rem;
 }
 
 .comment-content-wrap .comment-box {
   display: flex;
   flex-direction: column;
-
-  padding: 1.5rem;
 
   transition: opacity 0.125s ease-out;
 }
@@ -1222,24 +1253,7 @@ main.open .thumb-container .thumb-wrapper {
   display: block;
 }
 
-.comment-content-wrap .comment-box > h1 {
-  font-size: 1.125rem;
-  font-weight: 400;
-  text-align: center;
-
-  margin-bottom: 1.5rem;
-}
-
-.comment-content-wrap .comment-box > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  margin-bottom: 1rem;
-}
-
-.comment-content-wrap .comment-box label {
+.comment-content-wrap .comment-header label {
   flex-basis: fit-content;
 
   font-size: 0.925rem;
@@ -1249,7 +1263,7 @@ main.open .thumb-container .thumb-wrapper {
   margin-right: 0.75rem;
 }
 
-.comment-content-wrap .comment-box input {
+.comment-content-wrap .comment-header input {
   flex-basis: 33.333%;
 
   font-size: 0.875rem;
@@ -1262,35 +1276,39 @@ main.open .thumb-container .thumb-wrapper {
   padding-bottom: 0.125rem;
 }
 
-.comment-content-wrap .comment-box button {
+.comment-content-wrap .comment-header button {
   padding: 0.1rem 0.375rem;
+
+  font-size: 0.875rem;
+  line-height: 1.9;
+
+  width: 33.33%;
+  margin: 1rem auto 0;
+
+  background: #f5f5f5;
   border: 1.5px solid rgb(163, 154, 143);
   border-color: #ddd;
   border-right-color: #000;
   border-bottom-color: #000;
-
-  font-size: 0.875rem;
-  line-height: 2;
-
-  width: 33.33%;
-  margin: 0 auto 1rem;
 }
 
-.comment-content-wrap .comment-box button:active {
+.comment-content-wrap .comment-header button:active {
   border-color: #000;
   border-right-color: #ddd;
   border-bottom-color: #ddd;
 }
 
-.comment-content-wrap .comment-box span {
+.comment-content-wrap .comment-box mark {
   display: block;
   position: relative;
-  font-size: 0.875rem;
+
+  font-size: 0.75rem;
   text-align: center;
 
-  color: dimgray;
+  background: transparent;
+  color: gray;
 
-  margin-top: 1rem;
+  margin-top: 0.875rem;
 }
 
 .comment-content-wrap .comment-box #input {
@@ -1300,10 +1318,10 @@ main.open .thumb-container .thumb-wrapper {
   width: 100%;
 }
 
-.comment-content-wrap .comment-box .comment {
-}
-
 .comment-content-wrap .comment-box table {
+  display: block;
+  position: relative;
+
   width: 100%;
 
   font-size: 0.875rem;
@@ -1313,30 +1331,55 @@ main.open .thumb-container .thumb-wrapper {
   margin-bottom: 1.5rem;
 }
 
-.comment-content-wrap .comment-box .output2 tr {
+.comment-content-wrap .comment-box table .col {
+  position: relative;
+  overflow: hidden;
+
+  padding: 0.25rem;
+  background: #f8f8f8;
+
   border-bottom: 1px solid #dedede;
-  background: #f2f2f2;
 }
 
-.comment-content-wrap .comment-box .output2 tr:nth-child(even) {
+.comment-content-wrap .comment-box table .col:nth-child(even) {
   background: #ffffff20;
 }
 
-.comment-content-wrap .comment-box .output2 tr:first-child {
+/* .comment-content-wrap .comment-box table .col:first-child {
   background: transparent;
+} */
 
-  border-bottom: 1px solid #000;
+.comment-content-wrap .comment-box table .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 0.75rem;
 }
 
-.comment-content-wrap .comment-box .output2 td {
-  padding: 0.25rem;
+.comment-content-wrap .comment-box table .row h1 {
+  overflow: hidden;
+  word-wrap: break-word;
+
+  font-size: 0.875rem;
 }
 
-.comment-content-wrap .comment-box .output2 td:nth-child(2) {
-  width: 75%;
-
-  padding: 0.25rem 3rem 0.25rem 0.25rem;
+.comment-content-wrap .comment-box table .row span {
+  font-size: 0.625rem;
+  color: gray;
 }
+
+.comment-content-wrap .comment-box table .col .comment {
+  font-size: 0.875rem;
+
+  margin-top: 0.5rem;
+}
+
+.comment-content-wrap .comment-box table .col .comment p {
+  word-wrap: break-word;
+}
+
+/* // comment end */
 
 .thumb-container .mag__popup {
   display: none;
@@ -2046,32 +2089,28 @@ main.open .mag__popup {
 
   .comment-content-wrap {
     height: 40vh;
-    padding: 0 0 20vh;
+    padding: 0.75rem 0.75rem 20vh;
 
     bottom: 0;
     right: 0.5rem;
   }
 
-  .comment-content-wrap .comment-box {
-    padding: 0.75rem 0.5rem;
-  }
-
-  .comment-content-wrap .comment-box > h1 {
+  .comment-content-wrap .comment-header > h1 {
     font-size: 0.875rem;
     margin-bottom: 0.75rem;
   }
 
-  .comment-content-wrap .comment-box label {
+  .comment-content-wrap .comment-header label {
     font-size: 0.75rem;
     margin-right: 0.5rem;
   }
-  .comment-content-wrap .comment-box input {
+  .comment-content-wrap .comment-header input {
     font-size: 0.75rem;
   }
-  .comment-content-wrap .comment-box button {
-    font-size: 0.625rem;
+  .comment-content-wrap .comment-header button {
+    font-size: 0.75rem;
   }
-  .comment-content-wrap .comment-box span {
+  .comment-content-wrap .comment-box mark {
     font-size: 0.625rem;
   }
   .comment-content-wrap .comment-box table {
@@ -2079,9 +2118,25 @@ main.open .mag__popup {
 
     width: 100%;
   }
-  .comment-content-wrap .comment-box .output2 td {
+
+  .comment-content-wrap .comment-box table .row h1 {
+    font-size: 0.75rem;
+  }
+
+  .comment-content-wrap .comment-box table .row span {
+    font-size: 0.5825rem;
+  }
+
+  .comment-content-wrap .comment-box table .col {
     padding: 0.25rem;
   }
+
+  .comment-content-wrap .comment-box table .col .comment {
+    font-size: 0.75rem;
+    margin-top: 0.375rem;
+  }
+
+  /* // comment end */
 
   .thumb-container aside figure > img {
     width: 1.625rem;

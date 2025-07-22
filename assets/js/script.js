@@ -12,6 +12,7 @@ $(document).ready(function () {
 
     const $popupBtn = $(".intro__popup > p");
     const $menu = $(".menu__contents");
+    const $commentPopup = $(".comment-content-wrap");
 
     // 모바일 팝업 toggle
     if (isMobile && !isMobileBound) {
@@ -111,6 +112,7 @@ $(document).ready(function () {
     }
   });
 
+  // 매거진 뷰 버튼
   $(".row-switch figure").on("click", function () {
     $(this).toggle();
     $(this).siblings("figure").toggle();
@@ -127,11 +129,12 @@ $(document).ready(function () {
     );
   });
 
-  $(".comment-switch figure").on("click", function () {
+  // 코멘트 팝업
+  $(".comment-switch > figure").on("click", function () {
     $(this).toggle();
     $(this).siblings("figure").toggle();
 
-    $(this).siblings(".comment-content-wrap").toggle();
+    $(this).siblings(".comment-content-wrap").toggleClass("active");
   });
 
   // localstorage mag__popup
