@@ -1214,11 +1214,11 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap .comment-header > h1 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
   text-align: left;
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .comment-content-wrap .comment-header > div {
@@ -1303,7 +1303,7 @@ main.open .thumb-container .thumb-wrapper {
   border-bottom-color: #ddd;
 }
 
-.comment-content-wrap .comment-box mark {
+.comment-content-wrap mark {
   display: block;
   position: relative;
 
@@ -1313,7 +1313,7 @@ main.open .thumb-container .thumb-wrapper {
   background: transparent;
   color: gray;
 
-  margin-top: 0.875rem;
+  margin: 0.875rem 0 0.875rem;
 }
 
 .comment-content-wrap .comment-box #input {
@@ -2106,8 +2106,8 @@ main.open .mag__popup {
   }
 
   .comment-content-wrap .comment-header > h1 {
-    font-size: 1rem;
-    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
   }
 
   .comment-content-wrap .comment-header label {
@@ -2120,7 +2120,7 @@ main.open .mag__popup {
   .comment-content-wrap .comment-header button {
     font-size: 0.75rem;
   }
-  .comment-content-wrap .comment-box mark {
+  .comment-content-wrap mark {
     font-size: 0.625rem;
   }
   .comment-content-wrap .comment-box table {
