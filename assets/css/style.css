@@ -1140,7 +1140,7 @@ main.open .thumb-container .thumb-wrapper {
   position: fixed;
 
   right: 0;
-  bottom: 0;
+  bottom: 3rem;
   padding: 1rem 1rem;
 
   cursor: pointer;
@@ -1363,6 +1363,7 @@ main.open .thumb-container .thumb-wrapper {
   word-wrap: break-word;
 
   font-size: 0.875rem;
+  font-weight: normal;
 }
 
 .comment-content-wrap .comment-box table .row span {
@@ -2083,7 +2084,7 @@ main.open .mag__popup {
   }
 
   .comment-switch > figure {
-    bottom: 2rem;
+    bottom: 2.5rem;
 
     padding: 1rem 0.75rem;
   }
@@ -2142,7 +2143,7 @@ main.open .mag__popup {
   /* // comment end */
 
   .thumb-container aside figure > img {
-    width: 1.625rem;
+    width: 1.875rem;
   }
 
   .thumb-container .mag__popup {

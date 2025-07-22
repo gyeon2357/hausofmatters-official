@@ -360,6 +360,55 @@
               <button><img src="../../assets/images/close-bk.svg" /></button>
             </div>
           </div>
+
+
+            <div class="comment-switch">
+            <figure class="comment-open">
+              <img src="../../assets/images/comment-open.svg" />
+            </figure>
+            <figure class="comment-close">
+              <img src="../../assets/images/comment-close.svg" />
+            </figure>
+
+            <div class="comment-content-wrap">
+              <div class="comment-header">
+                <!-- <h1>Comment</h1> -->
+                <div>
+                  <!-- <label for="name" >이름</label> -->
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name..."
+                    maxlength="16"
+                  />
+                </div>
+                <div>
+                  <!-- <label for="comment" 
+                    >내용</label
+                  > -->
+                  <input
+                    type="text"
+                    id="comment"
+                    name="comment"
+                    placeholder="Type Comment..."
+                  />
+                </div>
+                <div id="input_modal"></div>
+
+                <button id="google-submit">보내기</button>
+              </div>
+
+              <div class="comment-box">
+                <div id="input">
+                  <div class="comment">
+                    <table class="output2"></table>
+                    <mark>새로운 댓글을 보시려면 새로고침 해주세요</mark>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </aside>
         <div class="thumb-wrapper"></div>
       </section>
@@ -456,5 +505,8 @@
     <!-- Loading, Sub scripts -->
     <script src="../../assets/js/load-sub.js"></script>
     <script src="../../assets/js/script.js"></script>
+
+        <script src="../../assets/js/list.js"></script>
+    <script src="../../assets/js/comment.js"></script>
   </body>
 </html>
