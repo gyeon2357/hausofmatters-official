@@ -1,7 +1,7 @@
 const base2 =
   "https://docs.google.com/spreadsheets/d/1Y_vs0s1qJJaBX6YVAhjakXFzoR3crkxK169WBJj1ev8/gviz/tq?";
 const output2 = document.querySelector(".output2");
-const query2 = encodeURIComponent("Select A,B,C OFFSET 1");
+const query2 = encodeURIComponent("Select A,B,C ORDER BY C DESC OFFSET 1");
 const url2 = base2 + "&tq=" + query2;
 
 fetch(url2)
