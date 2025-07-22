@@ -2290,10 +2290,11 @@ main.open .mag__popup {
   } */
 
   .thumb-container figcaption {
-    font-size: 0.7rem;
+    font-size: 0.725rem;
     line-height: 1.425;
 
     margin-bottom: 1.625rem;
+    padding: 0.25rem 0 0;
     -webkit-line-clamp: 5;
   }
 
