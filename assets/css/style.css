@@ -1165,14 +1165,13 @@ main.open .thumb-container .thumb-wrapper {
 
   position: fixed;
   overflow-y: scroll;
-  background: #f6f6f6ca;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: white;
 
   color: black;
   width: calc(100% - 1rem);
   height: 50vh;
   max-width: 480px;
+  min-height: 360px;
 
   padding: 0 0 15vh;
 
@@ -1305,17 +1304,26 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap .comment-box table {
-  width: calc(100% - 2.5rem);
+  width: 100%;
 
   font-size: 0.875rem;
   line-height: 1.475;
   text-align: left;
 
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .comment-content-wrap .comment-box .output2 tr {
   border-bottom: 1px solid #a4a4a4;
+  background: #f2f2f2;
+}
+
+.comment-content-wrap .comment-box .output2 tr:first-child {
+  opacity: 0;
+}
+
+.comment-content-wrap .comment-box .output2 tr:nth-child(even) {
+  background: #ffffff20;
 }
 
 .comment-content-wrap .comment-box .output2 td {
@@ -1324,6 +1332,8 @@ main.open .thumb-container .thumb-wrapper {
 
 .comment-content-wrap .comment-box .output2 td:nth-child(2) {
   width: 75%;
+
+  padding: 0.25rem 3rem 0.25rem 0.25rem;
 }
 
 .thumb-container .mag__popup {
@@ -2041,12 +2051,12 @@ main.open .mag__popup {
   }
 
   .comment-content-wrap .comment-box {
-    padding: 1rem 0.5rem;
+    padding: 0.75rem 0.5rem;
   }
 
   .comment-content-wrap .comment-box > h1 {
     font-size: 0.875rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .comment-content-wrap .comment-box label {
@@ -2054,7 +2064,7 @@ main.open .mag__popup {
     margin-right: 0.5rem;
   }
   .comment-content-wrap .comment-box input {
-    font-size: 0.625rem;
+    font-size: 0.75rem;
   }
   .comment-content-wrap .comment-box button {
     font-size: 0.625rem;
@@ -2064,6 +2074,8 @@ main.open .mag__popup {
   }
   .comment-content-wrap .comment-box table {
     font-size: 0.625rem;
+
+    width: 100%;
   }
   .comment-content-wrap .comment-box .output2 td {
     padding: 0.25rem;
