@@ -1314,16 +1314,18 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-content-wrap .comment-box .output2 tr {
-  border-bottom: 1px solid #a4a4a4;
+  border-bottom: 1px solid #dedede;
   background: #f2f2f2;
-}
-
-.comment-content-wrap .comment-box .output2 tr:first-child {
-  opacity: 0;
 }
 
 .comment-content-wrap .comment-box .output2 tr:nth-child(even) {
   background: #ffffff20;
+}
+
+.comment-content-wrap .comment-box .output2 tr:first-child {
+  background: transparent;
+
+  border-bottom: 1px solid #000;
 }
 
 .comment-content-wrap .comment-box .output2 td {
