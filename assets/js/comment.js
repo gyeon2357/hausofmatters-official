@@ -20,7 +20,7 @@ function checkInput() {
   var isEmpty = false;
   $.each(inputs, function (index, element) {
     if (element.value === "") {
-      alert("입력하지 않은 칸이 있어요.");
+      alert("이름과 내용을 모두 입력해주세요.");
       isEmpty = true;
       return false;
     }
