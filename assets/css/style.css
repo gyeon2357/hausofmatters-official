@@ -1425,6 +1425,10 @@ main.open .thumb-container .thumb-wrapper {
   padding: 0 0.125rem 0.125rem;
 }
 
+.search-container #searchInput:focus {
+  box-shadow: 0 0 0 1px var(--badge-color);
+}
+
 .search-container .search-btn-wrap {
   display: flex;
   flex-direction: row;

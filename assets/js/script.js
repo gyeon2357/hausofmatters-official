@@ -191,7 +191,7 @@ $(document).ready(function () {
 
   // header search btn
   $(".menu__search__btn").on("click", function (e) {
-    e.preventDefault(); // 링크일 경우 방지
+    e.preventDefault();
 
     // 스크롤 이동
     $("html, body").animate(
@@ -200,7 +200,8 @@ $(document).ready(function () {
       },
       400,
       function () {
-        $("#searchInput").focus(); // 포커스도 줌
+        $("#searchInput").focus();
+        $("#searchInput").click();
       }
     );
   });
