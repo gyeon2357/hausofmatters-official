@@ -129,7 +129,7 @@ $(document).ready(function () {
     );
   });
 
-  // 코멘트 팝업
+  // Comment popup
   $(".comment-switch > figure").on("click", function () {
     $(this).toggle();
     $(this).siblings("figure").toggle();
@@ -137,8 +137,7 @@ $(document).ready(function () {
     $(this).siblings(".comment-content-wrap").toggleClass("active");
   });
 
-  // localstorage mag__popup
-
+  // Localstorage mag__popup
   var toggleMainPopup = function () {
     /* 스토리지 제어 함수 정의 */
     var handleStorage = {
@@ -189,6 +188,22 @@ $(document).ready(function () {
   });
 
   // mag__popup end
+
+  // header search btn
+  $(".menu__search__btn").on("click", function (e) {
+    e.preventDefault(); // 링크일 경우 방지
+
+    // 스크롤 이동
+    $("html, body").animate(
+      {
+        scrollTop: $("#searchInput").offset().top - 80,
+      },
+      400,
+      function () {
+        $("#searchInput").focus(); // 포커스도 줌
+      }
+    );
+  });
 });
 
 // var homSwiper = new Swiper(".hom-swiper", {
