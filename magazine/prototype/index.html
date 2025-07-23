@@ -255,7 +255,7 @@
             return text.replace(re, "<mark>$1</mark>");
           }
 
-          function performSearch(addExpand = false) {
+          function performSearch(addExpand = false, showSnippets = false) {
             const kw = $("#searchInput").val().trim().toLowerCase();
             let resultList = [];
 
@@ -304,18 +304,18 @@
 
             if (kw && resultList.length > 0) {
               const links = resultList
-                .map(
-                  (r) =>
-                    `<a href="#${
-                      r.className
-                    }" class="search-link">${r.className.toUpperCase()}${
-                      r.snippet ? ` "${r.snippet}"` : ""
-                    }</a>`
-                )
+                .map((r) => {
+                  const name = r.className.toUpperCase();
+                  const snippetText =
+                    showSnippets && r.snippet ? ` "${r.snippet}"` : "";
+                  return `<a href="#${r.className}" class="search-link">${name}${snippetText}</a>`;
+                })
                 .join(" ");
 
               $("#resultInfo").html(
-                `${resultList.length}건이 검색되었습니다: ${links}`
+                `${resultList.length}건이 검색되었습니다${
+                  showSnippets ? `: ${links}` : ""
+                }`
               );
             } else if (kw) {
               $("#resultInfo").text("검색 결과가 없습니다.");
@@ -327,11 +327,11 @@
 
           // 검색 버튼 클릭 시
           $("#searchBtn").on("click", () => {
-            performSearch(true);
+            performSearch(true, true); // expand + 내용 보여줌
           });
 
-          // 실시간 입력 중
-          $("#searchInput").on("input", () => performSearch(false));
+          // 실시간 입력 중 (건수만 보여줌)
+          $("#searchInput").on("input", () => performSearch(false, false));
 
           // Enter 키 입력
           $("#searchInput").on("keydown", function (e) {

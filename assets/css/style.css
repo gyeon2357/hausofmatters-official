@@ -2172,7 +2172,7 @@ main.open .mag__popup {
   }
 
   .thumb-container .row-switch {
-    padding: 1rem 0;
+    padding: 0.5rem 0 1rem;
   }
 
   .comment-switch > figure {
@@ -2250,13 +2250,32 @@ main.open .mag__popup {
     margin: 1.25rem auto 0;
   }
   .search-container button {
+    padding: 0.125rem 0.5rem;
+
+    font-size: 0.75rem;
   }
+
   #resultInfo {
     margin-top: 0.75rem;
     font-size: 0.75rem;
+    text-align: left;
   }
   #resultInfo a.search-link {
-    padding: 0.25rem 0.5rem;
+    display: block;
+    padding: 0.125rem 0.35rem;
+    margin: 0.5rem 0;
+
+    width: fit-content;
+    background: #272727;
+
+    font-size: 0.7rem;
+    text-decoration: none;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  #resultInfo a.search-link:first-child {
+    margin: .75rem 0 0.5rem;
   }
 
   .thumb-container .row-switch figure > img,
