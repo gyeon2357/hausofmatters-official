@@ -1426,7 +1426,8 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .search-container #searchInput:focus {
-  box-shadow: 0 0 0 1px var(--badge-color);
+  background: #ffffff14;
+  border: .75px solid var(--badge-color);
 }
 
 .search-container .search-btn-wrap {
@@ -2296,7 +2297,7 @@ main.open .mag__popup {
 
     padding: 1rem; */
 
-    width: calc(100% - 2rem);
+    width: 66.66%;
 
     gap: 0.625rem;
     margin: 1.25rem auto 0;
