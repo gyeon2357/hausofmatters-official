@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Nametag | blvckmvtter</title>
 
     <!-- Style -->
     <link
@@ -47,10 +47,9 @@
       }
 
       .card-inner {
+        position: relative;
         width: 100%;
         height: 100%;
-        transform-style: preserve-3d;
-        position: relative;
       }
 
       .card-front,
@@ -64,6 +63,10 @@
         align-items: center;
 
         scale: 0.9;
+      }
+
+      .card-front {
+        transform: rotateY(0deg);
       }
 
       .card-back {
@@ -89,7 +92,7 @@
         border: none;
         background: #444;
         color: white;
-        border-radius: 2px;
+        border-radius: 1px;
 
         padding: 0.5rem 0.75rem;
 
@@ -97,6 +100,7 @@
         font-size: 0.75rem;
         line-height: 1;
         text-wrap: nowrap;
+        white-space: nowrap;
 
         cursor: pointer;
       }
@@ -125,68 +129,70 @@
   <script>
     const card = document.querySelector(".card");
     const cardInner = card.querySelector(".card-inner");
-    const MIN_DRAG_FOR_ROTATION = 40; // px
 
     let startX = 0;
     let currentX = 0;
+    let rotation = 0;
     let isDragging = false;
     let isFlipped = false;
-    let flipTween = null;
+    let isAnimating = false;
+
     const maxRotation = 180;
 
     card.addEventListener("touchstart", (e) => {
-      if (flipTween && flipTween.isActive()) return;
+      if (isAnimating) return;
 
       startX = e.touches[0].clientX;
-      currentX = startX;
       isDragging = true;
-
-      gsap.set(cardInner, { clearProps: "all" });
+      cardInner.style.transition = "none";
     });
 
     card.addEventListener("touchmove", (e) => {
-      if (!isDragging || (flipTween && flipTween.isActive())) return;
+      if (!isDragging || isAnimating) return;
 
       currentX = e.touches[0].clientX;
-      const deltaX = currentX - startX;
+      let diffX = currentX - startX;
 
-      // ✅ 손가락 이동이 작으면 회전하지 않음
-      if (Math.abs(deltaX) < MIN_DRAG_FOR_ROTATION) return;
+      let percent = Math.max(-1, Math.min(1, diffX / card.offsetWidth));
+      rotation = percent * maxRotation;
 
-      const percent = Math.max(-1, Math.min(1, deltaX / card.offsetWidth));
-      const rotation = percent * maxRotation;
       const totalRotation = isFlipped ? 180 + rotation : rotation;
-
-      gsap.set(cardInner, { rotateY: totalRotation });
+      cardInner.style.transform = `rotateY(${totalRotation}deg)`;
     });
 
     card.addEventListener("touchend", () => {
-      if (!isDragging || (flipTween && flipTween.isActive())) return;
+      if (!isDragging || isAnimating) return;
+
       isDragging = false;
+      const totalDelta = Math.abs(currentX - startX);
 
-      const moveAmount = Math.abs(currentX - startX);
-
-      if (moveAmount < MIN_DRAG_FOR_ROTATION) {
+      if (totalDelta < 20) {
+        cardInner.style.transition = "transform 0.3s ease";
         const reset = isFlipped ? 180 : 0;
-        flipTween = gsap.to(cardInner, {
-          rotateY: reset,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        cardInner.style.transform = `rotateY(${reset}deg)`;
         return;
       }
 
-      const dragRatio = moveAmount / card.offsetWidth;
-      if (dragRatio >= 0.6) {
+      const flippedRatio = Math.abs(rotation) / maxRotation;
+
+      isAnimating = true; // ✅ 시작
+      cardInner.style.transition = "transform 0.4s ease";
+
+      if (flippedRatio >= 0.6) {
         isFlipped = !isFlipped;
       }
 
       const finalRotation = isFlipped ? 180 : 0;
-      flipTween = gsap.to(cardInner, {
-        rotateY: finalRotation,
-        duration: 0.5,
-        ease: "power2.out",
-      });
+      cardInner.style.transform = `rotateY(${finalRotation}deg)`;
+
+      // ✅ transition 끝나고 다시 활성화
+      cardInner.addEventListener(
+        "transitionend",
+        () => {
+          isAnimating = false;
+        },
+        { once: true }
+      );
     });
   </script>
 
