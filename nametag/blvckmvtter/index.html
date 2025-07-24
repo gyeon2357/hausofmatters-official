@@ -62,10 +62,43 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        scale: 0.9;
       }
 
       .card-back {
         transform: rotateY(180deg);
+      }
+
+      .card-controls {
+        display: flex;
+        gap: 0.75rem;
+
+        position: fixed;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 1rem;
+
+        margin-top: 1rem;
+      }
+
+      .card-controls button {
+        display: flex;
+        align-items: center;
+
+        border: none;
+        background: #444;
+        color: white;
+        border-radius: 2px;
+
+        padding: 0.5rem 0.75rem;
+
+        font-family: var(--info-font);
+        font-size: 0.75rem;
+        line-height: 1;
+        text-wrap: nowrap;
+
+        cursor: pointer;
       }
     </style>
   </head>
@@ -80,6 +113,12 @@
         </div>
       </div>
     </section>
+
+    <aside class="card-controls">
+      <button id="downloadBtn">이미지 다운로드</button>
+      <button id="shareBtn">공유하기</button>
+      <button id="copyBtn">링크 복사</button>
+    </aside>
   </body>
   <script>
     const card = document.querySelector(".card");
@@ -89,56 +128,107 @@
     let currentX = 0;
     let rotation = 0;
     let isDragging = false;
+    let isFlipped = false;
+    let isAnimating = false;
+
     const maxRotation = 180;
 
-    // 초기 상태 체크
-    let isFlipped = false;
-
     card.addEventListener("touchstart", (e) => {
+      if (isAnimating) return;
+
       startX = e.touches[0].clientX;
       isDragging = true;
       cardInner.style.transition = "none";
     });
 
     card.addEventListener("touchmove", (e) => {
-      if (!isDragging) return;
+      if (!isDragging || isAnimating) return;
 
       currentX = e.touches[0].clientX;
       let diffX = currentX - startX;
 
-      // 회전 비율 계산 (drag → 회전 각도로)
       let percent = Math.max(-1, Math.min(1, diffX / card.offsetWidth));
       rotation = percent * maxRotation;
 
-      // 현재 상태 따라 방향 반대 처리
       const totalRotation = isFlipped ? 180 + rotation : rotation;
       cardInner.style.transform = `rotateY(${totalRotation}deg)`;
     });
-    card.addEventListener("touchend", () => {
-      isDragging = false;
 
+    card.addEventListener("touchend", () => {
+      if (!isDragging || isAnimating) return;
+
+      isDragging = false;
       const totalDelta = Math.abs(currentX - startX);
 
-      // 드래그가 거의 없으면 무시 (터치만 한 경우)
       if (totalDelta < 20) {
-        // 원래대로 복원
         cardInner.style.transition = "transform 0.3s ease";
-        const finalRotation = isFlipped ? 180 : 0;
-        cardInner.style.transform = `rotateY(${finalRotation}deg)`;
+        const reset = isFlipped ? 180 : 0;
+        cardInner.style.transform = `rotateY(${reset}deg)`;
         return;
       }
 
-      // flip 여부 판단
       const flippedRatio = Math.abs(rotation) / maxRotation;
 
+      isAnimating = true; // ✅ 시작
       cardInner.style.transition = "transform 0.4s ease";
 
-      if (flippedRatio >= 0.6) {
+      if (flippedRatio >= 0.5) {
         isFlipped = !isFlipped;
       }
 
       const finalRotation = isFlipped ? 180 : 0;
       cardInner.style.transform = `rotateY(${finalRotation}deg)`;
+
+      // ✅ transition 끝나고 다시 활성화
+      cardInner.addEventListener(
+        "transitionend",
+        () => {
+          isAnimating = false;
+        },
+        { once: true }
+      );
+    });
+  </script>
+
+  <script>
+    // 1. 이미지 다운로드
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const img = document.querySelector(".card-front img");
+      if (!img) return;
+
+      const link = document.createElement("a");
+      link.href = img.src;
+      link.download = "card-image.jpg"; // 원하는 파일명
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // 2. 공유 버튼 (Web Share API)
+    document.getElementById("shareBtn").addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href,
+          });
+        } catch (err) {
+          console.error("공유 취소됨", err);
+        }
+      } else {
+        alert("이 브라우저는 공유 기능을 지원하지 않아요 😢");
+      }
+    });
+
+    // 3. 링크 복사
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("링크가 복사되었습니다!");
+      } catch (err) {
+        console.error("복사 실패", err);
+        alert("복사 실패 😢");
+      }
     });
   </script>
 </html>
