@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Style -->
+    <link
+      rel="stylesheet"
+      href="../../assets/css/normalize.css"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/css/font-awesome.css"
+    />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/lnu1fpi.css" />
+
+    <!-- Icon -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        background-color: #0e0e0e;
+      }
+
+      .card {
+        width: 100vw;
+        height: 100vh;
+        perspective: 1000px;
+        touch-action: pan-y;
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        position: relative;
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../../../assets/images/nametag/nametag_bm_front.png" />
+        </div>
+        <div class="card-back">
+          <img src="../../../assets/images/nametag/nametag_bm_back.png" />
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    const card = document.querySelector(".card");
+    const cardInner = card.querySelector(".card-inner");
+
+    let startX = 0;
+    let currentX = 0;
+    let rotation = 0;
+    let isDragging = false;
+    const maxRotation = 180;
+
+    // 초기 상태 체크
+    let isFlipped = false;
+
+    card.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      cardInner.style.transition = "none";
+    });
+
+    card.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+
+      currentX = e.touches[0].clientX;
+      let diffX = currentX - startX;
+
+      // 회전 비율 계산 (drag → 회전 각도로)
+      let percent = Math.max(-1, Math.min(1, diffX / card.offsetWidth));
+      rotation = percent * maxRotation;
+
+      // 현재 상태 따라 방향 반대 처리
+      const totalRotation = isFlipped ? 180 + rotation : rotation;
+      cardInner.style.transform = `rotateY(${totalRotation}deg)`;
+    });
+    card.addEventListener("touchend", () => {
+      isDragging = false;
+
+      const totalDelta = Math.abs(currentX - startX);
+
+      // 드래그가 거의 없으면 무시 (터치만 한 경우)
+      if (totalDelta < 20) {
+        // 원래대로 복원
+        cardInner.style.transition = "transform 0.3s ease";
+        const finalRotation = isFlipped ? 180 : 0;
+        cardInner.style.transform = `rotateY(${finalRotation}deg)`;
+        return;
+      }
+
+      // flip 여부 판단
+      const flippedRatio = Math.abs(rotation) / maxRotation;
+
+      cardInner.style.transition = "transform 0.4s ease";
+
+      if (flippedRatio >= 0.6) {
+        isFlipped = !isFlipped;
+      }
+
+      const finalRotation = isFlipped ? 180 : 0;
+      cardInner.style.transform = `rotateY(${finalRotation}deg)`;
+    });
+  </script>
+</html>

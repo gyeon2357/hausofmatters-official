@@ -13,6 +13,7 @@
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
   --badge-color: color(display-p3 0 0.6 1 / 0.9);
+  
   --page-padding: 1.5rem;
 
   --cursor-fill: none;
@@ -159,6 +160,7 @@ a:focus {
 
 a:focus-visible {
   outline: 1px solid var(--badge-color);
+  color: oklab(lightness a b);
 }
 
 /* loading */
@@ -1422,17 +1424,18 @@ main.open .thumb-container .thumb-wrapper {
   text-align: left;
   border-bottom: 1px solid silver;
 
-  padding: 0 0.125rem 0.125rem;
+  padding: 0.25rem;
 }
 
 .search-container #searchInput:focus {
   background: #ffffff14;
-  border: .75px solid var(--badge-color);
+  border: 0.75px solid var(--badge-color);
 }
 
 .search-container .search-btn-wrap {
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   position: relative;
 
@@ -1455,7 +1458,7 @@ main.open .thumb-container .thumb-wrapper {
 
 .search-container button#searchBtn {
   position: absolute;
-  right: 0;
+  right: 0.2rem;
 
   font-size: 0.825rem;
   opacity: 0;
