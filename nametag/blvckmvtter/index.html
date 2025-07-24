@@ -113,7 +113,7 @@
       .card {
         width: 100vw;
         height: 100vh;
-        perspective: 1000px;
+        perspective: 800px;
         touch-action: pan-y;
       }
 
@@ -183,8 +183,8 @@
     </style>
   </head>
   <body>
-    <section class="card">
-      <div class="card-inner">
+    <section class="card" id="card">
+      <div class="card-inner" id="cardInner">
         <div class="card-front">
           <img
             draggable="false"
@@ -210,73 +210,61 @@
   </body>
 
   <script src="../../assets/js/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <script>
-    const card = document.querySelector(".card");
-    const cardInner = card.querySelector(".card-inner");
+    const card = document.getElementById("card");
+    const cardInner = document.getElementById("cardInner");
 
-    let startX = 0;
-    let currentX = 0;
-    let rotation = 0;
-    let isDragging = false;
     let isFlipped = false;
-    let isAnimating = false;
+    let dragRotation = 0;
 
-    const maxRotation = 180;
+    // ✅ 사용자 조정 가능한 수치
+    const MAX_ROTATION = 180; // 최대 회전 각도
+    const FLIP_THRESHOLD = 80; // 몇 도 이상 돌리면 뒤집힘으로 인정할지
+    const ROTATION_MULTIPLIER = 180; // 회전 민감도 (dragRatio * 이 값 = 회전 각도)
+    const ROTATION_DURATION = 0.125; // 플립 애니메이션 속도 (초 단위)
 
-    card.addEventListener("touchstart", (e) => {
-      if (isAnimating) return;
+    gsap.registerPlugin(Draggable);
 
-      startX = e.touches[0].clientX;
-      isDragging = true;
-      cardInner.style.transition = "none";
-    });
+    Draggable.create(card, {
+      type: "x", // x축 방향만 감지
+      lockAxis: true,
+      allowNativeTouchScrolling: false,
 
-    card.addEventListener("touchmove", (e) => {
-      if (!isDragging || isAnimating) return;
+      onPress() {
+        this.startX = this.x;
+      },
 
-      currentX = e.touches[0].clientX;
-      let diffX = currentX - startX;
+      onDrag() {
+        gsap.set(this.target, { x: 0 }); // 이동 제거 (카드가 translateX로 안 움직이도록)
 
-      let percent = Math.max(-1, Math.min(1, diffX / card.offsetWidth));
-      rotation = percent * maxRotation;
+        const dragRatio = this.deltaX / this.target.offsetWidth;
+        dragRotation = gsap.utils.clamp(
+          -MAX_ROTATION,
+          MAX_ROTATION,
+          dragRatio * ROTATION_MULTIPLIER
+        );
 
-      const totalRotation = isFlipped ? 180 + rotation : rotation;
-      cardInner.style.transform = `rotateY(${totalRotation}deg)`;
-    });
+        const base = isFlipped ? 180 : 0;
+        gsap.set(cardInner, {
+          rotateY: base + dragRotation,
+        });
+      },
 
-    card.addEventListener("touchend", () => {
-      if (!isDragging || isAnimating) return;
+      onRelease() {
+        const shouldFlip = Math.abs(dragRotation) > FLIP_THRESHOLD;
+        if (shouldFlip) isFlipped = !isFlipped;
 
-      isDragging = false;
-      const totalDelta = Math.abs(currentX - startX);
+        const targetRotation = isFlipped ? 180 : 0;
 
-      if (totalDelta < 20) {
-        cardInner.style.transition = "transform 0.3s ease";
-        const reset = isFlipped ? 180 : 0;
-        cardInner.style.transform = `rotateY(${reset}deg)`;
-        return;
-      }
+        gsap.to(cardInner, {
+          rotateY: targetRotation,
+          duration: ROTATION_DURATION,
+          ease: "power2.out",
+        });
 
-      const flippedRatio = Math.abs(rotation) / maxRotation;
-
-      isAnimating = true; // ✅ 시작
-      cardInner.style.transition = "transform 0.4s ease";
-
-      if (flippedRatio >= 0.6) {
-        isFlipped = !isFlipped;
-      }
-
-      const finalRotation = isFlipped ? 180 : 0;
-      cardInner.style.transform = `rotateY(${finalRotation}deg)`;
-
-      // ✅ transition 끝나고 다시 활성화
-      cardInner.addEventListener(
-        "transitionend",
-        () => {
-          isAnimating = false;
-        },
-        { once: true }
-      );
+        gsap.set(this.target, { x: 0 }); // 카드 위치 다시 고정
+      },
     });
   </script>
 
