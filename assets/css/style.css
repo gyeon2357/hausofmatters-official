@@ -259,6 +259,7 @@ section.loading .loading-text {
   opacity: 0.8;
 }
 .card__title a {
+  font-family: var(--info-font);
   text-transform: initial;
   opacity: 1;
 }
