@@ -13,7 +13,7 @@
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
   --badge-color: color(display-p3 0 0.6 1 / 0.9);
-  
+
   --page-padding: 1.5rem;
 
   --cursor-fill: none;
@@ -1053,7 +1053,7 @@ main.open .thumb-container .thumb-wrapper {
   height: fit-content;
   color: #b0b0b0;
 
-  padding: 0.5rem 0 0;
+  padding: 0.25rem 0 0;
 
   margin-bottom: 1rem;
 
@@ -1094,9 +1094,6 @@ main.open .thumb-container .thumb-wrapper {
   letter-spacing: 0.125px;
 
   color: #d0d0d0;
-  padding: 0.125rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1px;
   margin-bottom: 0.5rem;
 }
 
@@ -1456,11 +1453,14 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .search-container button#searchBtn {
+  opacity: 0;
+
   position: absolute;
   right: 0.2rem;
 
+  color: #fff;
   font-size: 0.825rem;
-  opacity: 0;
+
   transition: opacity 0.25s;
 }
 
@@ -2232,7 +2232,7 @@ main.open .mag__popup {
   }
 
   .comment-switch > figure {
-    bottom: 2.5rem;
+    bottom: 1rem;
 
     padding: 1rem 0.75rem;
   }
@@ -2316,16 +2316,26 @@ main.open .mag__popup {
   }
 
   .search-container button#resetBtn {
-    position: absolute;
+    position: fixed;
+
+    text-decoration: none;
+    font-size: 0.75rem;
 
     transform: translateX(-50%);
     left: 50%;
-    bottom: -3rem;
+    bottom: 2rem;
 
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
     margin: 0 auto;
 
-    color: silver;
+    border-radius: 1px;
+    border: 1px solid black;
+    background: #ffffff9e;
+
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    color: black;
     z-index: 10001;
   }
 

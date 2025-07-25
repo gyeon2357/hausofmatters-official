@@ -382,6 +382,16 @@
             $("#searchBtn").removeClass("focus");
             $(this).hide(); // 버튼 숨김
 
+            // ✅ 모바일일 경우에만 스크롤 이동
+            if (window.innerWidth <= 768) {
+              $("html, body").animate(
+                {
+                  scrollTop: $("#searchInput").offset().top - 80,
+                },
+                400
+              );
+            }
+
             $thumbs.each(function () {
               const $cap = $(this).find(".caption");
               const original = $cap.data("original");
@@ -504,7 +514,7 @@
 
               <button id="searchBtn">검색</button>
             </div>
-            <button id="resetBtn">초기화</button>
+            <button id="resetBtn">검색 초기화</button>
             <p id="resultInfo"></p>
           </div>
 

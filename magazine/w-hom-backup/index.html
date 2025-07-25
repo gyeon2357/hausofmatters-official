@@ -8,17 +8,23 @@
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
     />
 
-    <title>HOM | Hausofmatters</title>
-    <meta name="description" content="한국힙합 매거진 | HAUS OF MATTERS" />
+    <title>w/HOM | Hausofmatters</title>
+    <meta
+      name="description"
+      content="해외힙합 매거진 | World/HAUS OF MATTERS"
+    />
     <meta
       name="keywords"
       content="KHL, HAUS OF MATTERS, HOM, w/HOM, Korean Hiphop Magazine, Korean Black Music Magazine"
     />
     <meta itemprop="name" content="Hausofmatters" />
-    <meta itemprop="description" content="한국힙합 매거진 | HAUS OF MATTERS" />
+    <meta
+      itemprop="description"
+      content="해외힙합 매거진 | World/HAUS OF MATTERS"
+    />
     <meta
       itemprop="image"
-      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+      content="https://hausofmatters.com/assets/images/seo/w-hom-og-image.jpg"
     />
     <meta property="og:url" content="https://hausofmatters.com/" />
     <meta property="og:type" content="website" />
@@ -27,11 +33,11 @@
     <meta property="og:title" content="Hausofmatters" />
     <meta
       property="og:description"
-      content="한국힙합 매거진 | HAUS OF MATTERS"
+      content="해외힙합 매거진 | World/HAUS OF MATTERS"
     />
     <meta
       property="og:image"
-      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+      content="https://hausofmatters.com/assets/images/seo/w-hom-og-image.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -40,11 +46,11 @@
     <meta name="twitter:title" content="Hausofmatters" />
     <meta
       name="twitter:description"
-      content="한국힙합 매거진 | HAUS OF MATTERS"
+      content="해외힙합 매거진 | World/HAUS OF MATTERS"
     />
     <meta
       name="twitter:image"
-      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+      content="https://hausofmatters.com/assets/images/seo/w-hom-og-image.jpg"
     />
 
     <!-- Favicon -->
@@ -80,6 +86,7 @@
       href="../../assets/css/normalize.css"
       type="text/css"
     />
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -127,7 +134,7 @@
         window.currentFlipbookInstance = null;
 
         // Load JSON file
-        $.getJSON("../../assets/json/hom.json", function (imageList) {
+        $.getJSON("../../assets/json/w-hom.json", function (imageList) {
           const $wrapper = $(".thumb-wrapper");
           const totalCount = imageList.length;
 
@@ -139,7 +146,7 @@
 
             // Build thumb
             const $thumb = $(`
-        <div class="thumb hom-${i}" tabindex="0">
+        <div class="thumb w-hom-${i}" tabindex="0">
           <div class="thumb-meta">
             <p><span>ISSUE #${i}</span> <span>${dateText}</span></p>
             <img src="${imgPath}" alt="${item.thumbnail}" />
@@ -153,7 +160,7 @@
             // Append caption AFTER the thumb
             if (captionText) {
               const $caption = $(
-                `<figcaption class="caption"><p>HOM #${i} CONTENTS</p><br/>${captionText}</figcaption>`
+                `<figcaption class="caption"><p>w/HOM #${i} CONTENTS</p><br/>${captionText}</figcaption>`
               );
               $thumb.append($caption);
 
@@ -171,7 +178,7 @@
                 .find(".thumb-meta")
                 .flipBook({
                   ...commonOptions,
-                  pdfUrl: `https://gg-yn.com/product/khl-flip/assets/pdf/${item.pdf}`,
+                  pdfUrl: `../../assets/pdf/${item.pdf}`,
                 });
             } else {
               $thumb.find(".thumb-meta").on("click", function (e) {
@@ -195,7 +202,7 @@
                     .find(".thumb-meta")
                     .flipBook({
                       ...commonOptions,
-                      pdfUrl: `https://gg-yn.com/product/khl-flip/assets/pdf/${item.pdf}`,
+                      pdfUrl: `../../assets/pdf/${item.pdf}`,
                     });
 
                   // Retry click
@@ -247,184 +254,6 @@
             window.history.replaceState(null, "", cleanUrl);
           }
 
-          // Search-fnc
-          const $thumbs = $(".thumb-wrapper .thumb");
-
-          // 강조 처리
-          function highlightHTML(text, keyword) {
-            const re = new RegExp(`(${keyword})`, "gi");
-            return text.replace(re, "<mark>$1</mark>");
-          }
-
-          // 검색 수행
-          function performSearch(addExpand = false, showSnippets = false) {
-            const kw = $("#searchInput").val().trim().toLowerCase();
-            let resultList = [];
-
-            $thumbs.each(function () {
-              const $cap = $(this).find(".caption");
-              if (!$cap.length) return;
-
-              const original = $cap.data("original") || $cap.html();
-              $cap.data("original", original);
-
-              const plain = $cap.text().toLowerCase();
-
-              if (kw && plain.includes(kw)) {
-                const highlighted = highlightHTML(original, kw);
-                $cap.html(highlighted);
-                $(this).css("opacity", "1");
-
-                const classList = $(this).attr("class").split(" ");
-                const homClass = classList.find((cls) =>
-                  cls.startsWith("hom-")
-                );
-
-                let matchedLine = original
-                  .split(/<br>|<hr>/i)
-                  .find((txt) => txt.toLowerCase().includes(kw));
-                matchedLine = $("<div>")
-                  .html(matchedLine || "")
-                  .text()
-                  .trim();
-
-                if (homClass) {
-                  resultList.push({
-                    className: homClass,
-                    snippet: matchedLine,
-                  });
-                }
-
-                if (addExpand) $cap.addClass("expand");
-                else $cap.removeClass("expand");
-              } else {
-                $cap.html(original);
-                $cap.removeClass("expand");
-                $(this).css("opacity", "0.1");
-              }
-            });
-
-            // 결과 처리
-            if (kw && resultList.length > 0) {
-              const links = resultList
-                .map((r) => {
-                  const name = r.className.toUpperCase();
-                  const snippetText =
-                    showSnippets && r.snippet
-                      ? `<small class="snippet">"${r.snippet}"</small>`
-                      : "";
-
-                  return `<a href="#${r.className}" class="search-link">
-          <span class="name">${name}</span>${snippetText}
-        </a>`;
-                })
-                .join(" ");
-
-              $("#resultInfo").html(
-                `<p>${resultList.length}건이 검색되었습니다</p>` +
-                  (showSnippets ? `${links}` : "")
-              );
-            } else if (kw) {
-              $("#resultInfo").text("검색 결과가 없습니다.");
-            } else {
-              $("#resultInfo").text("");
-              $thumbs.css("opacity", "1");
-            }
-
-            return resultList.length; // 검색 결과 개수 반환
-          }
-
-          // ✅ 검색 버튼 클릭 시
-          $("#searchBtn").on("click", () => {
-            const count = performSearch(true, true);
-
-            if (count > 0) {
-              $("#resetBtn").show();
-
-              // 기기 너비가 768px 이하일 때만 높이 조정
-              if (window.innerWidth <= 768) {
-                $("#resultInfo").addClass("expand");
-              }
-            } else {
-              $("#resetBtn").hide();
-            }
-          });
-
-          // ✅ 실시간 입력 중 (검색 건수만)
-          $("#searchInput").on("input", function () {
-            const val = $(this).val().trim();
-            const count = performSearch(false, false); // 검색 결과 개수 반환
-
-            // focus 클래스 제어
-            $("#searchBtn").toggleClass("focus", val !== "");
-
-            // 결과가 있어도 입력 중일 때는 reset 버튼 숨김
-            $("#resetBtn").hide();
-
-            // 검색어가 없으면 resultInfo의 높이 줄이기
-            if (val === "") {
-              $("#resultInfo").removeClass("expand");
-            }
-          });
-
-          // ✅ Enter 키 처리
-          $("#searchInput").on("keydown", function (e) {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              $("#searchBtn").trigger("click");
-            }
-          });
-
-          // ✅ 초기화 버튼
-          $("#resetBtn").on("click", function () {
-            $("#searchInput").val("");
-            $("#resultInfo").text("").removeClass("expand");
-            $("#searchBtn").removeClass("focus");
-            $(this).hide(); // 버튼 숨김
-
-            // ✅ 모바일일 경우에만 스크롤 이동
-            if (window.innerWidth <= 768) {
-              $("html, body").animate(
-                {
-                  scrollTop: $("#searchInput").offset().top - 80,
-                },
-                400
-              );
-            }
-
-            $thumbs.each(function () {
-              const $cap = $(this).find(".caption");
-              const original = $cap.data("original");
-              if (original) $cap.html(original);
-
-              $cap.removeClass("expand");
-              $(this).css("opacity", "1");
-            });
-          });
-
-          // ✅ 결과 링크 클릭 시 포커스 이동
-          $(document).on("click", ".search-link", function (e) {
-            e.preventDefault();
-            const targetClass = $(this).attr("href").replace("#", "");
-            const $target = $("." + targetClass);
-
-            if ($target.length) {
-              $("html, body").animate(
-                {
-                  scrollTop: $target.offset().top - 100,
-                },
-                500,
-                function () {
-                  const $cap = $target.find(".caption");
-                  $target.attr("tabindex", "-1").focus();
-                  $cap.addClass("expand");
-                }
-              );
-            }
-          });
-
-          // Search-fnc END
-
           // Auto open latest issue if hash present
           if (window.location.hash && window.location.hash.includes("lastet")) {
             setTimeout(
@@ -433,7 +262,7 @@
             );
           }
         }).fail(function () {
-          $(".thumb-wrapper").append("<p>Failed to load HOM data.</p>");
+          $(".thumb-wrapper").append("<p>Failed to load w-HOM data.</p>");
         });
       });
     </script>
@@ -442,16 +271,12 @@
   <body>
     <!-- Splash -->
     <section class="loading">
-      <a class="logo" href="#"></a>
-      <p class="loading-text">HAUS OF MATTERS</p>
+      <a class="logo" href=""></a>
+      <p class="loading-text">world/<br />HAUS OF MATTERS</p>
     </section>
 
     <!-- Menu -->
     <header>
-      <nav class="menu__search__btn">
-        <img src="../../assets/images/main-search.svg" />
-      </nav>
-
       <a class="logo" href="../../"></a>
 
       <nav class="menu__btn">
@@ -466,12 +291,12 @@
 
     <section class="menu__contents">
       <li>
-        <a href="../hom/" class="disabled"
+        <a href="../hom/"
           ><span><mark></mark>한국힙합 매거진</span>hom<sup>New</sup></a
         >
       </li>
       <li>
-        <a href="../w-hom/"
+        <a href="../w-hom/" class="disabled"
           ><span><mark></mark>해외힙합 매거진</span>w/hom<sup>New</sup></a
         >
       </li>
@@ -479,7 +304,23 @@
         <a href="../../members/"><mark></mark>KHL Members</a>
       </li>
       <hr />
-
+      <!-- <li>
+        <a
+          href="https://open.spotify.com/playlist/2wJa1MqIgEB06aoXqjzJh2?si=AJGkUVdBRieWNuWTVwCu4g&pi=-cH5TBFfQUeVf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(spotify)</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://music.youtube.com/playlist?list=PLgEEnxUe0JC1ZqbsHrthUfFQR2Zt27Scp&si=s_XAx9NPlHX6uw57"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Playlist(youtube music)</a
+        >
+      </li>
+      <hr /> -->
       <li>
         <a
           href="https://www.instagram.com/hausofmatters/"
@@ -493,29 +334,31 @@
     </section>
 
     <main>
-      <!-- Header -->
+      <!-- Contents -->
       <section class="page-title">
-        <img src="../../assets/images/HOM.png" />
-        <p>한국힙합매거진 HOM</p>
+        <img src="../../assets/images/w_hom.png" />
+        <p>해외힙합매거진 w/HOM</p>
       </section>
 
-      <!-- Contents -->
       <section class="thumb-container">
-        <!-- Aside -->
         <aside>
-          <!-- Search -->
-          <div class="search-container">
-            <div class="search-btn-wrap">
-              <input
-                type="text"
-                id="searchInput"
-                placeholder="앨범, 아티스트를 검색하세요"
-              />
+          <div class="row-switch">
+            <figure class="expand">
+              <img src="../../assets/images/row-btn-expand.svg" />
+            </figure>
+            <figure class="single">
+              <img src="../../assets/images/row-btn-single.svg" />
+            </figure>
+          </div>
 
-              <button id="searchBtn">→ 검색</button>
+          <div class="mag__popup">
+            <div class="mag__popup_content">
+              <a href="../hom/">한국힙합매거진 HOM 최신호를 확인하세요.</a>
             </div>
-            <button id="resetBtn">검색 초기화</button>
-            <p id="resultInfo"></p>
+
+            <div class="popup__close">
+              <button><img src="../../assets/images/close-bk.svg" /></button>
+            </div>
           </div>
 
           <article class="comment-switch">
@@ -567,17 +410,6 @@
             </div>
           </article>
         </aside>
-
-        <!-- Grid switch btn -->
-        <div class="row-switch">
-          <figure class="expand">
-            <img src="../../assets/images/row-btn-expand.svg" />
-          </figure>
-          <figure class="single">
-            <img src="../../assets/images/row-btn-single.svg" />
-          </figure>
-        </div>
-
         <div class="thumb-wrapper"></div>
       </section>
 
@@ -586,15 +418,16 @@
         <div class="card-wrap first">
           <div class="card">
             <a
-              href="../w-hom/"
+              href="../hom/"
               class="card__image"
-              style="background-image: url(../../assets/images/w_hom.png)"
+              style="background-image: url(../../assets/images/HOM.png)"
             ></a>
             <h3 class="card__title type-small">
-              <span>해외힙합 매거진</span>
-              <a href="../w-hom/">w/HAUS OF MATTERS</a>
+              <span>한국힙합 매거진</span>
+              <a href="../hom/">HAUS OF MATTERS</a>
             </h3>
           </div>
+
           <div class="card">
             <a
               href="../../members/"
@@ -669,7 +502,6 @@
     <script src="../../assets/js/current-device-browser.min.js"></script>
     <!-- GSAP library -->
     <script src="../../assets/js/gsap.min.js"></script>
-
     <!-- Loading, Sub scripts -->
     <script src="../../assets/js/load-sub.js"></script>
     <script src="../../assets/js/script.js"></script>
