@@ -1,0 +1,177 @@
+body {
+  background-color: #0e0e0e;
+}
+
+main {
+  padding: 2rem !important;
+}
+
+header {
+}
+
+.logo {
+  animation: none;
+  background: url(../images/logo-w.png) no-repeat 0 0;
+  background-size: 100%;
+}
+
+.members-container {
+  margin: 0 auto 5vh;
+}
+
+.members-wrapper.nametag ol {
+  grid-gap: 3.5rem;
+}
+
+.members-wrapper.nametag li {
+  display: block;
+  padding: 0;
+
+  background-color: #36363640;
+  border: none;
+
+  border-radius: 1.5rem;
+
+  box-shadow: 0 0 12px 4px #ffffff26, 0 0 60px #7a7a7a33, 0 0 8px #acacac66;
+
+  transition: box-shadow 0.125s ease-out;
+}
+
+.members-wrapper.nametag li:hover {
+  box-shadow: 0 0 24px 12px #ffffff26, 0 0 60px #7a7a7a33, 0 0 8px #acacac66;
+}
+
+.members-wrapper.nametag li:active {
+  background-color: #11111120;
+}
+
+.members-wrapper.nametag li > a {
+  padding: 4rem 1rem;
+  width: 100%;
+}
+
+.members-wrapper.nametag li > a:hover {
+  text-decoration: none;
+}
+
+.members-wrapper.nametag h2 {
+  padding: 0 !important;
+
+  font-size: 1.175rem;
+  text-align: center;
+}
+
+.card {
+  width: 100vw;
+  height: 100vh;
+  perspective: 800px;
+  touch-action: pan-y;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  transition: transform 0.325s ease;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+
+  /* top: 3rem;
+        transform: translateY(-50%); */
+  transform-origin: center center;
+
+  scale: 0.8;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card img {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.card-controls {
+  display: flex;
+  gap: 0.625rem;
+
+  position: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 1rem;
+
+  margin-top: 1rem;
+}
+
+.card-controls button {
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 2px;
+
+  padding: 0.4rem 0.675rem 0.45rem;
+
+  font-family: var(--info-font);
+  font-size: 0.875rem;
+  line-height: 1;
+  text-wrap: nowrap;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.fordesktop {
+  display: none;
+}
+
+@media all and (orientation: landscape) {
+  .fordesktop {
+    display: block;
+    z-index: 100000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .fordesktop-p {
+    display: block;
+    z-index: 100001;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.5rem;
+    line-height: 1.6;
+
+    color: white;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    text-align: center;
+  }
+}

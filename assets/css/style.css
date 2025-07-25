@@ -1840,7 +1840,7 @@ main.open .mag__popup {
   gap: 1rem;
 
   background: #00000080;
-  border-left: 1px solid gray;
+  border-left: 1px solid dimgray;
 }
 
 .members-wrapper li > div {
