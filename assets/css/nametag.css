@@ -9,10 +9,12 @@ main {
 header {
 }
 
-.logo {
+header .logo {
   animation: none;
   background: url(../images/logo-w.png) no-repeat 0 0;
   background-size: 100%;
+
+  opacity: 0.4 !important;
 }
 
 .members-container {

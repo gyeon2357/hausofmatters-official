@@ -246,7 +246,6 @@ section.loading .loading-text {
 
   border-radius: 2px;
   background: #ffffff25;
-  background: var(--badge-color);
 }
 
 .card__title.type-small {
