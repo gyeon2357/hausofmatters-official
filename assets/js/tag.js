@@ -6,7 +6,7 @@ let dragRotation = 0;
 
 // ✅ 사용자 조정 수치
 const MAX_ROTATION = 180; // 최대 회전 각도
-const FLIP_THRESHOLD = 50; // 몇 도 이상 돌리면 뒤집힘으로 인정할지
+const FLIP_THRESHOLD = 60; // 몇 도 이상 돌리면 뒤집힘으로 인정할지
 const ROTATION_MULTIPLIER = 180; // 회전 민감도 (dragRatio * 이 값 = 회전 각도)
 const ROTATION_DURATION = 0.125; // 플립 애니메이션 속도 (초 단위)
 
