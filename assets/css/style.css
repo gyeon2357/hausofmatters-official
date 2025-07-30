@@ -1461,6 +1461,7 @@ main.open .thumb-container .thumb-wrapper {
 
   color: #fff;
   font-size: 0.825rem;
+  line-height: 0;
 
   transition: opacity 0.25s;
 }
