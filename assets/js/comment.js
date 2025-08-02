@@ -48,7 +48,7 @@ $("#google-submit").click(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://script.google.com/macros/s/AKfycbzufG4snVAKvdYxbWywqE9pecTfjiF23do6NS-dptldWdrfH6YZYNKcwosQEm2ThZen/exec",
+    url: "https://script.google.com/macros/s/AKfycbwxNN5gPoMrtGJ9NyZuju6mBvxBKq1le6-FQeSKQBf7TNYLQTYUImJtH-yqC9otvQZH/exec",
     data: {
       // 이름: inputName.val(),
       내용: inputComment.val(),
