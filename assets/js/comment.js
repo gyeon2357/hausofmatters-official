@@ -1,4 +1,4 @@
-var inputs = $('input[type="text"]');
+var inputs = $("#comment");
 var googleSubmitBtn = $("#google-submit");
 var input_modal = $("#input_modal");
 
@@ -10,18 +10,25 @@ function isLoading(status) {
   if (status) {
     $("html, body").addClass("wait");
     // googleSubmitBtn.attr("disabled", true).html("보내는중...");
-    googleSubmitBtn.attr("disabled", true).children("img").attr("src", "../../assets/images/wait.svg");
+    googleSubmitBtn
+      .attr("disabled", true)
+      .children("img")
+      .attr("src", "../../assets/images/wait.svg");
   } else {
     $("html, body").removeClass("wait");
     // googleSubmitBtn.attr("disabled", false).html("보내기");
-    googleSubmitBtn.attr("disabled", false).children("img").attr("src", "../../assets/images/submit.svg");
+    googleSubmitBtn
+      .attr("disabled", false)
+      .children("img")
+      .attr("src", "../../assets/images/submit.svg");
   }
 }
 
 function checkInput() {
   var isEmpty = false;
+  var value = $("#comment").val().trim();
   $.each(inputs, function (index, element) {
-    if (element.value === "") {
+    if (value === "") {
       alert("내용을 입력해주세요.");
       isEmpty = true;
       return false;
@@ -41,9 +48,9 @@ $("#google-submit").click(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://script.google.com/macros/s/AKfycbwU1TwNaeuoZC3fR2XjX0VgXOTFmlxYjWECT9E0M_zzia_Vuplas57tkdQAt3ADaAmd/exec",
+    url: "https://script.google.com/macros/s/AKfycbzufG4snVAKvdYxbWywqE9pecTfjiF23do6NS-dptldWdrfH6YZYNKcwosQEm2ThZen/exec",
     data: {
-      이름: inputName.val(),
+      // 이름: inputName.val(),
       내용: inputComment.val(),
       //   "사는곳": inputArea.val()
     },
