@@ -432,17 +432,33 @@
 
           // Search-fnc END
 
-          // Auto open latest issue if hash present
-          if (window.location.hash && window.location.hash.includes("lastet")) {
-            setTimeout(
-              () => $("#lastet").find(".thumb-meta").trigger("click"),
-              750
-            );
-          }
-        }).fail(function () {
-          $(".thumb-wrapper").append("<p>Failed to load w/HOM data.</p>");
+       // Auto open flipbook if hash present
+if (window.location.hash) {
+  const hashVal = window.location.hash.replace("#", "").toLowerCase();
+
+  // case 1: lastet
+  if (hashVal === "lastet") {
+    setTimeout(() => {
+      $("#lastet").find(".thumb-meta").trigger("click");
+    }, 750);
+  }
+
+  // case 2: #숫자
+  else if (/^\d+$/.test(hashVal)) {
+    const targetThumb = $(`.w-hom-${hashVal}`);
+    if (targetThumb.length) {
+      setTimeout(() => {
+        targetThumb.find(".thumb-meta").trigger("click");
+      }, 750);
+    }
+  }
+}
         });
       });
+
+      
+
+      
     </script>
   </head>
 
