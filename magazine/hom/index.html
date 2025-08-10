@@ -438,7 +438,7 @@
 
             // case 2: #숫자
             else if (/^\d+$/.test(hashVal)) {
-              const targetThumb = $(`.w-hom-${hashVal}`);
+              const targetThumb = $(`.hom-${hashVal}`);
               if (targetThumb.length) {
                 setTimeout(() => {
                   targetThumb.find(".thumb-meta").trigger("click");
