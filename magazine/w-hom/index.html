@@ -432,34 +432,36 @@
 
           // Search-fnc END
 
-       // Auto open flipbook if hash present
-if (window.location.hash) {
-  const hashVal = window.location.hash.replace("#", "").toLowerCase();
+          // Auto open flipbook if hash present
+          if (window.location.hash) {
+            const hashVal = window.location.hash.replace("#", "").toLowerCase();
 
-  // case 1: lastet
-  if (hashVal === "lastet") {
-    setTimeout(() => {
-      $("#lastet").find(".thumb-meta").trigger("click");
-    }, 750);
-  }
+            // case 1: lastet
+            if (hashVal === "lastet") {
+              setTimeout(() => {
+                $("#lastet").find(".thumb-meta").trigger("click");
+              }, 750);
+            }
 
-  // case 2: #숫자
-  else if (/^\d+$/.test(hashVal)) {
-    const targetThumb = $(`.w-hom-${hashVal}`);
-    if (targetThumb.length) {
-      setTimeout(() => {
-        targetThumb.find(".thumb-meta").trigger("click");
-      }, 750);
-    }
-  }
-}
+            // case 2: #숫자
+            else if (/^\d+$/.test(hashVal)) {
+              const targetThumb = $(`.w-hom-${hashVal}`);
+              if (targetThumb.length) {
+                setTimeout(() => {
+                  targetThumb.find(".thumb-meta").trigger("click");
+                }, 750);
+              }
+            }
+          }
         });
       });
-
-      
-
-      
     </script>
+
+    <style>
+      .card__image {
+        background-size: contain;
+      }
+    </style>
   </head>
 
   <body>
