@@ -554,7 +554,6 @@ section.loading .loading-text {
 }
 
 .intro__popup a > p {
-  font-family: var(--info-font);
   font-weight: 400;
   padding: 0.375rem 0 0.125rem;
 }
@@ -1002,7 +1001,7 @@ section.page-title.link {
 
 .thumb-container .thumb-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5rem;
 
   max-width: 1200px;
@@ -1016,7 +1015,7 @@ section.page-title.link {
 }
 
 .thumb-container .thumb-wrapper.expand {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 0.75rem;
 }
 
