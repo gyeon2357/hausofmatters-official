@@ -175,50 +175,42 @@
             }
 
             // Flipbook logic
-            if (i >= totalCount - 1) {
-              $thumb.addClass("flipbook-loaded");
-              window.currentFlipbookInstance = $thumb
-                .find(".thumb-meta")
-                .flipBook({
-                  ...commonOptions,
-                  startPage: window.dynamicStartPage,
-                  pdfUrl: `../../assets/pdf/${item.pdf}`,
-                });
-            } else {
-              $thumb.find(".thumb-meta").on("click", function (e) {
-                e.preventDefault();
-                e.stopPropagation();
+            $thumb.find(".thumb-meta").on("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
 
-                // Dispose previous instance
-                if (
-                  window.currentFlipbookInstance &&
-                  typeof window.currentFlipbookInstance.dispose === "function"
-                ) {
-                  window.currentFlipbookInstance.dispose();
-                }
+              // 이전 인스턴스 닫기
+              if (
+                window.currentFlipbookInstance &&
+                typeof window.currentFlipbookInstance.dispose === "function"
+              ) {
+                window.currentFlipbookInstance.dispose();
+              }
 
-                window.currentFlipbookInstance = null;
+              window.currentFlipbookInstance = null;
 
-                if (!$thumb.hasClass("flipbook-loaded")) {
-                  $thumb.addClass("flipbook-loaded");
+              // 새로 flipbook 초기화
+              if (!$thumb.hasClass("flipbook-loaded")) {
+                $thumb.addClass("flipbook-loaded");
 
-                  window.currentFlipbookInstance = $thumb
-                    .find(".thumb-meta")
-                    .flipBook({
-                      ...commonOptions,
-                      startPage: window.dynamicStartPage,
-                      pdfUrl: `../../assets/pdf/${item.pdf}`,
-                    });
+                window.currentFlipbookInstance = $thumb
+                  .find(".thumb-meta")
+                  .flipBook({
+                    ...commonOptions,
+                    startPage: window.dynamicStartPage || 0,
+                    pdfUrl: `../../assets/pdf/${item.pdf}`,
+                  });
 
-                  // Retry click
-                  setTimeout(
-                    () => $thumb.find(".thumb-meta").trigger("click"),
-                    300
-                  );
-                }
-                window.dynamicStartPage = 0;
-              });
-            }
+                // 클릭 이벤트 재실행 (flipbook 열리게)
+                setTimeout(
+                  () => $thumb.find(".thumb-meta").trigger("click"),
+                  300
+                );
+              }
+
+              // 초기화: 다음 클릭 시 다시 첫 페이지
+              window.dynamicStartPage = 0;
+            });
 
             // Set ID for latest issue
             if (i === totalCount) {
