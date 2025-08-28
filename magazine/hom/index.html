@@ -9,13 +9,19 @@
     />
 
     <title>HOM | Hausofmatters</title>
-    <meta name="description" content="한국힙합 매거진 | HOM, 매월 두번째 월요일마다 공개됩니다." />
+    <meta
+      name="description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
     <meta
       name="keywords"
       content="KHL, HAUS OF MATTERS, HOM, w/HOM, Korean Hiphop Magazine, Korean Black Music Magazine"
     />
     <meta itemprop="name" content="Hausofmatters" />
-    <meta itemprop="description" content="한국힙합 매거진 | HOM, 매월 두번째 월요일마다 공개됩니다." />
+    <meta
+      itemprop="description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
     <meta
       itemprop="image"
       content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
@@ -27,7 +33,7 @@
     <meta property="og:title" content="Hausofmatters" />
     <meta
       property="og:description"
-      content="한국힙합 매거진 | HOM, 매월 두번째 월요일마다 공개됩니다."
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
     />
     <meta
       property="og:image"
@@ -40,7 +46,7 @@
     <meta name="twitter:title" content="Hausofmatters" />
     <meta
       name="twitter:description"
-      content="한국힙합 매거진 | HOM, 매월 두번째 월요일마다 공개됩니다."
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
     />
     <meta
       name="twitter:image"
@@ -123,6 +129,9 @@
           currentPage: { vAlign: "bottom", hAlign: "left" },
         };
 
+        // 전역 startPage
+        window.dynamicStartPage = 0;
+
         // Store current flipBook instance
         window.currentFlipbookInstance = null;
 
@@ -171,6 +180,7 @@
                 .find(".thumb-meta")
                 .flipBook({
                   ...commonOptions,
+                  startPage: window.dynamicStartPage,
                   pdfUrl: `https://gg-yn.com/product/khl-flip/assets/pdf/${item.pdf}`,
                 });
             } else {
@@ -195,6 +205,7 @@
                     .find(".thumb-meta")
                     .flipBook({
                       ...commonOptions,
+                      startPage: window.dynamicStartPage,
                       pdfUrl: `https://gg-yn.com/product/khl-flip/assets/pdf/${item.pdf}`,
                     });
 
@@ -204,6 +215,7 @@
                     300
                   );
                 }
+                window.dynamicStartPage = 0;
               });
             }
 
@@ -429,20 +441,30 @@
           if (window.location.hash) {
             const hashVal = window.location.hash.replace("#", "").toLowerCase();
 
-            // case 1: lastet
+            // 1. 최신 호 (#lastet)
             if (hashVal === "lastet") {
               setTimeout(() => {
                 $("#lastet").find(".thumb-meta").trigger("click");
               }, 750);
             }
 
-            // case 2: #숫자
-            else if (/^\d+$/.test(hashVal)) {
-              const targetThumb = $(`.hom-${hashVal}`);
-              if (targetThumb.length) {
-                setTimeout(() => {
-                  targetThumb.find(".thumb-meta").trigger("click");
-                }, 750);
+            // 2. 특정 호수 + 페이지 (#26 or #26-p4)
+            else {
+              // #26-p4 → match[1] = 26, match[2] = 4
+              const match = hashVal.match(/^(\d+)(?:-p(\d+))?$/);
+
+              if (match) {
+                const issueNum = match[1]; // 26
+                const startPage = match[2] ? parseInt(match[2], 10) : 0; // p4 → 4, 없으면 0
+
+                const $targetThumb = $(`.hom-${issueNum}`);
+                if ($targetThumb.length) {
+                  // flipbook 초기 페이지 설정 후 열기
+                  setTimeout(() => {
+                    window.dynamicStartPage = startPage; // ✅ 동적 startPage 설정
+                    $targetThumb.find(".thumb-meta").trigger("click");
+                  }, 750);
+                }
               }
             }
           }
