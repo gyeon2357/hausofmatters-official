@@ -661,7 +661,7 @@ body.flipbook-overflow-hidden .logo {
 .menu__search__btn {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 3.5rem;
 
   padding: 1rem 1rem;
   transition: opacity 0.25s;
@@ -1961,6 +1961,11 @@ main.open .mag__popup {
   .menu__search__btn,
   .menu__btn {
     padding: 0.675rem 1rem;
+  }
+
+  .menu__search__btn {
+    top: 0.05rem;
+    right: 3.25rem;
   }
 
   .menu__search__btn img {
