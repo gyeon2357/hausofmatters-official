@@ -119,7 +119,7 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-        // Setup common options for all flipBooks
+        // Set common flipbook options
         const commonOptions = {
           btnColor: "#000",
           sideBtnBackground: "transparent",
@@ -130,24 +130,30 @@
           currentPage: { vAlign: "bottom", hAlign: "left" },
         };
 
-        // 전역 startPage
+        // 전역 변수: 시작 페이지 (동적 해시 접근 시 사용)
+        // Global variable: dynamic start page for hash access
         window.dynamicStartPage = 0;
 
-        // Store current flipBook instance
+        // 전역 변수: 현재 열려있는 flipbook 인스턴스
+        // Global variable: current opened flipbook instance
         window.currentFlipbookInstance = null;
 
-        // Load JSON file
+        // JSON 데이터 불러오기
+        // Load JSON data for thumbnails
         $.getJSON("../../assets/json/w-hom.json", function (imageList) {
           const $wrapper = $(".thumb-wrapper");
           const totalCount = imageList.length;
 
+          // 썸네일 동적 생성
+          // Generate thumbnails dynamically
           imageList.forEach((item, index) => {
             const i = totalCount - index;
             const imgPath = `../../assets/images/thumb/${item.thumbnail}`;
             const captionText = item.caption || "";
             const dateText = item.date || "";
 
-            // Build thumb
+            // 썸네일 HTML 구조 생성
+            // Build thumbnail HTML structure
             const $thumb = $(`
         <div class="thumb w-hom-${i}" tabindex="0">
           <div class="thumb-meta">
@@ -157,16 +163,22 @@
         </div>
       `);
 
-            // Append to wrapper
+            // 썸네일을 컨테이너에 추가
+            // Append thumbnail into wrapper
             $wrapper.append($thumb);
 
-            // Append caption AFTER the thumb
+            // 캡션 추가 (있을 경우에만)
+            // Add caption if available
             if (captionText) {
-              const $caption = $(
-                `<figcaption class="caption"><p>w/HOM #${i} Contents</p><br/>${captionText}</figcaption>`
-              );
+              const $caption = $(`
+          <figcaption class="caption">
+            <p>w/HOM #${i} Contents</p><br/>${captionText}
+          </figcaption>
+        `);
               $thumb.append($caption);
 
+              // 캡션 클릭 시 expand 토글
+              // Toggle caption expand on click
               $caption.on("click", function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -174,72 +186,68 @@
               });
             }
 
-            // Flipbook logic
+            // flipbook 열기 이벤트
+            // Initialize flipbook on thumbnail click
             $thumb.find(".thumb-meta").on("click", function (e) {
               e.preventDefault();
               e.stopPropagation();
 
-              // 이전 인스턴스 닫기
+              // 기존 flipbook 인스턴스 해제
+              // Dispose previous flipbook instance if exists
               if (
                 window.currentFlipbookInstance &&
                 typeof window.currentFlipbookInstance.dispose === "function"
               ) {
                 window.currentFlipbookInstance.dispose();
               }
-
               window.currentFlipbookInstance = null;
 
-              // 새로 flipbook 초기화
+              // flipbook 새로 생성
+              // Create a new flipbook instance
               if (!$thumb.hasClass("flipbook-loaded")) {
                 $thumb.addClass("flipbook-loaded");
-
                 window.currentFlipbookInstance = $thumb
                   .find(".thumb-meta")
                   .flipBook({
                     ...commonOptions,
                     startPage: window.dynamicStartPage || 0,
-                    pdfUrl: `../../assets/pdf/${item.pdf}`,
+                    pdfUrl: `https://gg-yn.com/product/khl-flip/assets/pdf/${item.pdf}`,
                   });
 
-                // 클릭 이벤트 재실행 (flipbook 열리게)
+                // 생성 후 startPage 초기화
+                // Reset dynamic startPage after flipbook opened
+                window.dynamicStartPage = 0;
+
+                // flipbook 열기 트리거
+                // Trigger open after initialization
                 setTimeout(
                   () => $thumb.find(".thumb-meta").trigger("click"),
                   300
                 );
               }
-
-              // 초기화: 다음 클릭 시 다시 첫 페이지
-              window.dynamicStartPage = 0;
             });
 
-            // Set ID for latest issue
+            // 최신호 ID 설정 (#lastet)
+            // Assign ID for latest issue
             if (i === totalCount) {
               $thumb.attr("id", "lastet");
             }
           });
 
-          // lastet URL Link
-          // 현재 URL에 fbclid 파라미터가 있을 때만 실행
+          /* -----------------------------
+       fbclid 제거 및 해시 복원 처리
+       Remove fbclid param and restore hash
+    ------------------------------ */
           if (window.location.search.includes("fbclid")) {
-            // 기존 검색(query) 문자열에서 fbclid 제거
             const urlSearchParams = new URLSearchParams(window.location.search);
             urlSearchParams.delete("fbclid");
 
-            // 복원할 fragment (hash)를 추출
-            let restoredHash = "";
-            const rawQuery = window.location.search;
-            const decodedQuery = decodeURIComponent(rawQuery);
+            const decodedQuery = decodeURIComponent(window.location.search);
+            const hashMatch = decodedQuery.match(/#([\w-]+)/); // 해시값 추출 / Extract hash value
+            const restoredHash = hashMatch
+              ? `#${hashMatch[1]}`
+              : window.location.hash;
 
-            // ex: ...fbclid=...#lastet → 복원
-            const hashMatch = decodedQuery.match(/#([\w-]+)/);
-            if (hashMatch) {
-              restoredHash = `#${hashMatch[1]}`;
-            } else {
-              // fallback: 기존 location.hash가 있다면 유지
-              restoredHash = window.location.hash;
-            }
-
-            // 최종 URL 생성
             const cleanUrl =
               window.location.origin +
               window.location.pathname +
@@ -248,20 +256,24 @@
                 : "") +
               restoredHash;
 
-            // 주소창을 새로 고침 없이 업데이트
             window.history.replaceState(null, "", cleanUrl);
           }
 
-          // Search-fnc
+          /* -----------------------------
+       검색 기능 처리
+       Search Functionality
+    ------------------------------ */
           const $thumbs = $(".thumb-wrapper .thumb");
 
-          // 강조 처리
+          // 강조 표시 HTML 변환
+          // Highlight matched keywords
           function highlightHTML(text, keyword) {
             const re = new RegExp(`(${keyword})`, "gi");
             return text.replace(re, "<mark>$1</mark>");
           }
 
-          // 검색 수행
+          // 검색 수행 함수
+          // Perform search and update UI
           function performSearch(addExpand = false, showSnippets = false) {
             const kw = $("#searchInput").val().trim().toLowerCase();
             let resultList = [];
@@ -309,7 +321,8 @@
               }
             });
 
-            // 결과 처리
+            // 검색 결과 출력 처리
+            // Update search results UI
             if (kw && resultList.length > 0) {
               const links = resultList
                 .map((r) => {
@@ -320,8 +333,8 @@
                       : "";
 
                   return `<a href="#${r.className}" class="search-link">
-          <span class="name">${name}</span>${snippetText}
-        </a>`;
+              <span class="name">${name}</span>${snippetText}
+            </a>`;
                 })
                 .join(" ");
 
@@ -336,17 +349,16 @@
               $thumbs.css("opacity", "1");
             }
 
-            return resultList.length; // 검색 결과 개수 반환
+            return resultList.length;
           }
 
-          // ✅ 검색 버튼 클릭 시
+          // 검색 버튼 클릭 시
+          // Handle search button click
           $("#searchBtn").on("click", () => {
             const count = performSearch(true, true);
 
             if (count > 0) {
               $("#resetBtn").show();
-
-              // 기기 너비가 768px 이하일 때만 높이 조정
               if (window.innerWidth <= 768) {
                 $("#resultInfo").addClass("expand");
               }
@@ -355,24 +367,22 @@
             }
           });
 
-          // ✅ 실시간 입력 중 (검색 건수만)
+          // 실시간 입력 시 검색 갱신
+          // Live search on input change
           $("#searchInput").on("input", function () {
             const val = $(this).val().trim();
-            const count = performSearch(false, false); // 검색 결과 개수 반환
+            performSearch(false, false);
 
-            // focus 클래스 제어
             $("#searchBtn").toggleClass("focus", val !== "");
-
-            // 결과가 있어도 입력 중일 때는 reset 버튼 숨김
             $("#resetBtn").hide();
 
-            // 검색어가 없으면 resultInfo의 높이 줄이기
             if (val === "") {
               $("#resultInfo").removeClass("expand");
             }
           });
 
-          // ✅ Enter 키 처리
+          // Enter 키 입력 시 검색 실행
+          // Trigger search on Enter key
           $("#searchInput").on("keydown", function (e) {
             if (e.key === "Enter") {
               e.preventDefault();
@@ -380,19 +390,17 @@
             }
           });
 
-          // ✅ 초기화 버튼
+          // 검색 초기화 버튼
+          // Reset search button
           $("#resetBtn").on("click", function () {
             $("#searchInput").val("");
             $("#resultInfo").text("").removeClass("expand");
             $("#searchBtn").removeClass("focus");
-            $(this).hide(); // 버튼 숨김
+            $(this).hide();
 
-            // ✅ 모바일일 경우에만 스크롤 이동
             if (window.innerWidth <= 768) {
               $("html, body").animate(
-                {
-                  scrollTop: $("#searchInput").offset().top - 80,
-                },
+                { scrollTop: $("#searchInput").offset().top - 80 },
                 400
               );
             }
@@ -407,7 +415,8 @@
             });
           });
 
-          // ✅ 결과 링크 클릭 시 포커스 이동
+          // 검색 결과 클릭 시 해당 썸네일로 스크롤 이동
+          // Scroll to clicked search result thumbnail
           $(document).on("click", ".search-link", function (e) {
             e.preventDefault();
             const targetClass = $(this).attr("href").replace("#", "");
@@ -415,9 +424,7 @@
 
             if ($target.length) {
               $("html, body").animate(
-                {
-                  scrollTop: $target.offset().top - 100,
-                },
+                { scrollTop: $target.offset().top - 100 },
                 500,
                 function () {
                   const $cap = $target.find(".caption");
@@ -427,34 +434,31 @@
               );
             }
           });
-          //-- Search-fnc END --
 
-          // Auto open flipbook if hash present
-          // Auto open flipbook if hash present
+          /* -----------------------------
+       해시값이 있으면 flipbook 자동 열기
+       Auto open flipbook if hash exists
+    ------------------------------ */
           if (window.location.hash) {
             const hashVal = window.location.hash.replace("#", "").toLowerCase();
 
-            // 1. 최신 호 (#lastet)
+            // 최신호 자동 열기 (#lastet)
             if (hashVal === "lastet") {
               setTimeout(() => {
                 $("#lastet").find(".thumb-meta").trigger("click");
               }, 750);
-            }
-
-            // 2. 특정 호수 + 페이지 (#26 or #26-p4)
-            else {
-              // #26-p4 → match[1] = 26, match[2] = 4
+            } else {
+              // 특정 호 또는 특정 페이지 자동 열기 (#26 or #26-p4)
               const match = hashVal.match(/^(\d+)(?:-p(\d+))?$/);
 
               if (match) {
-                const issueNum = match[1]; // 26
-                const startPage = match[2] ? parseInt(match[2], 10) : 0; // p4 → 4, 없으면 0
+                const issueNum = match[1];
+                const startPage = match[2] ? parseInt(match[2], 10) : 0;
 
                 const $targetThumb = $(`.w-hom-${issueNum}`);
                 if ($targetThumb.length) {
-                  // flipbook 초기 페이지 설정 후 열기
+                  window.dynamicStartPage = startPage;
                   setTimeout(() => {
-                    window.dynamicStartPage = startPage; // ✅ 동적 startPage 설정
                     $targetThumb.find(".thumb-meta").trigger("click");
                   }, 750);
                 }
