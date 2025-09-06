@@ -234,15 +234,20 @@
           });
 
           /* -----------------------------
-       fbclid 제거 및 해시 복원 처리
-       Remove fbclid param and restore hash
-    ------------------------------ */
+          fbclid 제거 및 해시 복원 처리
+          Remove fbclid param and restore hash
+          ------------------------------ */
           if (window.location.search.includes("fbclid")) {
             const urlSearchParams = new URLSearchParams(window.location.search);
             urlSearchParams.delete("fbclid");
 
-            const decodedQuery = decodeURIComponent(window.location.search);
-            const hashMatch = decodedQuery.match(/#([\w-]+)/); // 해시값 추출 / Extract hash value
+            // decodeURIComponent → decodeURI로 변경 (안전성 강화)
+            const decodedQuery = window.location.search
+              ? decodeURI(window.location.search)
+              : "";
+
+            const hashMatch = decodedQuery.match(/#([\w-]+)/);
+            // 해시값 추출 / Extract hash value
             const restoredHash = hashMatch
               ? `#${hashMatch[1]}`
               : window.location.hash;
@@ -258,7 +263,7 @@
             window.history.replaceState(null, "", cleanUrl);
           }
 
-          /* -----------------------------
+             /* -----------------------------
        검색 기능 처리
        Search Functionality
     ------------------------------ */

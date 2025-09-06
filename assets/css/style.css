@@ -757,23 +757,23 @@ body.flipbook-overflow-hidden .logo {
   position: fixed;
   overflow: hidden;
 
-  background: color(display-p3 1 1 1 / 1);
-  color: #000;
-  width: 100%;
-  height: 56.25vh;
+  mix-blend-mode: lighten;
+  color: #fff;
+  width: fit-content;
+  height: 100vh;
   top: 0;
   left: 0;
   padding: 10vh 1.25rem;
 
   text-align: center;
-  transform: translateY(-56.25vh);
-  transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
-  transition-delay: 0.125s;
+  transform: translateY(-100vh);
+  /* transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
+  transition-delay: 0.125s; */
 }
 
 .menu__contents.is_active {
   transform: translateY(0) !important;
-  transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77);
+  /* transition: transform 0.4s cubic-bezier(0.55, 0.01, 0.35, 0.77); */
 }
 
 main.open {
@@ -782,8 +782,8 @@ main.open {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0); */
 
-  -webkit-filter: blur(6px);
-  filter: blur(6px);
+  -webkit-filter: blur(16px);
+  filter: blur(16px);
 }
 
 .menu__contents > h1 {
@@ -810,8 +810,8 @@ main.open {
 
   padding: 0.5rem 0;
 
-  transition: all 0.25s ease;
-  transition-delay: 0.35s;
+  /* transition: all 0.25s ease;
+  transition-delay: 0.35s; */
 }
 
 .menu__contents > li:last-of-type {
@@ -821,8 +821,8 @@ main.open {
 .menu__contents.is_active > h1,
 .menu__contents.is_active > li {
   opacity: 1;
-  transition: all 0.25s ease;
-  transition-delay: 0.35s;
+  /* transition: all 0.25s ease;
+  transition-delay: 0.35s; */
 }
 
 .menu__contents > li > a {
@@ -840,9 +840,8 @@ main.open {
   /* text-decoration: underline;
   text-underline-position: under; */
 
-  color: #000;
+  color: #fff;
   opacity: 1;
-  transition: color 0.125s ease-out;
 }
 
 .menu__contents > li > a:hover {
@@ -864,12 +863,12 @@ main.open {
 
   margin: -0.1rem 0.75rem 0 0;
 
-  background: #fff;
-  border: 1px solid black;
+  background: #000;
+  border: 1px solid #fff;
 }
 
 .menu__contents > li > a.disabled mark {
-  background: #000;
+  background: #fff;
 }
 
 .menu__contents > li > a > span {
@@ -1423,11 +1422,20 @@ main.open .thumb-container .thumb-wrapper {
   border-bottom: 1px solid silver;
 
   padding: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.search-container #searchInput::placeholder {
+  transition: opacity 0.5s ease;
 }
 
 .search-container #searchInput:focus {
   background: #ffffff14;
   border: 0.75px solid var(--badge-color);
+}
+
+.search-container #searchInput:focus::placeholder {
+  color: var(--badge-color);
 }
 
 .search-container .search-btn-wrap {
@@ -1976,8 +1984,8 @@ main.open .mag__popup {
     padding: 10vh 1.25rem 8vh;
     gap: 0.25rem;
 
-    height: 50vh;
-    transform: translateY(-50vh);
+    height: 100vh;
+    transform: translateY(-100vh);
   }
 
   .menu__contents > h1 {
