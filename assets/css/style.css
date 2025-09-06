@@ -9,7 +9,7 @@
 :root {
   --main: 16px;
   --color-text: rgb(227 226 220 / 86%);
-  --color-bg: #080808;
+  --color-bg: #000000;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
   --badge-color: color(display-p3 0.65 0.55 0.85 / 1);
@@ -985,7 +985,7 @@ section.page-title {
 }
 
 section.page-title img {
-  max-height: 8rem;
+  max-height: 4.5rem;
 }
 
 section.page-title.link {
@@ -2487,7 +2487,7 @@ main.open .mag__popup {
   }
 
   section.page-title img {
-    max-height: 4rem;
+    max-height: 2rem;
     max-width: 87.5%;
   }
 
