@@ -12,7 +12,7 @@
   --color-bg: #000000;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
-  --badge-color: color(display-p3 0.65 0.55 0.85 / 1);
+  --badge-color: color(display-p3 0.15 0.25 1 / 1);
 
   --page-padding: 1.5rem;
 
@@ -514,7 +514,7 @@ section.loading .loading-text {
   align-items: center;
   width: fit-content;
 
-  background: #ffffff3d;
+  background: #ffffff14;
   opacity: 1;
   color: #fff;
   padding: 0.375rem 0.5rem 0.2rem;
@@ -571,7 +571,7 @@ section.loading .loading-text {
   gap: 5vh;
 
   position: relative;
-  min-height: 100vh;
+  min-height: 70vh;
   place-items: center;
   margin: 20vh 0;
 }
@@ -618,7 +618,7 @@ section.loading .loading-text {
   aspect-ratio: 4 / 5;
 
   border-radius: 1.5px;
-  background-size: cover;
+  /* background-size: cover; */
   background-position: 50% 50%;
 
   background-color: #0000001f;
@@ -808,7 +808,7 @@ main.open {
   opacity: 0;
   list-style: none;
 
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 
   /* transition: all 0.25s ease;
   transition-delay: 0.35s; */
@@ -831,7 +831,7 @@ main.open {
   width: 100%;
 
   font-family: var(--info-font);
-  font-size: 1.375rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.1px;
@@ -1037,8 +1037,8 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container figcaption {
   position: relative;
   font-family: var(--info-font);
-  font-size: 0.725rem;
-  line-height: 1.4;
+  font-size: 0.75rem;
+  line-height: 1.45;
   letter-spacing: 0;
   text-align: left;
 
@@ -1067,10 +1067,14 @@ main.open .thumb-container .thumb-wrapper {
   mask-image: linear-gradient(to top, transparent, black 3rem);
   -webkit-mask-image: linear-gradient(to top, transparent, black 3rem);
 
-  transition: height 0.125s ease-out;
+  transition: height opacity 0.125s ease-out;
   cursor: pointer;
 
   z-index: 10000;
+}
+
+.thumb-container figcaption:hover {
+  opacity: 0.5;
 }
 
 .thumb-container figcaption.expand {
@@ -1084,6 +1088,10 @@ main.open .thumb-container .thumb-wrapper {
   background: transparent;
 
   transition: height 0.125s ease-out;
+}
+
+.thumb-container figcaption.expand:hover {
+  opacity: 1;
 }
 
 .thumb-container figcaption > p {
@@ -1110,7 +1118,7 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container figcaption > span {
   position: relative;
 
-  font-size: 0.75rem;
+  font-size: 0.825rem;
 
   color: #d0d0d0;
   margin-right: 1.125rem;
@@ -1431,12 +1439,13 @@ main.open .thumb-container .thumb-wrapper {
 
 .search-container #searchInput:focus {
   background: #ffffff14;
-  border: 0.75px solid var(--badge-color);
+  box-shadow: 0 0 0 1px var(--badge-color);
+  border-bottom: 1px solid transparent;
 }
 
-.search-container #searchInput:focus::placeholder {
+/* .search-container #searchInput:focus::placeholder {
   color: var(--badge-color);
-}
+} */
 
 .search-container .search-btn-wrap {
   display: flex;
@@ -1634,8 +1643,8 @@ main.open .mag__popup {
 
   width: 1.5rem;
   height: 100%;
-  background: #ffffff26;
-  border-right: 1px solid dimgray;
+  background: #ffffff21;
+  border-right: 1px solid black;
   /* border-radius: 1.5px 1.5px 0 0; */
   color: silver;
   padding: 0.375rem 0.375rem 0.5rem 0.375rem;
@@ -1705,11 +1714,11 @@ main.open .mag__popup {
   transition: box-shadow 0.125s ease-in-out;
 }
 
-.thumb-container .thumb:hover .thumb-meta {
-  box-shadow: 0 0 0 1px #fff;
+.thumb-container .thumb-meta:hover {
+  box-shadow: 0 0 0 1px var(--badge-color);
 }
 
-.thumb-container .thumb:focus .thumb-meta {
+.thumb-container .thumb-meta:focus {
   box-shadow: 0 0 0 1px var(--badge-color);
 }
 
@@ -1962,13 +1971,13 @@ main.open .mag__popup {
   }
 
   .logo {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   .menu__search__btn,
   .menu__btn {
-    padding: 0.675rem 1rem;
+    padding: 0.915rem 1rem;
   }
 
   .menu__search__btn {
@@ -1981,7 +1990,7 @@ main.open .mag__popup {
   }
 
   .menu__contents {
-    padding: 10vh 1.25rem 8vh;
+    padding: 25vh 1.25rem 8vh;
     gap: 0.25rem;
 
     height: 100vh;
@@ -2144,7 +2153,7 @@ main.open .mag__popup {
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    background: color(display-p3 1 1 1 / 0.8);
+    background: color(display-p3 1 1 1 / 0.6);
     /* background: #f8f8f8ba; */
     /* box-shadow: 0 0 5px 1px #f8f8f8; */
     color: #000;
@@ -2443,8 +2452,8 @@ main.open .mag__popup {
   } */
 
   .thumb-container figcaption {
-    font-size: 0.725rem;
-    line-height: 1.425;
+    font-size: 0.7875rem;
+    line-height: 1.45;
 
     margin-bottom: 1.625rem;
     padding: 0.25rem 0 0;
@@ -2457,6 +2466,7 @@ main.open .mag__popup {
 
   .thumb-container figcaption > span {
     margin-right: 1rem;
+    font-size: 0.875rem;
   }
 
   .thumb-container figcaption > hr {
