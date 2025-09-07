@@ -1647,10 +1647,10 @@ main.open .mag__popup {
   border-right: 1px solid black;
   /* border-radius: 1.5px 1.5px 0 0; */
   color: silver;
-  padding: 0.375rem 0.375rem 0.5rem 0.375rem;
+  padding: 0.5rem 0.375rem 0.5rem 0.375rem;
 
   font-family: var(--info-font);
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   text-align: left;
   writing-mode: vertical-lr;
   line-height: 0.75;
@@ -1658,9 +1658,8 @@ main.open .mag__popup {
 }
 
 .thumb-container .thumb#lastet > .thumb-meta > p {
-  font-weight: 500;
+  font-weight: 400;
 
-  background-color: rgb(0, 255, 0);
   background-color: color(display-p3 1 1 1 / 1);
   color: #000;
 
@@ -2478,7 +2477,7 @@ main.open .mag__popup {
 
     font-size: 0.75rem;
     line-height: 0.9;
-    padding: 0.2rem 0.25rem 0.4rem 0.25rem;
+    padding: 0.4rem 0.25rem 0.4rem 0.25rem;
   }
 
   .thumb-container .thumb#lastet > .thumb-meta > p {
