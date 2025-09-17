@@ -2105,7 +2105,7 @@
 }
 
 .fa-times:before {
-  content: url(../images/close-bk.svg) !important;
+  content: url(../images/close.svg) !important;
 }
 
 .fa-file:before {
