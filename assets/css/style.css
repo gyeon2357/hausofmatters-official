@@ -12,7 +12,8 @@
   --color-bg: #000000;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
-  --badge-color: color(display-p3 0.15 0.25 1 / 1);
+  --badge-color: color(display-p3 1 .45 0 / 1);
+
 
   --page-padding: 1.5rem;
 
