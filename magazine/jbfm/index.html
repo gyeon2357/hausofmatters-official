@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <title>JBFM | Hausofmatters</title>
+    <meta
+      name="description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
+    <meta
+      name="keywords"
+      content="KHL, HAUS OF MATTERS, HOM, w/HOM, Korean Hiphop Magazine, Korean Black Music Magazine"
+    />
+    <meta itemprop="name" content="Hausofmatters" />
+    <meta
+      itemprop="description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
+    <meta
+      itemprop="image"
+      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+    />
+    <meta property="og:url" content="https://hausofmatters.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="Hausofmatters" />
+    <meta property="og:title" content="Hausofmatters" />
+    <meta
+      property="og:description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
+    <meta
+      property="og:image"
+      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hausofmatters" />
+    <meta
+      name="twitter:description"
+      content="한국힙합 매거진 | HOM: 매월 두번째 월요일마다 공개됩니다."
+    />
+    <meta
+      name="twitter:image"
+      content="https://hausofmatters.com/assets/images/seo/hom-og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../assets/images/seo/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../../assets/images/seo/favicon/favicon.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/seo/favicon/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/images/seo/favicon/apple-touch-icon.png"
+    />
+
+    <link
+      rel="manifest"
+      href="../../assets/images/seo/favicon/site.webmanifest"
+    />
+
+    <!-- Style -->
+    <link
+      rel="stylesheet"
+      href="../../assets/css/normalize.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/css/flipbook.style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/css/font-awesome.css"
+    />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/lnu1fpi.css" />
+
+    <!-- Icon -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="../../assets/js/flipbook.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Set common flipbook options
+        const commonOptions = {
+          btnColor: "#000",
+          sideBtnBackground: "transparent",
+          sideBtnColor: "#fff",
+          lightBox: true,
+          viewMode: "3d",
+          layout: 3,
+          currentPage: { vAlign: "bottom", hAlign: "left" },
+        };
+
+        // 전역 변수: 시작 페이지 (동적 해시 접근 시 사용)
+        // Global variable: dynamic start page for hash access
+        window.dynamicStartPage = 0;
+
+        // 전역 변수: 현재 열려있는 flipbook 인스턴스
+        // Global variable: current opened flipbook instance
+        window.currentFlipbookInstance = null;
+
+        // JSON 데이터 불러오기
+        // Load JSON data for thumbnails
+        $.getJSON("../../assets/json/other.json", function (imageList) {
+          const $wrapper = $(".thumb-wrapper");
+          const totalCount = imageList.length;
+
+          // 썸네일 동적 생성
+          // Generate thumbnails dynamically
+          imageList.forEach((item, index) => {
+            const i = totalCount - index;
+            const imgPath = `../../assets/images/thumb/${item.thumbnail}`;
+            const captionText = item.caption || "";
+            const dateText = item.date || "";
+
+            // 썸네일 HTML 구조 생성
+            // Build thumbnail HTML structure
+            const $thumb = $(`
+        <div class="thumb hom-${i}" tabindex="0">
+          <div class="thumb-meta">
+            <img src="${imgPath}" alt="${item.thumbnail}" />
+          </div>
+        </div>
+      `);
+
+            // 썸네일을 컨테이너에 추가
+            // Append thumbnail into wrapper
+            $wrapper.append($thumb);
+
+            // 캡션 추가 (있을 경우에만)
+            // Add caption if available
+            if (captionText) {
+              const $caption = $(`
+          <figcaption class="caption">
+            <p>View Contents</p><br/>${captionText}
+          </figcaption>
+        `);
+              $thumb.append($caption);
+
+              // 캡션 클릭 시 expand 토글
+              // Toggle caption expand on click
+              $caption.on("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $caption.toggleClass("expand");
+              });
+            }
+
+            // flipbook 열기 이벤트
+            // Initialize flipbook on thumbnail click
+            $thumb.find(".thumb-meta").on("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              // 기존 flipbook 인스턴스 해제
+              // Dispose previous flipbook instance if exists
+              if (
+                window.currentFlipbookInstance &&
+                typeof window.currentFlipbookInstance.dispose === "function"
+              ) {
+                window.currentFlipbookInstance.dispose();
+              }
+              window.currentFlipbookInstance = null;
+
+              // flipbook 새로 생성
+              // Create a new flipbook instance
+              if (!$thumb.hasClass("flipbook-loaded")) {
+                $thumb.addClass("flipbook-loaded");
+                window.currentFlipbookInstance = $thumb
+                  .find(".thumb-meta")
+                  .flipBook({
+                    ...commonOptions,
+                    startPage: window.dynamicStartPage || 0,
+                    pdfUrl: `../../assets/pdf/${item.pdf}`,
+                  });
+
+                // 생성 후 startPage 초기화
+                // Reset dynamic startPage after flipbook opened
+                window.dynamicStartPage = 0;
+
+                // flipbook 열기 트리거
+                // Trigger open after initialization
+                setTimeout(
+                  () => $thumb.find(".thumb-meta").trigger("click"),
+                  300
+                );
+              }
+            });
+
+            // 최신호 ID 설정 (#lastet)
+            // Assign ID for latest issue
+            if (i === totalCount) {
+              $thumb.attr("id", "lastet");
+            }
+          });
+
+          /* -----------------------------
+          fbclid 제거 및 해시 복원 처리
+          Remove fbclid param and restore hash
+          ------------------------------ */
+          if (window.location.search.includes("fbclid")) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            urlSearchParams.delete("fbclid");
+
+            // decodeURIComponent → decodeURI로 변경 (안전성 강화)
+            const decodedQuery = window.location.search
+              ? decodeURI(window.location.search)
+              : "";
+
+            const hashMatch = decodedQuery.match(/#([\w-]+)/);
+            // 해시값 추출 / Extract hash value
+            const restoredHash = hashMatch
+              ? `#${hashMatch[1]}`
+              : window.location.hash;
+
+            const cleanUrl =
+              window.location.origin +
+              window.location.pathname +
+              (urlSearchParams.toString()
+                ? "?" + urlSearchParams.toString()
+                : "") +
+              restoredHash;
+
+            window.history.replaceState(null, "", cleanUrl);
+          }
+
+          /* -----------------------------
+       해시값이 있으면 flipbook 자동 열기
+       Auto open flipbook if hash exists
+    ------------------------------ */
+          if (window.location.hash) {
+            const hashVal = window.location.hash.replace("#", "").toLowerCase();
+
+            // 최신호 자동 열기 (#lastet)
+            if (hashVal === "lastet") {
+              setTimeout(() => {
+                $("#lastet").find(".thumb-meta").trigger("click");
+              }, 750);
+            } else {
+              // 특정 호 또는 특정 페이지 자동 열기 (#26 or #26-p4)
+              const match = hashVal.match(/^(\d+)(?:-p(\d+))?$/);
+
+              if (match) {
+                const issueNum = match[1];
+                const startPage = match[2] ? parseInt(match[2], 10) : 0;
+
+                const $targetThumb = $(`.hom-${issueNum}`);
+                if ($targetThumb.length) {
+                  window.dynamicStartPage = startPage;
+                  setTimeout(() => {
+                    $targetThumb.find(".thumb-meta").trigger("click");
+                  }, 750);
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+    <style>
+      .card__image {
+        background-size: contain;
+      }
+
+      section.page-title img {
+        max-height: 12rem;
+      }
+
+      .thumb-container .thumb-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 480px;
+      }
+      .thumb-container .thumb > .thumb-meta > img {
+        width: 100% !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Splash -->
+    <section class="loading">
+      <a class="logo" href="#"></a>
+      <p class="loading-text">HAUS OF MATTERS</p>
+    </section>
+
+    <!-- Menu -->
+    <header>
+      <a class="logo" href="../../"></a>
+
+      <nav class="menu__btn">
+        <div class="menu__btn__wrap">
+          <span class="menu__btn__line"></span>
+          <span class="menu__btn__line"></span>
+        </div>
+      </nav>
+
+      <div class="header__bg"></div>
+    </header>
+
+    <section class="menu__contents">
+      <li>
+        <a href="../hom/"
+          ><span><mark></mark>한국힙합 매거진</span>hom<sup>New</sup></a
+        >
+      </li>
+      <li>
+        <a href="../w-hom/"
+          ><span><mark></mark>해외힙합 매거진</span>w/hom<sup>New</sup></a
+        >
+      </li>
+      <li>
+        <a href="../../members/"><mark></mark>KHL Members</a>
+      </li>
+      <hr />
+
+      <li>
+        <a
+          href="https://www.instagram.com/hausofmatters/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><mark></mark>instagram</a
+        >
+      </li>
+
+      <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
+    </section>
+
+    <main>
+      <!-- Header -->
+      <section class="page-title">
+        <img src="../../assets/images/jbfm-cover.jpg" />
+        <p>진보 더 수퍼프릭 데뷔 20주년 기념 HAUS OF MATTERS</p>
+      </section>
+
+      <!-- Contents -->
+      <section class="thumb-container">
+        <div class="thumb-wrapper"></div>
+      </section>
+
+      <section class="content">
+        <h2 class="content__title type-small">Other contents</h2>
+        <div class="card-wrap first">
+          <div class="card">
+            <a
+              href="../hom/"
+              class="card__image"
+              style="background-image: url(../../assets/images/hom.png)"
+            ></a>
+            <h3 class="card__title type-small">
+              <span>한국힙합 매거진</span>
+              <a href="../hom/">HAUS OF MATTERS</a>
+            </h3>
+          </div>
+          <div class="card">
+            <a
+              href="../w-hom/"
+              class="card__image"
+              style="background-image: url(../../assets/images/w_hom.png)"
+            ></a>
+            <h3 class="card__title type-small">
+              <span>해외힙합 매거진</span>
+              <a href="../w-hom/">w/HAUS OF MATTERS</a>
+            </h3>
+          </div>
+          <div class="card">
+            <a
+              href="../../members/"
+              class="card__image"
+              style="background-image: url(../../assets/images/editor.jpg)"
+            ></a>
+
+            <h3 class="card__title type-small">
+              <a href="../../members/">KHL Members</a>
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="frame frame--footer type-small">
+        <div>
+          <p>
+            <a
+              href="https://www.instagram.com/hausofmatters/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Hausofmatters</a
+            >
+
+            <br />
+            ALL IMAGE RIGHTS BELONG TO THEIR RESPECTIVE OWNERS.
+          </p>
+        </div>
+
+        <div class="link">
+          <a
+            href="https://www.instagram.com/hausofmatters/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span>→</span>Instagram</a
+          >
+        </div>
+
+        <div>
+          <p>Created by <a href="https://gg-yn.com">zamso</a> 2025</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JavaScript dependencies -->
+    <script src="../../assets/js/current-device-browser.min.js"></script>
+    <!-- GSAP library -->
+    <script src="../../assets/js/gsap.min.js"></script>
+
+    <!-- Loading, Sub scripts -->
+    <script src="../../assets/js/load-sub.js"></script>
+    <script src="../../assets/js/script.js"></script>
+
+    <script src="../../assets/js/list.js"></script>
+    <script src="../../assets/js/comment.js"></script>
+  </body>
+</html>
