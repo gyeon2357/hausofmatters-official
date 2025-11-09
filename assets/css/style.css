@@ -12,7 +12,8 @@
   --color-bg: #000000;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
-  --badge-color: color(display-p3 1 .45 0 / 1);
+  --badge-color: color(display-p3 1.000000 0.000000 0.772549 / 1.000000);
+  
 
 
   --page-padding: 1.5rem;
@@ -1187,7 +1188,7 @@ main.open .thumb-container .thumb-wrapper {
 
 .thumb-container .row-switch figure:hover,
 .thumb-container .comment-open:hover {
-  filter: invert(1);
+  opacity: .5;
 }
 
 .comment-content-wrap {
@@ -1645,7 +1646,7 @@ main.open .mag__popup {
   width: 1.5rem;
   height: 100%;
   background: #ffffff21;
-  border-right: 1px solid black;
+  border-right: 1px solid transparent;
   /* border-radius: 1.5px 1.5px 0 0; */
   color: silver;
   padding: 0.5rem 0.375rem 0.5rem 0.375rem;
@@ -1660,11 +1661,7 @@ main.open .mag__popup {
 
 .thumb-container .thumb#lastet > .thumb-meta > p {
   font-weight: 400;
-
-  background-color: color(display-p3 1 1 1 / 1);
-  color: #000;
-
-  padding: 1.5rem 0.375rem 0.375rem 0.375rem;
+  padding: 1.5rem 0.375rem 0.5rem 0.375rem;
 }
 
 .thumb-container .thumb#lastet > .thumb-meta > p::before {
@@ -1856,8 +1853,8 @@ main.open .mag__popup {
   padding: 0.75rem 0.75rem 0.5rem;
   gap: 1rem;
 
-  background: #00000080;
-  border-left: 1px solid dimgray;
+  background: #13131380;
+  border-left: 1px solid rgb(60, 60, 60);
 }
 
 .members-wrapper li > div {
