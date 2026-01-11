@@ -1848,8 +1848,8 @@ main.open .mag__popup {
   padding: 0.75rem 0.75rem 0.5rem;
   gap: 1rem;
 
-  background: #13131380;
-  border-left: 1px solid rgb(60, 60, 60);
+  background: #0b0b0bd9;
+  border-left: 1px solid rgb(31, 31, 31);
 }
 
 .members-wrapper li > div {
