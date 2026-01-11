@@ -9,13 +9,11 @@
 :root {
   --main: 16px;
   --color-text: rgb(227 226 220 / 86%);
-  --color-bg: #000000;
+  --color-bg: #070707;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
   --badge-color: color(display-p3 1.000000 0.211765 0.211765 / 1.000000);
   
-
-
   --page-padding: 1.5rem;
 
   --cursor-fill: none;
@@ -1036,8 +1034,8 @@ main.open .thumb-container .thumb-wrapper {
 .thumb-container figcaption {
   position: relative;
   font-family: var(--info-font);
-  font-size: 0.75rem;
-  line-height: 1.45;
+  font-size: 0.8125rem;
+  line-height: 1.525;
   letter-spacing: 0;
   text-align: left;
 
@@ -1129,7 +1127,7 @@ main.open .thumb-container .thumb-wrapper {
 
 .thumb-container figcaption > hr {
   display: inline;
-  margin: 0 0.5em;
+  margin: 0 0.625em;
   padding: 0;
 
   width: 1px;
@@ -2447,7 +2445,7 @@ main.open .mag__popup {
 
   .thumb-container figcaption {
     font-size: 0.7875rem;
-    line-height: 1.45;
+    line-height: 1.425;
 
     margin-bottom: 1.625rem;
     padding: 0.25rem 0 0;
