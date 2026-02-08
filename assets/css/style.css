@@ -12,8 +12,8 @@
   --color-bg: #070707;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
-  --badge-color: color(display-p3 0.886275 0.152941 0.000000 / 1.000000);
-  
+  --badge-color: color(display-p3 0.886275 0.152941 0 / 1);
+
   --page-padding: 1.5rem;
 
   --cursor-fill: none;
@@ -835,7 +835,6 @@ main.open {
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.1px;
-  text-transform: uppercase;
 
   /* text-decoration: underline;
   text-underline-position: under; */
@@ -1161,6 +1160,7 @@ main.open .thumb-container .thumb-wrapper {
 }
 
 .comment-switch > figure {
+  display: none;
   position: fixed;
 
   right: 0;
@@ -1183,7 +1183,7 @@ main.open .thumb-container .thumb-wrapper {
 
 .thumb-container .row-switch figure:hover,
 .thumb-container .comment-open:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .comment-content-wrap {
@@ -2081,8 +2081,8 @@ main.open .mag__popup {
   .frame--footer div.link {
     flex-direction: column;
     padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 0.5px solid dimgray;
+    /* margin-bottom: 0.5rem;
+    border-bottom: 0.5px solid dimgray; */
   }
 
   .card-wrap {
