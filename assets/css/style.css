@@ -9,7 +9,7 @@
 :root {
   --main: 16px;
   --color-text: rgb(227 226 220 / 86%);
-  --color-bg: #070707;
+  --color-bg: #040404;
   --color-link: rgb(227 226 220 / 86%);
   --color-link-hover: rgb(227 226 220 / 100%);
   --badge-color: color(display-p3 0.886275 0.152941 0 / 1);
@@ -62,7 +62,7 @@ body {
 
   color: var(--color-text);
   background-color: var(--color-bg);
-  background-image: url(../images/noise.png);
+  background-image: url(../images/noise2.png);
   background-size: 160px;
 
   cursor: default;
@@ -283,7 +283,7 @@ section.loading .loading-text {
 }
 
 .frame--footer {
-  margin: 10vh 0 4rem;
+  margin: 5vh 0 1rem;
   grid-template-columns: auto auto auto;
   justify-content: space-between;
 }
@@ -577,7 +577,7 @@ section.loading .loading-text {
 }
 
 .content.about {
-  margin: 15vh 0 0;
+  margin: 7.5vh 0 0;
 }
 
 .blur-text {
@@ -635,7 +635,7 @@ section.loading .loading-text {
 
   background: url(../images/logo-gif.png) no-repeat 0 0;
   background-size: 11800%;
-  animation: gif 2s infinite steps(117);
+  animation: gif 2.5s infinite steps(117);
 }
 
 .logo.open {
@@ -650,7 +650,7 @@ body.flipbook-overflow-hidden .logo {
   0% {
     background-position: 0%;
   }
-  30% {
+  50% {
     background-position: 0%;
   }
   100% {
@@ -862,7 +862,7 @@ main.open {
 
   margin: -0.1rem 0.75rem 0 0;
 
-  background: #000;
+  background: var(--color-bg);
   border: 1px solid #fff;
 }
 
@@ -1965,7 +1965,7 @@ main.open .mag__popup {
 
 @media screen and (max-width: 768px) {
   main {
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   .logo {
@@ -2039,6 +2039,7 @@ main.open .mag__popup {
 
   .thumbnail_transition {
     padding: 5vh 0 10vh;
+    gap: 1.5vw;
   }
 
   .thumbnail_transition h1 {
@@ -2048,6 +2049,7 @@ main.open .mag__popup {
 
   .thumbnail_transition .column {
     opacity: 0.5;
+    gap: 1.5vw;
   }
 
   .blur-text {
@@ -2071,6 +2073,7 @@ main.open .mag__popup {
     justify-content: start;
 
     padding-bottom: 1rem;
+    margin: 0;
   }
 
   .frame--footer div {
