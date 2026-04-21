@@ -222,7 +222,7 @@
                 // Trigger open after initialization
                 setTimeout(
                   () => $thumb.find(".thumb-meta").trigger("click"),
-                  300
+                  300,
                 );
               }
             });
@@ -294,7 +294,7 @@
 
                 const classList = $(this).attr("class").split(" ");
                 const homClass = classList.find((cls) =>
-                  cls.startsWith("w-hom-")
+                  cls.startsWith("w-hom-"),
                 );
 
                 let matchedLine = original
@@ -340,7 +340,7 @@
 
               $("#resultInfo").html(
                 `<p>${resultList.length}건이 검색되었습니다</p>` +
-                  (showSnippets ? `${links}` : "")
+                  (showSnippets ? `${links}` : ""),
               );
             } else if (kw) {
               $("#resultInfo").text("검색 결과가 없습니다.");
@@ -401,7 +401,7 @@
             if (window.innerWidth <= 768) {
               $("html, body").animate(
                 { scrollTop: $("#searchInput").offset().top - 80 },
-                400
+                400,
               );
             }
 
@@ -430,7 +430,7 @@
                   const $cap = $target.find(".caption");
                   $target.attr("tabindex", "-1").focus();
                   $cap.addClass("expand");
-                }
+                },
               );
             }
           });
@@ -507,6 +507,9 @@
         <a href="../w-hom/" class="disabled"
           ><span><mark></mark>해외힙합 매거진</span>w/HOM<sup>New</sup></a
         >
+      </li>
+      <li>
+        <a href="../../interview/"><mark></mark>Interview</a>
       </li>
       <li>
         <a href="../../members/"><mark></mark>KHL Team</a>
@@ -708,7 +711,7 @@
           >
         </div>
 
-      <!-- <div>
+        <!-- <div>
           <p>Site by <a href="https://gg-yn.com">잠소</a></p>
         </div> -->
       </footer>
