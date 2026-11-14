@@ -2820,24 +2820,29 @@ Interview
   font-family: var(--info-font);
   font-size: 0.75rem;
   font-weight: 500;
-  line-height: 1.5rem;
+  line-height: 1.2;
   text-align: center;
   color: #000;
   opacity: 1;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
 }
 
-.interview-popup .interview-popup__close {
+.interview-popup .popup__close {
   position: absolute;
+
   top: 0;
   right: 0.25rem;
+
   padding: 0.125rem;
   color: #000;
 }
 
-.interview-popup .interview-popup__close img {
+.interview-popup .popup__close button {
+  height: fit-content;
+}
+
+.interview-popup .popup__close button img {
   width: 1rem;
-  display: block;
 }
 
 @media screen and (max-width: 768px) {
@@ -2868,14 +2873,16 @@ Interview
 
   .interview-popup .interview-popup__link {
     font-size: 0.7rem;
-    line-height: 1.4rem;
+    line-height: 1.2;
   }
 
-  .interview-popup .interview-popup__close {
+  .interview-popup .popup__close {
     right: 0.2rem;
+
+    padding: 0.125rem;
   }
 
-  .interview-popup .interview-popup__close img {
+  .interview-popup .popup__close button img {
     width: 0.875rem;
   }
 }

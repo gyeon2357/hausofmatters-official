@@ -41,7 +41,7 @@
       popup.querySelector(".interview-popup__link").href = url.href;
 
       popup
-        .querySelector(".interview-popup__close")
+        .querySelector(".popup__close button")
         .addEventListener("click", function () {
           write(id);
           popup.classList.remove("on");
