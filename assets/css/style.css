@@ -2778,89 +2778,37 @@ Interview
   }
 }
 
-/* Main page: latest interview popup */
+/* Main page: latest interview popup (mobile only, same style as interview page popup) */
 .interview-popup {
   display: none;
-
-  position: fixed;
-  right: 0.75rem;
-  bottom: 0.75rem;
-
-  width: max-content;
-  max-width: min(22rem, calc(100% - 1.5rem));
-  padding: 0.25rem 1.75rem 0.25rem 0.75rem;
-
-  background: #ffffff79;
-  border-radius: 1px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  z-index: 1000000;
-}
-
-.interview-popup.on {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: interview-popup-in 0.5s ease-out both;
-}
-
-@keyframes interview-popup-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.interview-popup .interview-popup__link {
-  font-family: var(--info-font);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.2;
-  text-align: center;
-  color: #000;
-  opacity: 1;
-  padding: 0.5rem 0;
-}
-
-.interview-popup .popup__close {
-  position: absolute;
-
-  top: 0;
-  right: 0.25rem;
-
-  padding: 0.125rem;
-  color: #000;
-}
-
-.interview-popup .popup__close button {
-  height: fit-content;
-}
-
-.interview-popup .popup__close button img {
-  width: 1rem;
 }
 
 @media screen and (max-width: 768px) {
   .interview-popup {
-    right: auto;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0.5rem;
+
     width: calc(100% - 1rem);
-    max-width: none;
-    padding: 0.25rem 1.75rem 0.25rem 0.5rem;
+    padding: 0.25rem;
+
+    background: #ffffff79;
+    border-radius: 1px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    z-index: 1000000;
   }
 
   .interview-popup.on {
-    animation-name: interview-popup-in-m;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: interview-popup-in 0.5s ease-out both;
   }
 
-  @keyframes interview-popup-in-m {
+  @keyframes interview-popup-in {
     from {
       opacity: 0;
       transform: translate(-50%, 0.5rem);
@@ -2872,14 +2820,36 @@ Interview
   }
 
   .interview-popup .interview-popup__link {
+    display: block;
+    max-width: 100%;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+
+    font-family: var(--info-font);
     font-size: 0.7rem;
-    line-height: 1.2;
+    font-weight: 500;
+    line-height: 1.4rem;
+    text-align: center;
+    color: #000;
+    opacity: 1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .interview-popup .popup__close {
+    position: absolute;
+
+    top: 0;
     right: 0.2rem;
 
     padding: 0.125rem;
+    color: #000;
+  }
+
+  .interview-popup .popup__close button {
+    height: fit-content;
   }
 
   .interview-popup .popup__close button img {
