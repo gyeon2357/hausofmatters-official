@@ -2885,3 +2885,31 @@ Interview
 .other-interview .other-interview__btn:hover {
   background: #ffffff68;
 }
+
+/* "Other contents" HOM / w/HOM cards: latest issue thumbnail, fitted without tiling */
+a.card__image[href$="/hom/"],
+a.card__image[href$="/w-hom/"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/* Interview detail: superscript question numbers (closing thank-you / comment-only blocks are skipped) */
+.interview-content {
+  counter-reset: qna;
+}
+
+.interview-content .qna-block:has(.answer) > .question {
+  counter-increment: qna;
+}
+
+.interview-content .qna-block:has(.answer) > .question::before {
+  content: counter(qna);
+  display: inline-block;
+  margin-right: 0.4em;
+  vertical-align: super;
+  font-size: 0.6em;
+  line-height: 1;
+  font-weight: 500;
+  opacity: 0.7;
+}
