@@ -251,6 +251,7 @@ section.loading .loading-text {
 .card__title.type-small {
   font-family: inherit;
   font-size: 1rem;
+  line-height: 1.2;
 
   padding-top: 0.75rem;
 }
@@ -2323,7 +2324,7 @@ Interview
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    background: color(display-p3 1 1 1 / 0.6);
+    background: color(display-p3 1 1 1 / 0.4);
     /* background: #f8f8f8ba; */
     /* box-shadow: 0 0 5px 1px #f8f8f8; */
     color: #000;
@@ -2719,12 +2720,31 @@ Interview
     height: 6rem;
   }
 
+  .menu__search__btn {
+    top: 0.5625rem;
+    right: 5.5rem;
+  }
+
   .menu__search__btn img {
     width: 3rem;
   }
 
   .menu__btn__wrap {
     width: 4rem;
+    height: 4rem;
+  }
+
+  .menu__btn__wrap > span.menu__btn__line:first-of-type {
+    top: 1.64rem;
+  }
+
+  .menu__btn__wrap > span.menu__btn__line:nth-of-type(2) {
+    top: 2.21rem;
+  }
+
+  .menu__btn__wrap.is_active > span.menu__btn__line:nth-child(1),
+  .menu__btn__wrap.is_active > span.menu__btn__line:nth-child(2) {
+    top: 2rem;
   }
 
   .menu__contents > li > a {
