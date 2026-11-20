@@ -2894,6 +2894,19 @@ a.card__image[href$="/w-hom/"] {
   background-position: 50% 50%;
 }
 
+/* Rows that contain a magazine card: every image box uses the A-size ratio (210:297)
+   so the covers fill their box and captions line up across the row */
+.card-wrap:has(a.card__image[href$="/hom/"], a.card__image[href$="/w-hom/"]) .card__image {
+  aspect-ratio: 210 / 297;
+}
+
+/* Main page: latest interview cards (cover fills the box) */
+a.card__image[href*="/interview/"] {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
 /* Interview detail: superscript question numbers (closing thank-you / comment-only blocks are skipped) */
 .interview-content {
   counter-reset: qna;
@@ -2904,9 +2917,9 @@ a.card__image[href$="/w-hom/"] {
 }
 
 .interview-content .qna-block:has(.answer) > .question::before {
-  content: counter(qna);
+  content: "Q-" counter(qna);
   display: inline-block;
-  margin-right: 0.4em;
+  margin-right: 0.3em;
   vertical-align: super;
   font-size: 0.6em;
   line-height: 1;
