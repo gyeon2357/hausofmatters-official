@@ -2856,3 +2856,32 @@ Interview
     width: 0.875rem;
   }
 }
+
+/* Interview detail: OTHER INTERVIEW button (above "Other contents") */
+.other-interview {
+  display: flex;
+  justify-content: center;
+
+  padding: 0 var(--page-padding);
+  margin: 6vh 0 0;
+}
+
+.other-interview .other-interview__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.75rem 1.25rem 0.65rem;
+  line-height: 1.2;
+
+  border-radius: 2px;
+  background: #ffffff25;
+  color: var(--color-link-hover);
+  opacity: 1;
+
+  transition: background 0.125s;
+}
+
+.other-interview .other-interview__btn:hover {
+  background: #ffffff68;
+}
