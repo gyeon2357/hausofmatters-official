@@ -2079,7 +2079,7 @@ Interview
 /* 질문 */
 .question {
   font-weight: 700;
-  margin: 2.5rem 0 1rem; /* 12px */
+  margin: 3rem 0 1rem; /* 12px */
 }
 
 /* 답변 */
@@ -2937,11 +2937,11 @@ a.card__image[href*="/interview/"] {
 }
 
 .interview-content .qna-block:has(.answer) > .question::before {
-  content: "Q-" counter(qna);
+  content: counter(qna, decimal-leading-zero);
   display: inline-block;
   margin-right: 0.3em;
   vertical-align: super;
-  font-size: 0.6em;
+  font-size: 0.55em;
   line-height: 1;
   font-weight: 500;
   opacity: 0.7;
