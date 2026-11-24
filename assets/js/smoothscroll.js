@@ -3,6 +3,7 @@
 const initSmoothScrolling = () => {
   // Initialize Lenis for smooth scroll effects. Lerp value controls the smoothness.
   const lenis = new Lenis({ lerp: 0.2 });
+  window.lenis = lenis; // exposed for other scripts (e.g. back-to-top button)
   
   // Sync ScrollTrigger with Lenis' scroll updates.
   lenis.on('scroll', ScrollTrigger.update);
