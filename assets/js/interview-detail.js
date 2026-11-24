@@ -8,9 +8,10 @@
 
   var btn = document.createElement("button");
   btn.type = "button";
-  btn.className = "to-top type-small";
-  btn.textContent = "Back to top";
+  btn.className = "to-top";
   btn.setAttribute("aria-label", "맨 위로 이동");
+  btn.innerHTML =
+    '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5 12 5l6.5 6.5"/></svg>';
 
   document.body.appendChild(bar);
   document.body.appendChild(btn);

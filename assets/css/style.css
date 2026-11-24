@@ -3006,21 +3006,23 @@ a.card__image[href*="/interview/"] {
   z-index: 1000003;
 }
 
-/* Interview detail: back-to-top button (appears after 1/4 of the page) */
+/* Interview detail: back-to-top button (small arrow icon, appears after 1/4 of the page) */
 .to-top {
   position: fixed;
   right: 0.75rem;
   bottom: 0.75rem;
 
-  padding: 0.55rem 0.9rem 0.45rem;
-  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0.3rem;
 
   color: var(--color-link-hover);
-  background: #ffffff25;
+  background: #ffffff1f;
   border: 0;
   border-radius: 2px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   cursor: pointer;
 
   opacity: 0;
@@ -3032,20 +3034,24 @@ a.card__image[href*="/interview/"] {
 }
 
 .to-top.show {
-  opacity: 1;
+  opacity: 0.8;
   visibility: visible;
   transform: translateY(0);
 }
 
 .to-top.show:hover {
-  background: #ffffff68;
+  opacity: 1;
+  background: #ffffff4d;
 }
 
 @media screen and (max-width: 768px) {
   /* keep clear of the bottom notice bar */
   .to-top {
     right: 0.5rem;
-    bottom: 3.25rem;
+    bottom: 3rem;
+    width: 1.625rem;
+    height: 1.625rem;
+    padding: 0.275rem;
   }
 }
 
