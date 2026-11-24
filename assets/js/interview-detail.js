@@ -42,7 +42,8 @@
     if (window.lenis && typeof window.lenis.scrollTo === "function") {
       window.lenis.scrollTo(0, { duration: 1.2 });
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
     }
   });
 })();

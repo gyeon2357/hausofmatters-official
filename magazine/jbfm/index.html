@@ -316,26 +316,27 @@
 
   <body>
     <!-- Splash -->
-    <section class="loading">
-      <a class="logo" href="#"></a>
+    <section class="loading" aria-hidden="true">
+      <a class="logo" href="#" tabindex="-1"></a>
       <p class="loading-text">HAUS OF MATTERS</p>
     </section>
 
     <!-- Menu -->
     <header>
-      <a class="logo" href="../../"></a>
+      <a class="logo" aria-label="HAUS OF MATTERS 메인으로" href="../../"></a>
 
-      <nav class="menu__btn">
-        <div class="menu__btn__wrap">
+      <button type="button" class="menu__btn" aria-label="메뉴 열기" aria-controls="siteMenu" aria-expanded="false">
+        <span class="menu__btn__wrap">
           <span class="menu__btn__line"></span>
           <span class="menu__btn__line"></span>
-        </div>
-      </nav>
+        </span>
+      </button>
 
       <div class="header__bg"></div>
     </header>
 
-    <section class="menu__contents">
+    <nav class="menu__contents" id="siteMenu" aria-label="사이트 메뉴">
+      <ul class="menu__list" role="list">
       <li>
         <a href="../hom/"
           ><span><mark></mark>한국힙합 매거진</span>HOM<sup>NEW</sup></a
@@ -352,9 +353,10 @@
       <li>
         <a href="../../members/"><mark></mark>KHL TEAM</a>
       </li>
+      </ul>
       <hr />
-
-      <li>
+      <ul class="menu__list" role="list">
+        <li>
         <a
           href="https://www.instagram.com/hausofmatters/"
           target="_blank"
@@ -362,14 +364,14 @@
           ><mark></mark>INSTAGRAM</a
         >
       </li>
-
+      </ul>
       <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
-    </section>
+    </nav>
 
     <main>
       <!-- Header -->
       <section class="page-title">
-        <img src="../../assets/images/jbfm-cover.jpg" />
+        <img src="../../assets/images/jbfm-cover.jpg" alt="진보 더 수퍼프릭 데뷔 20주년 기념 커버" />
         <p>진보 더 수퍼프릭 데뷔 20주년 기념 HAUS OF MATTERS</p>
       </section>
 
@@ -421,7 +423,7 @@
           <div class="card">
             <a
               href="../hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(../../assets/images/thumb/hom-42.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -432,7 +434,7 @@
           <div class="card">
             <a
               href="../w-hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(../../assets/images/thumb/w-hom-40.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -486,5 +488,6 @@
     <script src="../../assets/js/list.js"></script>
     <script src="../../assets/js/comment.js"></script>
       <script src="../../assets/js/latest-cards.js"></script>
+      <script src="../../assets/js/a11y.js"></script>
   </body>
 </html>

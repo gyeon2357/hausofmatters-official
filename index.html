@@ -159,27 +159,28 @@
   </head>
   <body>
     <!-- Splash -->
-    <section class="loading">
-      <a class="logo" href="#"></a>
+    <section class="loading" aria-hidden="true">
+      <a class="logo" href="#" tabindex="-1"></a>
 
       <p class="loading-text">KHL,&thinsp; Hausofmatters</p>
     </section>
 
     <!-- Menu -->
     <header>
-      <a class="logo" href="./"></a>
+      <a class="logo" aria-label="HAUS OF MATTERS 메인으로" href="./"></a>
 
-      <nav class="menu__btn">
-        <div class="menu__btn__wrap">
+      <button type="button" class="menu__btn" aria-label="메뉴 열기" aria-controls="siteMenu" aria-expanded="false">
+        <span class="menu__btn__wrap">
           <span class="menu__btn__line"></span>
           <span class="menu__btn__line"></span>
-        </div>
-      </nav>
+        </span>
+      </button>
 
       <div class="header__bg"></div>
     </header>
 
-    <section class="menu__contents">
+    <nav class="menu__contents" id="siteMenu" aria-label="사이트 메뉴">
+      <ul class="menu__list" role="list">
       <li>
         <a href="./magazine/hom/"
           ><span><mark></mark>한국힙합 매거진</span>HOM<sup>NEW</sup></a
@@ -196,6 +197,7 @@
       <li>
         <a href="./members/"><mark></mark>KHL TEAM</a>
       </li>
+      </ul>
       <hr />
 
       <!-- <li>
@@ -215,7 +217,8 @@
         >
       </li>
       <hr /> -->
-      <li>
+      <ul class="menu__list" role="list">
+        <li>
         <a
           href="https://www.instagram.com/hausofmatters/"
           target="_blank"
@@ -223,6 +226,7 @@
           ><mark></mark>INSTAGRAM</a
         >
       </li>
+      </ul>
 
       <!-- <div class="swiper hom-swiper" OnClick="location.href='./magazine/hom'">
         <div class="swiper-wrapper">
@@ -377,12 +381,11 @@
           </div>
         </div>
       </div> -->
-
       <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
-    </section>
+    </nav>
 
     <!-- Popup -->
-    <aside class="intro__popup">
+    <aside class="intro__popup" aria-label="최신호 바로가기">
       <p>Latest Issue</p>
       <div class="intro__link">
         <a class="intro__hom" href="./magazine/hom/#lastet"><p>HOM</p></a
@@ -393,7 +396,7 @@
     </aside>
 
     <!-- Latest Interview Popup (모바일 전용, /interview/ 첫 카드 자동 연결) -->
-    <aside class="interview-popup" id="interviewPopup">
+    <aside class="interview-popup" id="interviewPopup" aria-label="최신 인터뷰">
       <a class="interview-popup__link" href="./interview/"
         >HAUS OF INTERVIEW <span class="interview-popup__name"></span
       ></a>
@@ -408,7 +411,7 @@
       <!-- Contents -->
       <section class="intro no-select">
         <div class="intro__heading">
-          <h2>KHL,<br/>Hausofmatters</h2>
+          <h2 role="heading" aria-level="1">KHL,<br/>Hausofmatters</h2>
           <!-- <nav class="tags type-small">
             <a
               href="https://www.instagram.com/hausofmatters/"
@@ -1010,7 +1013,7 @@
           <div class="card">
             <a
               href="./magazine/hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(./assets/images/thumb/hom-42.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -1021,7 +1024,7 @@
           <div class="card">
             <a
               href="./magazine/w-hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(./assets/images/thumb/w-hom-40.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -1033,7 +1036,7 @@
           <div class="card" data-latest-interview>
             <a
               href="./interview/ahndayoung/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(./assets/images/interview/ahndayoung-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; aspect-ratio: 210 / 297"
             ></a>
             <h3 class="card__title type-small">
@@ -1044,7 +1047,7 @@
           <div class="card" data-latest-interview>
             <a
               href="./interview/odomar-skyminhyuk/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(./assets/images/interview/odomar-skyminhyuk-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; aspect-ratio: 210 / 297"
             ></a>
             <h3 class="card__title type-small">
@@ -1060,7 +1063,7 @@
           <div class="card">
             <a
               href="./members/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(./assets/images/editor.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -1156,5 +1159,6 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
       <script src="./assets/js/latest-cards.js"></script>
+      <script src="./assets/js/a11y.js"></script>
   </body>
 </html>

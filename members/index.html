@@ -108,26 +108,27 @@
 
   <body>
     <!-- Splash -->
-    <section class="loading">
-      <a class="logo" href="#"></a>
+    <section class="loading" aria-hidden="true">
+      <a class="logo" href="#" tabindex="-1"></a>
       <p class="loading-text">KHL Team</p>
     </section>
 
     <!-- Menu -->
     <header>
-      <a class="logo" href="../"></a>
+      <a class="logo" aria-label="HAUS OF MATTERS 메인으로" href="../"></a>
 
-      <nav class="menu__btn">
-        <div class="menu__btn__wrap">
+      <button type="button" class="menu__btn" aria-label="메뉴 열기" aria-controls="siteMenu" aria-expanded="false">
+        <span class="menu__btn__wrap">
           <span class="menu__btn__line"></span>
           <span class="menu__btn__line"></span>
-        </div>
-      </nav>
+        </span>
+      </button>
 
       <div class="header__bg"></div>
     </header>
 
-    <section class="menu__contents">
+    <nav class="menu__contents" id="siteMenu" aria-label="사이트 메뉴">
+      <ul class="menu__list" role="list">
       <li>
         <a href="../magazine/hom/"
           ><span><mark></mark>한국힙합 매거진</span>HOM<sup>NEW</sup></a
@@ -144,6 +145,7 @@
       <li>
         <a href="../members/" class="disabled"><mark></mark>KHL TEAM</a>
       </li>
+      </ul>
       <hr />
       <!-- <li>
         <a
@@ -162,7 +164,8 @@
         >
       </li>
       <hr /> -->
-      <li>
+      <ul class="menu__list" role="list">
+        <li>
         <a
           href="https://www.instagram.com/hausofmatters/"
           target="_blank"
@@ -170,9 +173,9 @@
           ><mark></mark>INSTAGRAM</a
         >
       </li>
-
+      </ul>
       <h1>HAUS OF MATTERS KHL KILL THEM ALL</h1>
-    </section>
+    </nav>
 
     <main>
       <!-- Contents -->
@@ -190,7 +193,7 @@
             </div>
 
             <div class="popup__close">
-              <button><img src="../../assets/images/close-bk.svg" /></button>
+              <button type="button" aria-label="닫기"><img src="../../assets/images/close-bk.svg" alt="" /></button>
             </div>
           </div>
         </aside>
@@ -207,7 +210,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-14.jpg" />
+                <img src="../assets/images/profile/profile-14.jpg" alt="blvckmvtter 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/_blvckmvtter_/"
@@ -225,7 +228,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-10.jpg" />
+                <img src="../assets/images/profile/profile-10.jpg" alt="​쟈이즈 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/zyaez_birosini/"
@@ -249,7 +252,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/logo-w.png" />
+                <img src="../assets/images/logo-w.png" alt="" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/gong_za/"
@@ -267,7 +270,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-16.jpg" />
+                <img src="../assets/images/profile/profile-16.jpg" alt="denim 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/wooseungjoon/"
@@ -290,7 +293,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-12.png" />
+                <img src="../assets/images/profile/profile-12.png" alt="nhana 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/nayoungseon/"
@@ -308,7 +311,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/logo-w.png" />
+                <img src="../assets/images/logo-w.png" alt="" />
                 <figcaption></figcaption>
               </figure>
             </li>
@@ -319,7 +322,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-18.png" />
+                <img src="../assets/images/profile/profile-18.png" alt="잠소 프로필 사진" />
                 <figcaption></figcaption>
               </figure>
             </li>
@@ -335,7 +338,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-3.jpg" />
+                <img src="../assets/images/profile/profile-3.jpg" alt="Alonso2000 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/alonso_zooo?igsh=b2J1eWN0NDNkbnZ6"
@@ -359,7 +362,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/logo-w.png" />
+                <img src="../assets/images/logo-w.png" alt="" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/deviken_/"
@@ -381,7 +384,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-5.jpg" />
+                <img src="../assets/images/profile/profile-5.jpg" alt="loding 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/1od1ng/"
@@ -399,7 +402,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-11.jpg" />
+                <img src="../assets/images/profile/profile-11.jpg" alt="nicolas 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/moontoucha/"
@@ -432,7 +435,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-6.jpg" />
+                <img src="../assets/images/profile/profile-6.jpg" alt="WestCastle 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/nugsmag/"
@@ -450,7 +453,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-13.jpg" />
+                <img src="../assets/images/profile/profile-13.jpg" alt="writersglock 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/writersglock_z0y/"
@@ -473,7 +476,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-4.jpg" />
+                <img src="../assets/images/profile/profile-4.jpg" alt="감상주의(KMSNJUI) 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://brunch.co.kr/@6bce52336c644f8 "
@@ -496,7 +499,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-8.jpg" />
+                <img src="../assets/images/profile/profile-8.jpg" alt="류지모토 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/ryuzimoto/"
@@ -514,7 +517,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-19.jpg" />
+                <img src="../assets/images/profile/profile-19.jpg" alt="예리 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/dototrl/"
@@ -532,7 +535,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-1.jpg" />
+                <img src="../assets/images/profile/profile-1.jpg" alt="온암 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/xel.theus/"
@@ -557,7 +560,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-9.jpg" />
+                <img src="../assets/images/profile/profile-9.jpg" alt="자카 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/thisiseoyul/"
@@ -581,7 +584,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-20.jpg" />
+                <img src="../assets/images/profile/profile-20.jpg" alt="moogsick 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/moogsick/"
@@ -609,7 +612,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-2.png" />
+                <img src="../assets/images/profile/profile-2.png" alt="SONGCHICO 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/songchico/"
@@ -628,7 +631,7 @@
               </div>
 
               <figure>
-                <img src="../assets/images/profile/profile-7.jpg" />
+                <img src="../assets/images/profile/profile-7.jpg" alt="SRUKSAN 프로필 사진" />
                 <figcaption>
                   <a
                     href="https://www.instagram.com/sruksanimennui/"
@@ -655,7 +658,7 @@
           <div class="card">
             <a
               href="../magazine/hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(../assets/images/thumb/hom-42.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -666,7 +669,7 @@
           <div class="card">
             <a
               href="../magazine/w-hom/"
-              class="card__image"
+              class="card__image" tabindex="-1" aria-hidden="true"
               style="background-image: url(../assets/images/thumb/w-hom-40.jpg)"
             ></a>
             <h3 class="card__title type-small">
@@ -747,5 +750,6 @@
     <script src="../assets/js/load-sub.js"></script>
     <script src="../assets/js/script.js"></script>
       <script src="../assets/js/latest-cards.js"></script>
+      <script src="../assets/js/a11y.js"></script>
   </body>
 </html>
