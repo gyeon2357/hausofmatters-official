@@ -3106,4 +3106,9 @@ button:focus-visible,
     transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
+
+  /* spinning logo (sprite animation) is removed; the intro itself still plays (faster, see a11y.js) */
+  .logo {
+    animation: none !important;
+  }
 }

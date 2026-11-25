@@ -1,7 +1,8 @@
 // 접근성 보조 스크립트
 // 1) 메뉴 오버레이: 닫혀 있을 땐 포커스/스크린리더에서 제외, 버튼 상태(aria-expanded/label) 동기화, ESC로 닫기
 // 2) role="button" 요소(div/figure 등)를 Enter/Space 키로 조작
-// 3) "동작 줄이기" 설정 시 GSAP 연출을 거의 즉시 끝냄 (부드러운 스크롤은 smoothscroll.js 에서 비활성화)
+// 3) "동작 줄이기" 설정 시: 인트로는 생략하지 않고 빠르게(2배속) 재생, 돌아가는 로고 효과는 CSS에서 제거
+//    (부드러운 스크롤은 smoothscroll.js 에서 비활성화)
 (function () {
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -44,6 +45,6 @@
 
   // 3) reduced motion
   if (reduce && window.gsap && gsap.globalTimeline) {
-    gsap.globalTimeline.timeScale(20);
+    gsap.globalTimeline.timeScale(2);
   }
 })();
