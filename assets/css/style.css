@@ -798,8 +798,9 @@ main.open {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0); */
 
-  -webkit-filter: blur(16px);
-  filter: blur(16px);
+  /* menu open: blur + dim the page behind the overlay */
+  -webkit-filter: blur(16px) brightness(0.55);
+  filter: blur(16px) brightness(0.55);
 }
 
 .menu__contents > h1 {
